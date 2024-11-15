@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Tajawal
+- Font Author: (c) 2017 by Boutros International. All rights reserved.
+- Font Source: https://fonts.gstatic.com/s/tajawal/v10/Iurf6YBj_oCad4k1l4qkLrZjiLlJ-G0.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
