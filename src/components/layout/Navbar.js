@@ -1,67 +1,64 @@
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { reactIcons } from "../../utils/icons";
-import { getUserNotifcationStart, setLogout, toggleNewNotification, updateNotification } from "../../redux/features/authSlice";
+import { setLogout, } from "../../redux/features/authSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { getUserToken } from "../../utils/constants";
-import { socketConnect } from "../../api/api";
-import NotificationPopper from "../popper/NotificationPopper";
-import { numberWithCommas } from "../../utils/helpers";
+import { getUserToken, navbarLinks } from "../../utils/constants";
+import gsap from "gsap";
 
 const Navbar = () => {
-  let socket
-  if (!socket) {
-    socket = socketConnect('notifications');
-  }
+  const [toggle,setToggle]=useState(false)
+  const navbarRef = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {  user } = useSelector((state) => state.auth);
-  const cartLength = user?.carts?.length;
-  const wishlistLength = user?.whislistItems?.length;
+  const { user } = useSelector((state) => state.auth);
   const handleLogout = () => {
     dispatch(setLogout());
     navigate("/login");
   };
-  const isLoggedIn = getUserToken()
-  const handleUpdateNotificationCount = () => {
-    const prevCount = Number(localStorage?.getItem('notificationCount')) || 0
-    const nextCount = prevCount + 1
-    localStorage?.setItem('isNewNotification', JSON.stringify(true))
-    localStorage?.setItem('notificationCount', JSON.stringify(nextCount))
-    dispatch(toggleNewNotification(true))
-  }
   useEffect(() => {
-   
-    if (isLoggedIn && user?._id) {
-     socket?.emit('connect-notification', { userId: user?._id });
-     socket?.on('notify-user', (data) => {
-        handleUpdateNotificationCount()
-        dispatch(updateNotification(data))
-      });
-    }
-    return () => {
-     socket?.disconnect();
-     socket?.off('notify-user');
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 50) {
+        setToggle(true)
+      } else {
+        setToggle(false)
+      }
     };
-  }, [isLoggedIn, user]);
 
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  const isLoggedIn = getUserToken()
   return (
-    <nav className="flex items-center  shadow-navbar  py-3 sticky top-0 w-full bg-white z-[50]">
+    <nav className={`flex items-center  shadow-navbar bg-transparent  py-[20px] fixed left-0 top-0 w-full z-[50] ${toggle? 'bg-white':'bg-transparent'}`}>
       <div className="container">
         <div className="flex items-center justify-between">
           <div className="">
-            <Link to="/" className="font-extrabold text-3xl text-amber-600">
-              Dream 11
+            <Link to="/" className="">
+              <img className={`w-[206px] ${toggle? 'invert-0':'invert'}`} src="/images/logo.png" alt="log" />
             </Link>
           </div>
+          <div className="flex-grow flex justify-end mr-10 items-center">
+            {navbarLinks?.map((item) => {
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`font-semibold  ${toggle? 'text-gray-800 ':'text-white'}  px-4 hover:text-primary-pink ${item.path === window.location.pathname ? "text-primary-pink" : ""
+                    }`}
+                >
+                  {item.title}
+                </Link>
+              )
+            })}
+          </div>
           <div className="flex gap-2 items-center">
-            {user && (
+            {!user && (
               <div className="flex items-center md:gap-4 gap-2">
-                <div>
-                  <div className="md:block hidden"><b className="min-w-[100px] inline-block">Balance  </b>: &nbsp; Rs. {numberWithCommas(user?.wallet?.amount || 0)}</div>
-                  <div className="md:block hidden"><b className="min-w-[100px] inline-block">Winnings  </b>: &nbsp; Rs. {numberWithCommas(user?.wallet?.winnings || 0)}</div>
-                </div>
                 <Menu as="div" className="relative">
                   <Menu.Button
                     className={
@@ -70,16 +67,12 @@ const Navbar = () => {
                   >
                     <img
                       className="w-10 h-10 object-cover rounded-full"
-                      src={
-                        user.profileImage
-                          ? `${user.profileImage}`
-                          : "/images/user.png"
-                      }
-                      alt=""
+                      src={"/images/user.png"}
+                      alt="user"
                     />
-                   <div>
+                    <div>
                       <span className="md:block hidden">{user?.fullName}</span>
-                   </div>
+                    </div>
                     <span className="ml-2">{reactIcons?.arrowDown}</span>
                   </Menu.Button>
 
@@ -99,8 +92,8 @@ const Navbar = () => {
                             <button
                               onClick={() => navigate(`/profile/${user._id}`)}
                               className={`${active
-                                  ? "bg-violet-500 text-white"
-                                  : "text-gray-900"
+                                ? "bg-violet-500 text-white"
+                                : "text-gray-900"
                                 } group flex w-full items-center rounded-md px-2 py-2 text-base`}
                             >
                               Profile
@@ -112,8 +105,8 @@ const Navbar = () => {
                             <button
                               onClick={() => navigate(`/dashboard`)}
                               className={`${active
-                                  ? "bg-violet-500 text-white"
-                                  : "text-gray-900"
+                                ? "bg-violet-500 text-white"
+                                : "text-gray-900"
                                 } group flex w-full items-center rounded-md px-2 py-2 text-base`}
                             >
                               Go to dashboard
@@ -126,8 +119,8 @@ const Navbar = () => {
                             <button
                               onClick={handleLogout}
                               className={`${active
-                                  ? "bg-violet-500 text-white"
-                                  : "text-gray-900"
+                                ? "bg-violet-500 text-white"
+                                : "text-gray-900"
                                 } group flex w-full items-center rounded-md px-2 py-2 text-base`}
                             >
                               Log out
@@ -141,19 +134,19 @@ const Navbar = () => {
               </div>
             )}
             <div className="flex gap-2">
-              {!user && (
+              {user && (
                 <>
                   <button
                     onClick={() => navigate("/login")}
-                    className="btn-primary"
+                    className={`${!toggle? 'btn-outline-white':'btn-outline-primary'}`}
                   >
-                    Login
+                    Sign In
                   </button>
                   <button
                     onClick={() => navigate("/register")}
                     className="btn-primary"
                   >
-                    Register
+                    Sign Up
                   </button>
                 </>
               )}

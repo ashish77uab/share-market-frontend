@@ -51,6 +51,8 @@ import { FaPaperPlane } from "react-icons/fa";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { FaTrophy } from "react-icons/fa6";
 import { GrPowerReset } from "react-icons/gr";
+import { FaPhone } from "react-icons/fa6";
+import { FaEnvelope } from "react-icons/fa";
 export const reactIcons = {
   plus: <CiCirclePlus />,
   minus: <CiCircleMinus />,
@@ -101,5 +103,7 @@ export const reactIcons = {
   plane: <FaPaperPlane/>,
   live: <HiOutlineSignal/>,
   prize: <FaTrophy/>,
-  reset: <GrPowerReset/>
+  reset: <GrPowerReset/>,
+  mobile:<FaPhone/>,
+  email:<FaEnvelope/>,
 };

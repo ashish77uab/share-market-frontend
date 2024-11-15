@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const ProtectedRoutes = ({ children }) => {
-  if (localStorage.getItem("ashishToken")) {
+  if (localStorage.getItem("loginToken")) {
     return children;
   }
   return <Navigate to="/login" />;

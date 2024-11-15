@@ -4,6 +4,7 @@ import Profile from "./Profile";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 import Home from "./Home";
+import Pricing from "./Pricing";
 import MatchDetail from "./MatchDetail";
 import Tournament from "./dashboard/Tournament";
 import Dashboard from "./dashboard/Dashboard";
@@ -14,6 +15,7 @@ import Match from "./dashboard/Match";
 import AddMatch from "./dashboard/AddMatch";
 import Player from "./dashboard/Player";
 import PrizePyramidList from "./dashboard/PrizePyramidList";
+import UserDetails from "./dashboard/UserDetails";
 import AddPrize from "./dashboard/AddPrize";
 
 export {
@@ -33,5 +35,7 @@ export {
   AddMatch,
   Player,
   PrizePyramidList,
-  AddPrize
+  AddPrize,
+  UserDetails,
+  Pricing
 };

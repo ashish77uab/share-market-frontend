@@ -58,6 +58,7 @@ const ResetPassword = () => {
             name="password"
             value={form.password}
             onChange={handleChange}
+            isFormik={false}
             addonRight={
               <span
                 onClick={() => setToggle(!toggle)}
@@ -74,6 +75,7 @@ const ResetPassword = () => {
             name="confirmPassword"
             value={form.confirmPassword}
             onChange={handleChange}
+            isFormik={false}
             addonRight={
               <span
                 onClick={() => setToggle(!toggle)}

@@ -18,7 +18,9 @@ import {
   AddMatch,
   Player,
   PrizePyramidList,
-  AddPrize
+  AddPrize,
+  UserDetails,
+  Pricing
 } from "./pages";
 import { getUser } from "./api/api";
 import { useDispatch } from "react-redux";
@@ -44,7 +46,7 @@ function App() {
     }
   };
   useEffect(() => {
-    if (localStorage.getItem("ashishToken")) {
+    if (localStorage.getItem("loginToken")) {
       getUserData();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,6 +57,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
+            <Route path='/pricing' element={<Pricing />} />
             <Route path="/match/:matchId" element={<MatchDetail />} />
             <Route path="/profile/:userId" element={<ProtectedRoutes> <Profile /></ProtectedRoutes>} />
           </Route>
@@ -63,6 +66,7 @@ function App() {
             <Route path="tournaments" element={<Tournament />} />
             <Route path="prize-list" element={<PrizePyramidList />} />
             <Route path="users" element={<AllUsers />} />
+            <Route path="user/:userId" element={<UserDetails />} />
             <Route path="player/:teamId" element={<Player />} />
             <Route path="teams/:id" element={<Teams />} />
             <Route path="matches/:id" element={<Match />} />

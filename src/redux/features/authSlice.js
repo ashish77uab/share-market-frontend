@@ -51,7 +51,7 @@ const authSlice = createSlice({
       state.user = { ...state.user, ...action.payload };
     },
     setLogout: (state, action) => {
-      localStorage.removeItem("ashishToken");
+      localStorage.removeItem("loginToken");
       state.user = null;
     },
     deleteNotificationStart: (state, action) => {

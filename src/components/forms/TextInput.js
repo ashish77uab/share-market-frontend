@@ -1,11 +1,14 @@
 import React from "react";
+import {  ErrorMessage } from 'formik';
 
 const TextInput = ({
   className,
   addonRight,
   label,
+  name,
   error,
   helperText,
+  isFormik = true,
   ...rest
 }) => {
   return (
@@ -14,14 +17,14 @@ const TextInput = ({
       <div className="relative">
         <input
           {...rest}
-          className={`input-field  ${className} ${
-            error ? "border-red-500" : "border-zinc-200"
-          }`}
+          name={name}
+          className={`input-field  ${className} ${error ? "border-red-500" : "border-zinc-200"
+            }`}
         />
         {addonRight ? addonRight : null}
       </div>
       {helperText && <p className="text-gray-600 text-xs">{helperText}</p>}
-      {error && <p className="form-error">{error}</p>}
+      {isFormik &&  <ErrorMessage name={name}>{msg => <div className='form-error'>{msg}</div>}</ErrorMessage>}
     </div>
   );
 };

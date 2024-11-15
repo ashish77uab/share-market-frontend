@@ -19,8 +19,8 @@ const API = axios.create({
 });
 
 API.interceptors.request.use((req) => {
-  if (localStorage.getItem("ashishToken")) {
-    req.headers.Authorization = `Bearer ${localStorage.getItem("ashishToken")}`;
+  if (localStorage.getItem("loginToken")) {
+    req.headers.Authorization = `Bearer ${localStorage.getItem("loginToken")}`;
   }
   return req;
 });
@@ -161,7 +161,8 @@ export const uploadProfileImage = (id, formData) =>
   API.post(`auth/profileImage/${id}`, formData);
 export const uploadImage = (formData) => API.post("upload", formData);
 
-export const getAllUsersList = (data) => API.get(`auth/all-users?page=${data?.page}&limit=${data?.limit}`);
+export const getAllUsersList = (data) => API.get(`auth/all-users?page=${data?.page}&limit=${data?.limit}&search=${data?.search}`);
+export const getSingleUserData = (userId) => API.get(`auth/single-user?userId=${userId}`);
 export const getAllAdminList = () => API.get(`auth/all-admin`);
 export const getAllUserNotifications = (data) => API.get(`auth/notifications?skip=${data?.skip}&take=${data?.take}`);
 export const deleteNotification = (notificationId) => API.delete(`auth/notifications/delete/${notificationId}`);

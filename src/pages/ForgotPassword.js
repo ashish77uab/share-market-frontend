@@ -55,6 +55,7 @@ const ForgotPassword = () => {
             name="email"
             value={form.email}
             onChange={handleChange}
+            isFormik={false}
           />
 
           <div className="text-center">

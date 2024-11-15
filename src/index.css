@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @layer base {
   :root {
@@ -23,7 +23,7 @@
     --toastify-toast-min-height: 70px;
     --toastify-toast-max-height: 800px;
     --toastify-z-index: 9999;
-    --toastify-font-family: theme(fontFamily.gabrito);
+    --toastify-font-family: theme(fontFamily.poppins);
 
     --toastify-text-color-light: #757575;
     --toastify-text-color-dark: #fff;
@@ -39,7 +39,7 @@
     @apply [&_svg]:!w-7 !important;
   }
   body {
-    @apply font-gabrito bg-zinc-100;
+    @apply font-poppins bg-white;
   }
   tbody {
     display: block;
@@ -68,6 +68,9 @@
   }
 }
 @layer components {
+  .form-error{
+    @apply text-sm text-red-500;
+  }
   .heading-3 {
     @apply text-xl md:text-4xl font-semibold;
   }
@@ -86,11 +89,14 @@
   .ay-center {
     @apply absolute top-1/2 -translate-y-1/2;
   }
+  .ax-center {
+    @apply absolute left-1/2 -translate-x-1/2;
+  }
   .a-center {
     @apply absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2;
   }
   .btn {
-    @apply px-10 py-2 font-semibold font-gabrito text-[12px] md:text-base rounded-md disabled:opacity-60 disabled:cursor-not-allowed;
+    @apply px-10 py-2 font-semibold  text-[12px] md:text-base rounded-md disabled:opacity-60 disabled:cursor-not-allowed;
   }
   .btn-sm {
     @apply text-sm px-6 font-medium py-2;
@@ -99,10 +105,13 @@
     @apply btn bg-green-500 text-white;
   }
   .btn-primary {
-    @apply btn bg-amber-500 hover:bg-amber-400 text-white;
+    @apply btn bg-primary-btnColor hover:bg-primary-btnColor/80 text-white;
   }
   .btn-outline-primary {
-    @apply btn text-amber-500 border border-amber-500 hover:bg-amber-400 hover:text-white;
+    @apply btn text-primary-btnColor border border-primary-btnColor hover:bg-primary-btnColor hover:text-white;
+  }
+  .btn-outline-white {
+    @apply btn text-white border border-white hover:bg-white hover:text-primary-pink;
   }
   .btn-secondary {
     @apply btn bg-cyan-500 text-white;
@@ -114,7 +123,7 @@
     @apply text-sm px-6 font-medium py-2;
   }
   .text-muted {
-    @apply text-black opacity-70 text-base;
+    @apply text-primary-gray text-base;
   }
   .action-btn {
     @apply w-10 h-10 cursor-pointer rounded-full text-xl text-primary-blue bg-zinc-200 hover:bg-zinc-300  flex-center;
@@ -146,5 +155,11 @@
   }
   .border-c {
     @apply border border-zinc-300;
+  }
+  .header-wrapper{
+    @apply pt-[82px];
+  }
+  .shaodw-price{
+    box-shadow: 0 1px 20px 0 rgba(17, 30, 79, .07);
   }
 }
