@@ -16,7 +16,7 @@ const initialState = {
   email: "",
   password: "",
 };
-const Login = () => {
+const Login = ({closeModal}) => {
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -43,8 +43,8 @@ const Login = () => {
       if (status >= 200 && status < 300) {
         toast.success(<ToastMsg title={`Login Successfully`} />);
         localStorage.setItem("loginToken", data.token);
-        navigate("/");
         getUserData()
+        closeModal()
       } else {
         toast.error(<ToastMsg title={data.message} />);
       }
@@ -57,9 +57,6 @@ const Login = () => {
   };
   return (
     <>
-      {isLoading && <Spinner />}
-
-      <div className="min-h-screen bg-pink-50 flex items-center justify-center py-10 px-8">
         <Formik
           initialValues={initialState}
           validationSchema={loginValidationSchema}
@@ -71,9 +68,9 @@ const Login = () => {
             handleBlur,
           }) => {
             return (
-              <Form className="max-w-md w-full  bg-white rounded-lg space-y-2 py-6 shadow-lg">
-                <header className="py-4 text-center text-3xl font-bold">Login</header>
-                <div className="px-4 space-y-2">
+              <Form className=" w-full space-y-2 ">
+                <header className="py-4 text-center heading-4 text-primary-pink">Login</header>
+                <div className="space-y-4">
                   <TextInput
                     label={"Email"}
                     type="text"
@@ -115,7 +112,7 @@ const Login = () => {
                     <p className="text-muted">
                       Don't have an account?{" "}
                       <Link className="ml-2 text-blue-500 underline" to="/register">
-                        Register
+                        Create new account
                       </Link>
                     </p>{" "}
                   </div>
@@ -123,7 +120,7 @@ const Login = () => {
                 <footer className="py-4 text-center font-medium">
                   <button
                     type="submit"
-                    className="px-12 py-2 rounded-md bg-green-500 text-white"
+                    className="btn-primary px-10 py-2"
                   >
                     {isLoading ? "Loading..." : "Login"}
                   </button>
@@ -132,7 +129,6 @@ const Login = () => {
             )
           }}
         </Formik>
-      </div>
     </>
   );
 };

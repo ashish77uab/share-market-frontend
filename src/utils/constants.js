@@ -19,6 +19,7 @@ export const navbarLinks = [
   },
 
 ]
+export const pathsRequireToggle=navbarLinks?.map(item=>item?.path)
 export const homeSection2Data = [
   {
     img: "/images/s21.png",
@@ -158,6 +159,31 @@ export const homeSection6Data = [
     description: 'Align demat assets with the trader’s account in one click.'
   },
 
+
+]
+
+
+export const aboutInfo=[
+  {
+  icon:reactIcons.users,
+  number:'1000k+',
+  title:'signups'
+  },
+  {
+  icon:reactIcons.chart,
+  number:'101k+',
+  title:'algos'
+  },
+  {
+  icon:reactIcons.giChart,
+  number:'500k+',
+  title:'live trades daily'
+  },
+  {
+  icon:reactIcons.safety,
+  number:'100+',
+  title:'broker APIs connected'
+  },
 
 ]
 

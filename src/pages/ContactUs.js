@@ -8,17 +8,16 @@ const ContactUs = () => {
     <section className="">
       <div className="bg-primary-pink relative header-wrapper ">
         <img className="absolute inset-0 w-full h-full" src="/images/bg-header.png" alt="bg-header" />
-        <div className="container relative z-[4] min-h-[600px] flex justify-center items-center text-center">
-          <div className="flex flex-col items-center gap-4">
-            <h2 className="text-7xl max-w-[1240px] leading-[1.15] text-white font-bold"> Contact Us</h2>
-            <BreadCrumb path={'/contact'} title={'Contact Us'} />
+        <div className="container header-container-wrapper">
+          <div className="flex flex-col items-center gap-8">
+            <h2 className="max-w-[1240px] heading-2 text-white font-bold"> Contact Us</h2>
+            <BreadCrumb path={'/about'} title={'Contact Us'} />
           </div>
         </div>
-
       </div>
       <section className="py-20 bg-pink-50">
         <div className="container ">
-          <div className="max-w-[1300px] mx-auto w-full grid grid-cols-6  gap-10 ">
+          <div className="max-w-[1300px] mx-auto w-full grid grid-cols-1 lg:grid-cols-6  gap-10 ">
             <div className="col-span-3">
               <div className="py-10">
                 <h3 className="heading-3">Contact Information</h3>

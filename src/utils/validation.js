@@ -21,3 +21,11 @@ export const registerValidation = yup.object().shape({
         .string()
         .oneOf([yup.ref("password"), null], "Passwords must match").required("confirmPassword is also required"),
 });
+export const updatePasswordValidationSchema = yup.object().shape({
+    oldPassword: yup
+        .string()
+        .required("Old Password is required"),
+    newPassword:  yup
+    .string()
+    .required("New Password is required"),
+});

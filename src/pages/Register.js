@@ -6,15 +6,18 @@ import { register } from "../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import { reactIcons } from "../utils/icons";
 import TextInput from "../components/forms/TextInput";
-import {  userValidationSchema } from "../utils/yup";
+import { userValidationSchema } from "../utils/yup";
 import { serialize } from 'object-to-formdata'
 import Spinner from "../components/loaders/Spinner";
 import ReactSelect from "../components/forms/ReactSelect";
-const genders = [{ label: "Male", value: "male" }, { label: "Female", value: "female" }]
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/features/authSlice";
+const genders = [{ label: "Male", value: "male" }, { label: "Female", value: "female" },{ label: "Others", value: "others" }]
 const accounts = [{ label: "Saving", value: "saving" }, { label: "Current", value: "current" }]
 const initialState = {
   firstName: "",
   lastName: "",
+  dob:"",
   email: "",
   gender: "others",
   panImage: "",
@@ -31,10 +34,11 @@ const initialState = {
   password: "",
   confirmPassword: "",
 };
-const Register = () => {
+const Register = ({closeModal}) => {
+  const dispatch=useDispatch()
   const [select, setSelect] = useState({
-    gender: {label:'Others',value:'others'},
-    account: {label:'Savings',value:'saving'},
+    gender: { label: 'Others', value: 'others' },
+    account: { label: 'Savings', value: 'saving' },
   });
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
@@ -49,28 +53,27 @@ const Register = () => {
   const handleSubmit = async (values, actionForm) => {
     setIsLoading(true)
     try {
-      console.log(values,'values')
       let formData = { ...values };
       delete formData.confirmPassword;
       const res = await register(serialize(formData));
       const { status, data } = res;
       if (status >= 200 && status < 300) {
         toast.success(<ToastMsg title={`Register Successfully`} />);
+        localStorage.setItem("loginToken", data.token);
+        dispatch(setUser(data?.user));
+        closeModal()
         handleReset();
-        navigate("/login");
       } else {
         toast.error(<ToastMsg title={data.message} />);
       }
     } catch (error) {
-      console.log(error,'register error')
+      console.log(error, 'register error')
       toast.error(<ToastMsg title={error?.response?.data?.message} />);
     } finally { setIsLoading(false) }
 
   };
   return (
     <>
-      {isLoading && <Spinner />}
-      <div className="min-h-screen bg-pink-50 flex items-center justify-center py-10 px-8">
         <Formik
           initialValues={initialState}
           validationSchema={userValidationSchema}
@@ -86,34 +89,32 @@ const Register = () => {
             errors,
             setFieldError,
           }) => {
+            console.log(values,'values')
             return (
-              <Form className="max-w-md w-full  bg-white rounded-lg space-y-2 py-6 shadow-lg">
-                <header className="py-4 text-center text-3xl font-bold">
-                  Register
-                </header>
-                <div className="px-4 space-y-2">
-                  <div className="flex items-start gap-4">
-                    <TextInput
-                      label={"First Name"}
-                      type="text"
-                      placeholder="first name"
-                      name="firstName"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.firstName}
+              <Form className="w-full space-y-2">
+                <h3 className="py-4 heading-4 text-center capitalize">
+                  Create new account
+                </h3>
+                <div className="px-4 lg:px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4">
+                  <TextInput
+                    label={"First Name"}
+                    type="text"
+                    placeholder="first name"
+                    name="firstName"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.firstName}
+                  />
 
-                    />
-
-                    <TextInput
-                      label={"Last Name"}
-                      type="text"
-                      placeholder="last name"
-                      name="lastName"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.lastName}
-                    />
-                  </div>
+                  <TextInput
+                    label={"Last Name"}
+                    type="text"
+                    placeholder="last name"
+                    name="lastName"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.lastName}
+                  />
                   <div>
                     <TextInput
                       label={"Email"}
@@ -138,6 +139,17 @@ const Register = () => {
                   </div>
                   <div>
                     <TextInput
+                      label={"Date of birth"}
+                      type="date"
+                      placeholder="choose date"
+                      name="dob"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.dob}
+                    />
+                  </div>
+                  <div>
+                    <TextInput
                       label={"Pan Number"}
                       type="text"
                       placeholder="pan number"
@@ -152,7 +164,7 @@ const Register = () => {
                       label={"PAN Image"}
                       type="file"
                       name="panImage"
-                      onChange={(e)=>{
+                      onChange={(e) => {
                         setFieldValue('panImage', e.target.files[0])
                       }}
                       onBlur={handleBlur}
@@ -175,7 +187,7 @@ const Register = () => {
                       label={"Aadhar Image"}
                       type="file"
                       name="aadharImage"
-                      onChange={(e)=>{
+                      onChange={(e) => {
                         setFieldValue('aadharImage', e.target.files[0])
                       }}
                       onBlur={handleBlur}
@@ -187,7 +199,7 @@ const Register = () => {
                       label={"Client Image"}
                       type="file"
                       name="clientImage"
-                      onChange={(e)=>{
+                      onChange={(e) => {
                         setFieldValue('clientImage', e.target.files[0])
                       }}
                       onBlur={handleBlur}
@@ -205,7 +217,7 @@ const Register = () => {
                       value={values.address}
                     />
                   </div>
-                  
+
                   <div>
                     <TextInput
                       label={"Bank Name"}
@@ -228,7 +240,7 @@ const Register = () => {
                       value={values.accountNumber}
                     />
                   </div>
-                  
+
                   <div>
                     <TextInput
                       label={"IFSC Code"}
@@ -247,7 +259,7 @@ const Register = () => {
                       options={genders}
                       value={select?.gender}
                       onChange={(e) => {
-                        setFieldValue('gender', e.value)
+                        setFieldValue('gender', e?.value)
                         setSelect({ ...select, gender: e })
 
                       }}
@@ -260,7 +272,7 @@ const Register = () => {
                       options={accounts}
                       value={select?.account}
                       onChange={(e) => {
-                        setFieldValue('accountType', e.value)
+                        setFieldValue('accountType', e?.value)
                         setSelect({ ...select, account: e })
 
                       }}
@@ -310,16 +322,14 @@ const Register = () => {
                   </div>
                 </div>
                 <footer className="py-4 text-center font-medium">
-                  <button type="submit" className="btn-green">
-                    {isLoading ? 'Loading...' : 'Register'}
+                  <button type="submit" className="btn-outline-primary">
+                    {isLoading ? 'Loading...' : 'Create'}
                   </button>
                 </footer>
               </Form>
             )
           }}
         </Formik>
-
-      </div>
     </>
   );
 };

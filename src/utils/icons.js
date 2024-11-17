@@ -53,8 +53,15 @@ import { FaTrophy } from "react-icons/fa6";
 import { GrPowerReset } from "react-icons/gr";
 import { FaPhone } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa";
+import { IoBarChart } from "react-icons/io5";
+import { GiChart } from "react-icons/gi";
+import { AiOutlineSafety } from "react-icons/ai";
+
 export const reactIcons = {
   location:<FaMap/>,
+  chart:<IoBarChart/>,
+  safety:<AiOutlineSafety/>,
+  giChart:<GiChart/>,
   plus: <CiCirclePlus />,
   minus: <CiCircleMinus />,
   trash: <BiTrash />,

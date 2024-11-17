@@ -108,7 +108,7 @@ const Home = () => {
                 A strategy for every type of trading</h2>
               <img className="w-full max-w-[500px]" src="/images/trading.png" alt="s_block_image" />
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 col-span-7 gap-8 lg:gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 col-span-7 gap-8 lg:gap-4">
               {
                 homeSection7Data?.map((item) => {
 
@@ -135,7 +135,7 @@ const Home = () => {
                 Why Choose <span className="text-primary-pink">Star Algo Securities</span> <br className="lg:block hidden" /> for best Algo Platform</h3>
             </div>
           </header>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 gap-y-20 max-w-6xl mx-auto ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 gap-y-20 max-w-6xl mx-auto ">
             {
               homeSection8Data?.map((item) => {
 

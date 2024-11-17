@@ -1,5 +1,6 @@
 import React from 'react'
 import { reactIcons } from '../../utils/icons'
+import { Link } from 'react-router-dom'
 
 const footerLinks = [
     {
@@ -32,7 +33,7 @@ const Footer = () => {
                                 <ul>
                                     {
                                         footerLinks?.map((link) => {
-                                            return <li className='py-2' key={link.title}><a href={link.link} className='text-white font-medium hover:text-primary-blue hover:underline'>{link.title}</a></li>
+                                            return <li className='py-2' key={link.title}><Link  to={link.link} className='text-white font-medium hover:text-primary-blue hover:underline'>{link.title}</Link></li>
                                         })
                                     }
                                 </ul>

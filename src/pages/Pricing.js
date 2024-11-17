@@ -14,18 +14,21 @@ const Pricing = () => {
     container.startX = e.pageX - container.offsetLeft;
     container.scrollLeft = container.scrollLeft;
     container.classList.add("active");
+    container.classList.remove("smooth-scroll");
   };
 
   const handleMouseLeave = () => {
     const container = containerRef.current;
     container.isDown = false;
     container.classList.remove("active");
+    container.classList.add("smooth-scroll");
   };
 
   const handleMouseUp = () => {
     const container = containerRef.current;
     container.isDown = false;
     container.classList.remove("active");
+    container.classList.add("smooth-scroll");
   };
 
   const handleMouseMove = (e) => {
@@ -42,6 +45,7 @@ const Pricing = () => {
     container.isDown = true;
     container.startX = e.touches[0].pageX - container.offsetLeft;
     container.scrollLeft = container.scrollLeft;
+    container.classList.remove("smooth-scroll");
   };
 
   const handleTouchMove = (e) => {
@@ -55,7 +59,9 @@ const Pricing = () => {
   const handleTouchEnd = () => {
     const container = containerRef.current;
     container.isDown = false;
+    container.classList.add("smooth-scroll");
   };
+
   return (
     <section className="">
        <div className="bg-primary-pink relative header-wrapper ">
