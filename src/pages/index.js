@@ -5,6 +5,8 @@ import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 import Home from "./Home";
 import Pricing from "./Pricing";
+import AboutUs from "./AboutUs";
+import ContactUs from "./ContactUs";
 import MatchDetail from "./MatchDetail";
 import Tournament from "./dashboard/Tournament";
 import Dashboard from "./dashboard/Dashboard";
@@ -19,6 +21,8 @@ import UserDetails from "./dashboard/UserDetails";
 import AddPrize from "./dashboard/AddPrize";
 
 export {
+  AboutUs,
+  ContactUs,
   Login,
   Register,
   Profile,

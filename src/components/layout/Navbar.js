@@ -34,21 +34,21 @@ const Navbar = () => {
   }, []);
   const isLoggedIn = getUserToken()
   return (
-    <nav className={`flex items-center  shadow-navbar bg-transparent  py-[20px] fixed left-0 top-0 w-full z-[50] ${toggle? 'bg-white':'bg-transparent'}`}>
+    <nav className={`flex items-center  shadow-navbar bg-transparent transition-all duration-200  py-[20px] fixed left-0 top-0 w-full z-[50] ${toggle? 'bg-white':'bg-transparent'}`}>
       <div className="container">
         <div className="flex items-center justify-between">
           <div className="">
             <Link to="/" className="">
-              <img className={`w-[206px] ${toggle? 'invert-0':'invert'}`} src="/images/logo.png" alt="log" />
+              <img className={`md:w-[206px] w-[150px] ${toggle? 'invert-0':'invert'}`} src="/images/logo.png" alt="log" />
             </Link>
           </div>
-          <div className="flex-grow flex justify-end mr-10 items-center">
+          <div className="flex-grow  justify-end mr-10 items-center md:flex hidden">
             {navbarLinks?.map((item) => {
               return (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`font-semibold  ${toggle? 'text-gray-800 ':'text-white'}  px-4 hover:text-primary-pink ${item.path === window.location.pathname ? "text-primary-pink" : ""
+                  className={`font-semibold  ${toggle? 'text-gray-800 hover:text-primary-pink ':'text-white hover:opacity-75'}  px-4  ${item.path === window.location.pathname ? "text-primary-pink" : ""
                     }`}
                 >
                   {item.title}
@@ -62,7 +62,7 @@ const Navbar = () => {
                 <Menu as="div" className="relative">
                   <Menu.Button
                     className={
-                      "flex gap-1 text-right items-center px-2 py-2 cursor-pointer hover:bg-zinc-100 rounded-md"
+                      "flex gap-1 text-right items-center px-2 py-2 cursor-pointer rounded-md"
                     }
                   >
                     <img
@@ -70,10 +70,7 @@ const Navbar = () => {
                       src={"/images/user.png"}
                       alt="user"
                     />
-                    <div>
-                      <span className="md:block hidden">{user?.fullName}</span>
-                    </div>
-                    <span className="ml-2">{reactIcons?.arrowDown}</span>
+                    <span className={`${toggle?'text-black' :'text-white'}`}>{reactIcons?.arrowDown}</span>
                   </Menu.Button>
 
                   <Transition

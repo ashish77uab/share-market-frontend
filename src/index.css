@@ -39,7 +39,7 @@
     @apply [&_svg]:!w-7 !important;
   }
   body {
-    @apply font-poppins bg-white;
+    @apply font-poppins bg-white text-primary-grayDark;
   }
   tbody {
     display: block;
@@ -68,14 +68,23 @@
   }
 }
 @layer components {
+  .header-container-wrapper{
+    @apply relative z-[4] md:min-h-[500px] min-h-[600px] lg:min-h-[700px] flex justify-center items-center text-center
+  }
   .form-error{
     @apply text-sm text-red-500;
   }
+  .heading-2{
+    @apply lg:text-7xl md:text-5xl text-4xl leading-[1.3]  lg:leading-[1.15];
+  }
   .heading-3 {
-    @apply text-xl md:text-4xl font-semibold;
+    @apply text-primary-grayDark md:text-5xl text-3xl leading-[1.3] lg:leading-[1.15] font-semibold;
   }
   .heading-4 {
-    @apply text-2xl font-semibold;
+    @apply lg:text-2xl text-xl font-semibold;
+  }
+  .heading-5 {
+    @apply text-xl font-semibold;
   }
   .heading-6 {
     @apply text-lg font-semibold;
@@ -123,7 +132,7 @@
     @apply text-sm px-6 font-medium py-2;
   }
   .text-muted {
-    @apply text-primary-gray text-base;
+    @apply text-primary-gray text-sm md:text-base;
   }
   .action-btn {
     @apply w-10 h-10 cursor-pointer rounded-full text-xl text-primary-blue bg-zinc-200 hover:bg-zinc-300  flex-center;

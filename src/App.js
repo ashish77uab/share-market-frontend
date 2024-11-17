@@ -20,7 +20,9 @@ import {
   PrizePyramidList,
   AddPrize,
   UserDetails,
-  Pricing
+  Pricing,
+  ContactUs,
+  AboutUs
 } from "./pages";
 import { getUser } from "./api/api";
 import { useDispatch } from "react-redux";
@@ -58,6 +60,8 @@ function App() {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path='/pricing' element={<Pricing />} />
+            <Route path='/contact' element={<ContactUs />} />
+            <Route path='/about' element={<AboutUs />} />
             <Route path="/match/:matchId" element={<MatchDetail />} />
             <Route path="/profile/:userId" element={<ProtectedRoutes> <Profile /></ProtectedRoutes>} />
           </Route>

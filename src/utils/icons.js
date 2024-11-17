@@ -1,6 +1,6 @@
 import React from "react";
 import { FiTrash2 } from "react-icons/fi";
-import { FaImage, FaUsers } from "react-icons/fa";
+import { FaImage, FaMap, FaUsers } from "react-icons/fa";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { MdOutlineMarkChatUnread, MdOutlineMarkChatRead } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
@@ -54,6 +54,7 @@ import { GrPowerReset } from "react-icons/gr";
 import { FaPhone } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa";
 export const reactIcons = {
+  location:<FaMap/>,
   plus: <CiCirclePlus />,
   minus: <CiCircleMinus />,
   trash: <BiTrash />,
