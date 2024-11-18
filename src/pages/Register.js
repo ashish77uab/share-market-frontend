@@ -11,7 +11,7 @@ import { serialize } from 'object-to-formdata'
 import Spinner from "../components/loaders/Spinner";
 import ReactSelect from "../components/forms/ReactSelect";
 import { useDispatch } from "react-redux";
-import { setUser } from "../redux/features/authSlice";
+import { setModalToggle, setUser } from "../redux/features/authSlice";
 const genders = [{ label: "Male", value: "male" }, { label: "Female", value: "female" },{ label: "Others", value: "others" }]
 const accounts = [{ label: "Saving", value: "saving" }, { label: "Current", value: "current" }]
 const initialState = {
@@ -43,6 +43,9 @@ const Register = ({closeModal}) => {
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const handleAuthToggle=(obj)=>{
+    dispatch(setModalToggle(obj))
+  }
   const handleReset = () => {
     setSelect({
       gender: '',
@@ -310,9 +313,12 @@ const Register = ({closeModal}) => {
                   <div>
                     <p className="text-muted">
                       Already have an account?{" "}
-                      <Link className="ml-2 text-blue-500 underline" to="/login">
+                      <button type="button" onClick={()=>{
+                         handleAuthToggle({key:'isSignUpOpen',value:false})
+                         handleAuthToggle({key:'isLoginOpen',value:true})
+                      }} className="ml-2 text-blue-500 underline" >
                         Login
-                      </Link>
+                      </button>
                     </p>{" "}
                   </div>
                 </div>

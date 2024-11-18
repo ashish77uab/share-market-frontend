@@ -2,7 +2,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { reactIcons } from "../../utils/icons";
-import { setLogout, } from "../../redux/features/authSlice";
+import { setLogout, setModalToggle, } from "../../redux/features/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { getUserToken, navbarLinks, pathsRequireToggle } from "../../utils/constants";
 import SignUpModal from "../modals/SignUpModal";
@@ -19,19 +19,20 @@ import { useScrollToTop } from "../../hooks/useScrollToTop";
 const Navbar = () => {
   useScrollToTop()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isLoginOpen, setIsloginOpen] = useState(false)
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false)
   const [toggleNavbar, setToggleNavbar] = useState(false)
   const isRequireToggle=pathsRequireToggle?.includes(window.location.pathname)
   const toggle=isRequireToggle?toggleNavbar:true
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.auth);
+  const { user,isLoginOpen,isSignUpOpen} = useSelector((state) => state.auth);
   const handleLogout = () => {
     dispatch(setLogout());
     navigate("/");
     window.location.reload()
   };
+  const handleAuthToggle=(obj)=>{
+    dispatch(setModalToggle(obj))
+  }
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -158,10 +159,10 @@ const Navbar = () => {
                 {!isLoggedIn && (
                   <AuthButton
                     handleSignUpClick={() => {
-                      setIsSignUpOpen(true)
+                      handleAuthToggle({key:'isSignUpOpen',value:true})
                     }}
                     handleSignInClick={() => {
-                      setIsloginOpen(true)
+                      handleAuthToggle({key:'isLoginOpen',value:true})
                     }}
                     toggle={toggle}
                   />
@@ -176,18 +177,20 @@ const Navbar = () => {
       </nav>
       <SignUpModal
         isOpen={isSignUpOpen}
+        handleAuthToggle={handleAuthToggle}
         closeModal={() => {
-          setIsSignUpOpen(false)
+          handleAuthToggle({key:'isSignUpOpen',value:false})
         }} />
       <LoginModal
         isOpen={isLoginOpen}
+        handleAuthToggle={handleAuthToggle}
         closeModal={() => {
-          setIsloginOpen(false)
+          handleAuthToggle({key:'isLoginOpen',value:false})
         }}
       />
       <MobileMenu
-        setIsSignUpOpen={setIsSignUpOpen}
-        setIsloginOpen={setIsloginOpen}
+        handleSignUpClick={ ()=> handleAuthToggle({key:'isSignUpOpen',value:true})}
+        handleSignInClick={ ()=> handleAuthToggle({key:'isLoginOpen',value:true})}
         toggle={toggle}
         isOpen={isMobileMenuOpen}
         closeModal={() => setIsMobileMenuOpen(false)} />

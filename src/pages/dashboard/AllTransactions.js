@@ -156,8 +156,8 @@ const AllTransactions = () => {
                   <th>Name of User</th>
                   <th>Email</th>
                   <th>Amount</th>
-                  <th>Transaction Id</th>
                   <th>Transaction Type</th>
+                  <th>Transaction Id</th>
                   <th>Date</th>
                   <th>Status</th>
                 </tr>

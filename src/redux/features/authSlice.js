@@ -16,12 +16,18 @@ const authSlice = createSlice({
     notificationsLoading: false,
     updateLoading: false,
     isNewNotification: isNewNotification,
-    usersToChat:{}
+    usersToChat:{},
+    isLoginOpen:false,
+    isSignUpOpen:false
   },
   reducers: {
    
     setUsersToChat: (state, action) => {
       state.usersToChat = action.payload;
+    },
+    setModalToggle: (state, action) => {
+      const {key, value} =  action.payload
+      state[key]= value;
     },
     setUser: (state, action) => {
       state.user = action.payload;
@@ -79,11 +85,13 @@ const authSlice = createSlice({
     getUserNotifcationFailure: (state, action) => {
       state.notificationsLoading = false;
     },
+    
   },
   extraReducers: {},
 });
 
 export const {
+  setModalToggle,
   setUsersToChat,
   setUser,
   setLogout,

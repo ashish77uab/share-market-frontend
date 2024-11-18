@@ -14,13 +14,13 @@ const AuthButton = ({ handleSignUpClick, handleSignInClick, toggle ,isMobileMenu
     return (
       <div className="flex gap-2">
         <button
-          onClick={handleSignInClick}
+          onClick={()=>handleSignInClick()}
           className={`${className}`}
         >
           Sign In
         </button>
         <button
-          onClick={handleSignUpClick}
+          onClick={()=>handleSignUpClick()}
           className="btn-primary"
         >
           Sign Up

@@ -59,7 +59,7 @@ const ForgotPassword = () => {
           />
 
           <div className="text-center">
-            <Link className="ml-2 text-blue-500 underline" to="/login">
+            <Link className="ml-2 text-blue-500 underline" to="/">
               Back to login
             </Link>
           </div>
@@ -67,7 +67,7 @@ const ForgotPassword = () => {
         <footer className="py-4 text-center font-medium">
           <button
             type="submit"
-            className="px-12 py-2 rounded-md bg-green-500 text-white"
+            className="px-12 py-2 rounded-md btn-primary text-white"
           >
             Send Request
           </button>

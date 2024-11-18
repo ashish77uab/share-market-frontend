@@ -9,7 +9,7 @@ import { loginValidation } from "../utils/validation";
 import { isYupError, loginValidationSchema, parseYupError } from "../utils/yup";
 import Spinner from "../components/loaders/Spinner";
 import { useDispatch } from "react-redux";
-import { setUser } from "../redux/features/authSlice";
+import { setModalToggle, setUser } from "../redux/features/authSlice";
 import { Formik, Form } from 'formik';
 
 const initialState = {
@@ -21,7 +21,9 @@ const Login = ({closeModal}) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
-
+  const handleAuthToggle=(obj)=>{
+    dispatch(setModalToggle(obj))
+  }
   const getUserData = async () => {
     try {
       const res = await getUser();
@@ -111,9 +113,12 @@ const Login = ({closeModal}) => {
                   <div className="text-center">
                     <p className="text-muted">
                       Don't have an account?{" "}
-                      <Link className="ml-2 text-blue-500 underline" to="/register">
+                      <button  type="button"  onClick={()=>{
+                       handleAuthToggle({key:'isSignUpOpen',value:true})
+                       handleAuthToggle({key:'isLoginOpen',value:false})
+                      }} className="ml-2 text-blue-500 underline" >
                         Create new account
-                      </Link>
+                      </button>
                     </p>{" "}
                   </div>
                 </div>

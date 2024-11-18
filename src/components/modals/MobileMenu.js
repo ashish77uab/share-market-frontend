@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { reactIcons } from "../../utils/icons";
 import AuthButton from "../../pages/components/AuthButton";
 
-const MobileMenu = ({ isOpen, closeModal, setIsSignUpOpen, setIsloginOpen, toggle }) => {
+const MobileMenu = ({ isOpen, closeModal, handleSignUpClick, handleSignInClick, toggle }) => {
     const dialogRef = useRef(null);
     return (
         <Transition appear show={isOpen} as={Fragment}>
@@ -65,11 +65,11 @@ const MobileMenu = ({ isOpen, closeModal, setIsSignUpOpen, setIsloginOpen, toggl
                                     <AuthButton
                                         isMobileMenu
                                         handleSignUpClick={() => {
-                                            setIsSignUpOpen(true)
+                                            handleSignUpClick()
                                             closeModal()
                                         }}
                                         handleSignInClick={() => {
-                                            setIsloginOpen(true)
+                                            handleSignInClick()
                                             closeModal()
                                         }}
                                         toggle={toggle}
