@@ -84,12 +84,7 @@ const Register = ({closeModal}) => {
             setFieldValue,
             handleChange,
             handleBlur,
-            handleSubmit,
-            isSubmitting,
-            errors,
-            setFieldError,
           }) => {
-            console.log(values,'values')
             return (
               <Form className="w-full space-y-2">
                 <h3 className="py-4 heading-4 text-center capitalize">

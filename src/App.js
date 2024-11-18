@@ -7,12 +7,11 @@ import {
   ForgotPassword,
   Home,
   Login,
-  MatchDetail,
+  Wishlist,
   Register,
   AllUsers,
   ResetPassword,
   Profile,
-  Tournament,
   Teams,
   Match,
   AddMatch,
@@ -22,7 +21,8 @@ import {
   UserDetails,
   Pricing,
   ContactUs,
-  AboutUs
+  AboutUs,
+  AllTransactions
 } from "./pages";
 import { getUser } from "./api/api";
 import { useDispatch } from "react-redux";
@@ -61,15 +61,15 @@ function App() {
             <Route index element={<Home />} />
             <Route path='/pricing' element={<Pricing />} />
             <Route path='/contact' element={<ContactUs />} />
+            <Route path="/wishlist/:userId" element={<Wishlist />} />
             <Route path='/about' element={<AboutUs />} />
-            <Route path="/match/:matchId" element={<MatchDetail />} />
             <Route path="/profile/:userId" element={<ProtectedRoutes> <Profile /></ProtectedRoutes>} />
           </Route>
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
-            <Route path="tournaments" element={<Tournament />} />
             <Route path="prize-list" element={<PrizePyramidList />} />
             <Route path="users" element={<AllUsers />} />
+            <Route path="transactions" element={<AllTransactions />} />
             <Route path="user/:userId" element={<UserDetails />} />
             <Route path="player/:teamId" element={<Player />} />
             <Route path="teams/:id" element={<Teams />} />

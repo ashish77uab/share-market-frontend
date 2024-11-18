@@ -33,7 +33,8 @@ const authSlice = createSlice({
       state.notifications = { ...state?.notifications, notifications: [action.payload,...state?.notifications?.notifications], totalNotifications: state?.notifications?.totalNotifications+1 };
     },
     updateUserWallet: (state, action) => {
-      state.user.wallet.amount = action.payload;
+      const newAmount=Number(state.user.wallet.amount)-Number(action.payload)
+      state.user.wallet.amount = newAmount;
     },
     updateUserCarts: (state, action) => {
       state.user.carts = [...state.user.carts, action.payload];

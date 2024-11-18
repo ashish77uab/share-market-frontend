@@ -18,14 +18,14 @@ const DashboardLayout = () => {
 
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden">
-      <div className="sticky flex-shrink-0 z-50 top-0  h-[70px] flex justify-between gap-6 items-center px-8 border-b border-b-zinc-200">
+      <div className="sticky flex-shrink-0 z-50 top-0  h-[80px] flex justify-between gap-6 items-center px-8 border-b border-b-zinc-200">
         <Link className="heading-3" to={"/dashboard"}>
           Admin
         </Link>
         <div className="flex gap-2 items-center">
           <div className="flex gap-2 items-center">
             <span className="font-semibold text-2xl">{user?.fullName}</span>
-            <div className="w-12 h-12 rounded-full cursor-pointer bg-amber-200 flex-center">
+            <div className="w-12 h-12 rounded-full cursor-pointer text-white bg-primary-pink flex-center">
               <span className="text-18   font-semibold capitalize">{user?.fullName?.[0]}</span>
             </div>
           </div>
@@ -50,8 +50,8 @@ const DashboardLayout = () => {
                     to={link.path}
                     end
                     className={({ isActive }) =>
-                      ` py-3 w-full px-2 text-[16px] md:text-[32px] gap-4 cursor-pointer flex  items-center hover:bg-amber-200 rounded-md md:rounded-lg  ${
-                        isActive && "bg-amber-200"
+                      ` py-3 w-full px-2 text-[16px] font-semibold md:text-[32px] gap-4 cursor-pointer flex  items-center hover:text-primary-pink rounded-md md:rounded-lg  ${
+                        isActive && "text-primary-pink"
                       }`
                     }
                   >

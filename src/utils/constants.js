@@ -457,8 +457,8 @@ export const links = [
     icon: reactIcons.users,
   },
   {
-    path: "tournaments",
-    title: "Tournaments",
+    path: "transactions",
+    title: "Transactions",
     icon: reactIcons.list,
   },
   {
@@ -516,4 +516,13 @@ export const DesignationConstant = {
   C: "C",
   VC: "VC",
   None: "None",
+}
+export const ACTIVE_TYPE = {
+  deposit: 'Deposit',
+  withdraw: 'Withdraw',
+}
+export const TRANSACTION_STATUS = {
+  pending: 'Pending',
+  accepted: 'Accepted',
+  rejected: 'Rejected',
 }

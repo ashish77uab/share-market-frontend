@@ -7,8 +7,7 @@ import Home from "./Home";
 import Pricing from "./Pricing";
 import AboutUs from "./AboutUs";
 import ContactUs from "./ContactUs";
-import MatchDetail from "./MatchDetail";
-import Tournament from "./dashboard/Tournament";
+import Wishlist from "./Wishlist";
 import Dashboard from "./dashboard/Dashboard";
 import Teams from "./dashboard/Teams";
 import UserLevel from "./UserLevel";
@@ -19,8 +18,10 @@ import Player from "./dashboard/Player";
 import PrizePyramidList from "./dashboard/PrizePyramidList";
 import UserDetails from "./dashboard/UserDetails";
 import AddPrize from "./dashboard/AddPrize";
+import AllTransactions from "./dashboard/AllTransactions";
 
 export {
+  AllTransactions,
   AboutUs,
   ContactUs,
   Login,
@@ -29,13 +30,12 @@ export {
   ForgotPassword,
   ResetPassword,
   Home,
-  MatchDetail,
+  Wishlist,
   Dashboard,
   UserLevel,
   AllUsers,
   Teams,
   Match,
-  Tournament,
   AddMatch,
   Player,
   PrizePyramidList,

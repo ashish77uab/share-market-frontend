@@ -153,6 +153,18 @@ export const getSingleProduct = (id) => API.get(`products/${id}`);
 export const login = (formData) => API.post(`auth/login`, formData);
 export const register = (formData) => API.post(`auth/register`, formData);
 export const updatePassword = (formData) => API.post(`auth/update-password`, formData);
+export const addDeposit = (formData) => API.post(`auth/add-deposit`, formData);
+export const withdrawFund = (formData) => API.post(`auth/withdraw-fund`, formData);
+export const getUserTransactions = (data) => {
+  const queryString=new URLSearchParams(data)?.toString()
+  return API.get(`auth/transactions?${queryString}`)
+};
+
+export const getAllTransactionsList = (data) => {
+  const queryString=new URLSearchParams(data)?.toString()
+  return API.get(`transactions/all-transactions?${queryString}`)
+};
+export const updatTransactionStatus = (data) => API.put(`transactions/update-status`,data);
 export const forgotRequest = (formData) =>
   API.post(`auth/requestResetPassword`, formData);
 export const resetPassword = (formData) =>
@@ -161,6 +173,10 @@ export const getUser = () => API.get("auth/profile");
 export const uploadProfileImage = (id, formData) =>
   API.post(`auth/profileImage/${id}`, formData);
 export const uploadImage = (formData) => API.post("upload", formData);
+
+
+
+
 
 export const getAllUsersList = (data) => API.get(`auth/all-users?page=${data?.page}&limit=${data?.limit}&search=${data?.search}`);
 export const getSingleUserData = (userId) => API.get(`auth/single-user?userId=${userId}`);

@@ -50,7 +50,7 @@ const AllUsers = () => {
     <>
       <div>
         <header className="mb-4 flex items-center justify-between">
-          <h3 className="heading-3">All Users </h3>
+        <h4 className="heading-4">All Users <span className="text-sm align-middle">({numberWithCommas(users?.totalUsers)})</span> </h4>
           <div className="flex items-center justify-between gap-2">
             <TextInput
               type="text"
@@ -66,7 +66,6 @@ const AllUsers = () => {
               isFormik={false}
               value={search}
             />
-            <div>Total users: <span className="text-sm align-middle">{numberWithCommas(users?.totalUsers)}</span></div>
           </div>
         </header>
         <div>

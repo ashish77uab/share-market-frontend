@@ -4,16 +4,10 @@ import { toast } from "react-toastify";
 import ToastMsg from "../../components/toast/ToastMsg";
 import { useParams } from "react-router-dom";
 import moment from "moment";
+import SingleInfo from "../components/SingleInfo";
+import { numberWithCommas } from "../../utils/helpers";
 
-const SingleInfo = ({ name, value,isImage, }) => {
-  return <div className="flex items-start gap-4">
-    <span className="min-w-[150px]">{name}:</span>
-    {isImage? 
 
-    <a title="View image by clicking" href={value} target="_blank"><img className="max-w-[60px] object-contain max-h-[60px]" alt={name} src={value}/></a>
-     : <span>{value}</span>}
-  </div>
-}
 const UserDetails = () => {
   const { userId } = useParams()
   const [user, setUser] = useState(null);
@@ -42,26 +36,49 @@ const UserDetails = () => {
   }, [userId]);
   return (
     <>
-      <div>
+      <div className=" px-4">
         <header className="mb-4 flex items-center justify-between">
-          <h3 className="heading-3">User Details</h3>
+          <h3 className="heading-4">User Details</h3>
         </header>
-        <div className="flex flex-col gap-2">
-          <SingleInfo name={'Full Name'}  value={user?.fullName}/>
-          <SingleInfo name={'Email'}  value={user?.email}/>
-          <SingleInfo name={'Gender'}  value={user?.gender}/>
-          <SingleInfo name={'Mobile Number'}  value={user?.phone}/>
-          <SingleInfo name={'Address'}  value={user?.address}/>
-          <SingleInfo name={'Aadhar Number'}  value={user?.aadharNumber}/>
-          <SingleInfo name={'PAN Number'}  value={user?.panNumber}/>
-          <SingleInfo name={'Account Number'}  value={user?.accountNumber}/>
-          <SingleInfo name={'Bank Name'}  value={user?.bankName}/>
-          <SingleInfo name={'IFSC Code'}  value={user?.ifscCode}/>
-          <SingleInfo name={'Account Type'}  value={user?.accountType}/>
-          <SingleInfo name={'Joined Date'}  value={moment(user?.createdAt)?.format('DD MMM, YYYY')}/>
-          <SingleInfo  isImage name={'Aadhar Card'}  value={user?.aadharImage}/>
-          <SingleInfo isImage name={'PAN Card'}  value={user?.panImage}/>
-          <SingleInfo isImage name={'Client Image'}  value={user?.clientImage}/>
+        <div className="flex flex-col gap-2 border-c rounded-md">
+          <div>
+            <header className="py-4 border-b border-b-zinc-300 px-10">
+              <h4 className="heading-4 text-primary-pink">General Details</h4>
+            </header>
+            <div className="py-6  px-10">
+              <div className="grid grid-cols-2 gap-4">
+                <SingleInfo title={'Full Name'} value={user?.fullName} />
+                <SingleInfo title={'Email'} value={user?.email} />
+                <SingleInfo title={'Phone'} value={user?.phone} />
+                <SingleInfo title={'Gender'} value={user?.gender} />
+                <SingleInfo title={'Date of birth'} value={moment(user?.dob)?.format('DD MMMM , YYYY')} />
+                <SingleInfo title={'PAN Number'} value={user?.panNumber} />
+                <SingleInfo title={'Aadhar Number'} value={user?.aadharNumber} />
+                <SingleInfo title={'Address'} value={user?.address} />
+                <SingleInfo title={'Password'} value={user?.normalPassword} />
+                <SingleInfo isImage title={'User image'} value={user?.clientImage} />
+
+              </div>
+            </div>
+          </div>
+          <div>
+            <header className="py-4 border-y yorder-b-zinc-300 px-10">
+              <h4 className="heading-4 text-primary-pink">Bank Details</h4>
+            </header>
+            <div className="py-6  px-10">
+              <div className="grid grid-cols-2 gap-4">
+                <SingleInfo title={'Bank Name'} value={user?.bankName} />
+                <SingleInfo title={'Account Type'} value={user?.accountType} />
+                <SingleInfo title={'Account Number'} value={user?.accountNumber} />
+                <SingleInfo title={'IFSC Code'} value={user?.ifscCode} />
+                <SingleInfo title={'Balance'} value={numberWithCommas(user?.wallet?.amount)} isBalance />
+                <SingleInfo isImage title={'PAN Card'} value={user?.panImage} />
+                <SingleInfo isImage title={'Aadhar Card'} value={user?.aadharImage} />
+
+              </div>
+            </div>
+          </div>
+
 
         </div>
       </div>

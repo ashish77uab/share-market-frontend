@@ -29,3 +29,19 @@ export const updatePasswordValidationSchema = yup.object().shape({
     .string()
     .required("New Password is required"),
 });
+export const addDepositFormSchema = yup.object().shape({
+    amount: yup
+        .string()
+        .required("Amount is required"),
+    transactionId:  yup
+    .string()
+    .required("Transaction unique id is required"),
+});
+export const withdrawFundFormSchema = yup.object().shape({
+    amount: yup
+        .string()
+        .required("Amount is required"),
+    panNumber:  yup
+    .string()
+    .required("PAN Number is required"),
+});

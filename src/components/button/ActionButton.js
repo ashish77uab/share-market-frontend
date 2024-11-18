@@ -2,7 +2,7 @@ import React from 'react'
 
 const ActionButton = ({className,children,...rest}) => {
   return (
-    <button {...rest} className={`w-8 h-8 text-18 bg-amber-200 hover:bg-amber-300 rounded-md flex-center ${className}`}>
+    <button {...rest} className={`w-10 h-10 text-xl bg-primary-pink text-white hover:bg-primary-pink/50 rounded-md flex-center ${className}`}>
       {children}
     </button>
   )

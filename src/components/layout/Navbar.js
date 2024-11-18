@@ -100,8 +100,14 @@ const Navbar = () => {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div className="px-1 py-1 ">
+                      <Menu.Items className="absolute right-0 mt-2 w-[300px] origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <div className="px-1 py-2 space-y-2 ">
+                          <div className="flex flex-col items-center gap-1 px-2 py-2 border-b border-b-zinc-300 mb-2">
+                            <img className="w-16 h-16 rounded-full object-cover shadow-num " src={user?.clientImage} alt="" />
+                            <p className="font-bold">{user?.fullName}</p>
+                            <p className="text-muted text-sm font-medium">{user?.email}</p>
+
+                          </div>
                           <Menu.Item>
                             {({ active }) => (
                               <button
@@ -109,7 +115,7 @@ const Navbar = () => {
                                 className={`${active
                                   ? "bg-violet-500 text-white"
                                   : "text-gray-900"
-                                  } group flex w-full items-center rounded-md px-2 py-2 text-base`}
+                                  } group flex w-full items-center rounded-md px-6 py-2 text-base`}
                               >
                                 Profile
                               </button>
@@ -122,7 +128,7 @@ const Navbar = () => {
                                 className={`${active
                                   ? "bg-violet-500 text-white"
                                   : "text-gray-900"
-                                  } group flex w-full items-center rounded-md px-2 py-2 text-base`}
+                                  } group flex w-full items-center rounded-md px-6 py-2 text-base`}
                               >
                                 Go to dashboard
                               </button>
@@ -136,9 +142,9 @@ const Navbar = () => {
                                 className={`${active
                                   ? "bg-violet-500 text-white"
                                   : "text-gray-900"
-                                  } group flex w-full items-center rounded-md px-2 py-2 text-base`}
+                                  } group flex w-full items-center rounded-md px-6 py-2 text-base`}
                               >
-                                Log out
+                                 Log out
                               </button>
                             )}
                           </Menu.Item>
