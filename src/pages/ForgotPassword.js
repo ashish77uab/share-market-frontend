@@ -29,7 +29,7 @@ const ForgotPassword = () => {
           <ToastMsg title={`Sent successfully please check your mail`} />
         );
         handleReset();
-        navigate("/login");
+        navigate("/");
       } else {
         toast.error(<ToastMsg title={data.message} />);
       }
@@ -42,7 +42,7 @@ const ForgotPassword = () => {
     <div className="min-h-screen bg-pink-50 flex items-center justify-center py-10 px-8">
       <form
         onSubmit={handleSubmit}
-        className="max-w-md w-full  bg-white rounded-lg space-y-2 py-6 shadow-lg"
+        className="max-w-lg w-full  bg-white rounded-lg space-y-2 py-6 px-4 shadow-lg"
       >
         <header className="py-4 text-center text-3xl font-bold">
           Forgot Password

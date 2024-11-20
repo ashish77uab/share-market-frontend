@@ -9,7 +9,7 @@ import AboutUs from "./AboutUs";
 import ContactUs from "./ContactUs";
 import Wishlist from "./Wishlist";
 import Dashboard from "./dashboard/Dashboard";
-import Teams from "./dashboard/Teams";
+import UserStocks from "./dashboard/UserStocks";
 import UserLevel from "./UserLevel";
 import AllUsers from "./dashboard/AllUsers";
 import Match from "./dashboard/Match";
@@ -34,7 +34,7 @@ export {
   Dashboard,
   UserLevel,
   AllUsers,
-  Teams,
+  UserStocks,
   Match,
   AddMatch,
   Player,

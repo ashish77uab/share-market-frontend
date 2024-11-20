@@ -6,8 +6,9 @@ import moment from 'moment';
 import RenderNoData from '../../components/layout/RenderNoData';
 import { numberWithCommas } from '../../utils/helpers';
 import { ACTIVE_TYPE, TRANSACTION_STATUS } from '../../utils/constants';
+import Pagination from '../../components/Pagination';
 
-const Transactions = () => {
+const Transactions = ({ userId, isAdmin,user }) => {
     const [actionType, setActionType] = useState(ACTIVE_TYPE.deposit)
     const [query, setQuery] = useState({
         page: 1,
@@ -18,7 +19,7 @@ const Transactions = () => {
 
     const getTransactions = async () => {
         try {
-            const res = await getUserTransactions({ ...query, actionType });
+            const res = await getUserTransactions({ ...query, actionType, userId });
             const { status, data } = res;
             if (status >= 200 && status < 300) {
                 setTransactions(data);
@@ -30,13 +31,14 @@ const Transactions = () => {
         }
     };
     useEffect(() => {
-        getTransactions();
-    }, [actionType, query]);
-    const renderStatusClassName=(status)=>{
-        if(status===TRANSACTION_STATUS.accepted){
+        if (userId)
+            getTransactions();
+    }, [actionType, query, userId]);
+    const renderStatusClassName = (status) => {
+        if (status === TRANSACTION_STATUS.accepted) {
             return 'text-green-800'
         }
-        if(status===TRANSACTION_STATUS.rejected){
+        if (status === TRANSACTION_STATUS.rejected) {
             return 'text-red-800'
         }
         return 'text-primary-gray'
@@ -47,13 +49,19 @@ const Transactions = () => {
                 <h4 className="heading-4 text-primary-pink">Transactions</h4>
             </header>
             <div className="py-6  px-10">
-                <div className="flex gap-4 items-center">
-                    <button onClick={() => {
-                        setActionType(ACTIVE_TYPE.deposit)
-                    }} className={`${actionType === ACTIVE_TYPE?.deposit ? 'btn-primary' : 'btn-outline-primary'}`}>Deposit</button>
-                    <button onClick={() => {
-                        setActionType(ACTIVE_TYPE.withdraw)
-                    }} className={`${actionType === ACTIVE_TYPE?.withdraw ? 'btn-primary' : 'btn-outline-primary'}`}>Withdraw</button>
+                <div className="flex items-center justify-between gap-4">
+                    <div className="flex gap-4 items-center">
+                        <button onClick={() => {
+                            setActionType(ACTIVE_TYPE.deposit)
+                        }} className={`${actionType === ACTIVE_TYPE?.deposit ? 'btn-primary' : 'btn-outline-primary'}`}>Deposit</button>
+                        <button onClick={() => {
+                            setActionType(ACTIVE_TYPE.withdraw)
+                        }} className={`${actionType === ACTIVE_TYPE?.withdraw ? 'btn-primary' : 'btn-outline-primary'}`}>Withdraw</button>
+                    </div>
+                    <div className='flex items-center gap-2'>
+                        <span>Balance:</span>
+                        <b>Rs. {user?.wallet?.amount}</b>
+                    </div>
                 </div>
                 <div className='my-6'>
                     <table>
@@ -84,6 +92,14 @@ const Transactions = () => {
                             </tr>}
                         </tbody>
                     </table>
+
+                </div>
+                <div className="my-4">
+                    <Pagination
+                        handlePageClick={(page) => {
+                            setQuery(prev => ({ ...prev, page: page?.selected + 1 }))
+                        }}
+                        pageCount={transactions?.totalPages} />
 
                 </div>
             </div>

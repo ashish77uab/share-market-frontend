@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 import SingleInfo from "../components/SingleInfo";
 import { numberWithCommas } from "../../utils/helpers";
+import Transactions from "../components/Transactions";
 
 
 const UserDetails = () => {
@@ -78,8 +79,9 @@ const UserDetails = () => {
               </div>
             </div>
           </div>
-
-
+          <div>
+              <Transactions isAdmin  userId={userId} user={user}/>
+          </div>
         </div>
       </div>
     </>

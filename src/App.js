@@ -22,7 +22,8 @@ import {
   Pricing,
   ContactUs,
   AboutUs,
-  AllTransactions
+  AllTransactions,
+  UserStocks
 } from "./pages";
 import { getUser } from "./api/api";
 import { useDispatch } from "react-redux";
@@ -71,8 +72,8 @@ function App() {
             <Route path="users" element={<AllUsers />} />
             <Route path="transactions" element={<AllTransactions />} />
             <Route path="user/:userId" element={<UserDetails />} />
+            <Route path="user-stocks/:userId" element={<UserStocks />} />
             <Route path="player/:teamId" element={<Player />} />
-            <Route path="teams/:id" element={<Teams />} />
             <Route path="matches/:id" element={<Match />} />
             <Route path="matches/add" element={<AddMatch />} />
             <Route path="matches/update/:matchId" element={<AddMatch />} />
@@ -80,8 +81,6 @@ function App() {
             <Route path="prize/update/:prizeId" element={<AddPrize />} />
           </Route>
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/passwordReset" element={<ResetPassword />} />
         </Routes>
       </BrowserRouter>

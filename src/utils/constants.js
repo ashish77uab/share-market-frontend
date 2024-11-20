@@ -19,7 +19,7 @@ export const navbarLinks = [
   },
 
 ]
-export const pathsRequireToggle=navbarLinks?.map(item=>item?.path)
+export const pathsRequireToggle=navbarLinks?.filter(item=>item!=='/')?.map(item=>item?.path)
 export const homeSection2Data = [
   {
     img: "/images/s21.png",

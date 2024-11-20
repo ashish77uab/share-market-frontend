@@ -11,7 +11,7 @@ const MobileMenu = ({ isOpen, closeModal, handleSignUpClick, handleSignInClick, 
     const dialogRef = useRef(null);
     return (
         <Transition appear show={isOpen} as={Fragment}>
-            <Dialog as="div" className="relative z-[1000]" onClose={closeModal} initialFocus={dialogRef?dialogRef:undefined}>
+            <Dialog as="div" className="relative z-[1000]" onClose={closeModal} initialFocus={dialogRef ? dialogRef : undefined}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
@@ -39,8 +39,8 @@ const MobileMenu = ({ isOpen, closeModal, handleSignUpClick, handleSignInClick, 
                                 className="transform overflow-hidden relative flex flex-col justify-between   w-full h-full  bg-white   !pt-4  lg:!px-10 shadow-lg"
                             >
                                 <div className="flex justify-between items-center gap-4 px-4">
-                                    <Link  to={'/'} onClick={closeModal}>
-                                        <img className="w-[150px] " src="/images/logo.png" alt="logo" />
+                                    <Link to={'/'} onClick={closeModal}>
+                                        <img className="w-[150px] invert" src="/images/logo.png" alt="logo" />
                                     </Link>
                                     <div ref={dialogRef} className=""></div>
 

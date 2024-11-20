@@ -74,8 +74,9 @@ const AllUsers = () => {
               <thead>
                 <tr>
                   <th className="w-[80px]">Sr.No</th>
-                  <th>Name of User</th>
-                  <th>email</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Mobile</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -86,16 +87,20 @@ const AllUsers = () => {
                     <tr>
                       <td className="w-[80px]">{index + 1}</td>
                       <td>{user?.fullName}</td>
-                      <td>
-                        <div>{user?.email}</div>
-                      </td>
+                      <td><div>{user?.email}</div></td>
+                      <td><div>{user?.phone}</div></td>
                       <td>
                         <div className="flex justify-center gap-2">
-                          <ActionButton className={'text-xl'} onClick={() => {
+                          <button className={'btn-primary btn-sm'} onClick={() => {
                             navigate(`/dashboard/user/${user?._id}`)
                           }}>
-                            {reactIcons.eye}
-                          </ActionButton>
+                            View Details
+                          </button>
+                          <button className={'btn-outline-primary btn-sm'} onClick={() => {
+                            navigate(`/dashboard/user-stocks/${user?._id}`)
+                          }}>
+                            View Stocks
+                          </button>
                         </div>
                       </td>
                     </tr>

@@ -133,7 +133,7 @@ const Profile = () => {
                            <Funds user={user}/>
                             </>}
                            {activeTab===ACTIVE_TAB?.transaction &&  <>
-                           <Transactions />
+                           <Transactions  userId={user?._id}  />
                             </>}
 
                         </div>

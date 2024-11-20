@@ -185,13 +185,10 @@ export const getAllUserNotifications = (data) => API.get(`auth/notifications?ski
 export const deleteNotification = (notificationId) => API.delete(`auth/notifications/delete/${notificationId}`);
 export const readNotification = (notificationId) => API.put(`auth/notifications/read/${notificationId}`);
 
-// Vouchers
-export const getAllVouchers = (data) => API.get(`voucher?page=${data?.page}&limit=${data?.limit}`);
-export const createVoucher = (data) => API.post(`voucher/create`,data);
-export const updateVoucher = (voucherId, data) => API.put(`voucher/update/${voucherId}`, data);
-export const getVoucher = (voucherId) => API.get(`voucher/single/${voucherId}`);
-export const deleteVoucher = (voucherId) => API.delete(`voucher/delete/${voucherId}`);
-export const checkVoucherCode = (data) => API.post(`voucher/check`, data);
-
-export const getAllUserMessagesList = (userId, adminId) => API.get(`messages/user/${userId}/${adminId}`);
-export const readMessage = (messageId) => API.put(`messages/read/${messageId}}`);
+export const getUserStocks = (data) => {
+  const queryString=new URLSearchParams(data)?.toString()
+  return API.get(`stock/user-stocks?${queryString}`)
+}
+export const createStock = (data) => API.post(`stock/create-stock`,data);
+export const updateStock = (data,stockId) => API.put(`stock/update-stock/${stockId}`,data);
+export const deleteStock = (stockId) => API.delete(`stock/delete-stock/${stockId}`);

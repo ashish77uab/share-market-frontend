@@ -7,14 +7,19 @@ const Home = () => {
 
   return (
     <section className="">
-      <div className="bg-primary-pink relative header-wrapper ">
+      <div className="bg-white relative header-wrapper ">
         <img className="absolute inset-0 w-full h-full" src="/images/bg-header.png" alt="bg-header" />
+        <div className=" absolute inset-0 w-full   h-full">
+          <video class="w-full bg-white h-full  object-contain" id="bannerVideo" autoPlay loop playsInline muted>
+            <source src="https://files.tradetron.tech/tt-ad2.mp4" type="video/mp4" />
+          </video>
+        </div>
         <div className="container header-container-wrapper">
-          <div className="flex flex-col items-center gap-8">
+          {/* <div className="flex flex-col items-center gap-8">
             <h2 className="max-w-[1240px] heading-2 text-white font-bold"> India's First Algo trading platform
               with Auto Login feature</h2>
             <button className="btn-primary py-4"> Get Started Now</button>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="py-16">

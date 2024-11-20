@@ -21,7 +21,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [toggleNavbar, setToggleNavbar] = useState(false)
   const isRequireToggle=pathsRequireToggle?.includes(window.location.pathname)
-  const toggle=isRequireToggle?toggleNavbar:true
+  const toggle=true
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user,isLoginOpen,isSignUpOpen} = useSelector((state) => state.auth);
@@ -53,12 +53,12 @@ const Navbar = () => {
   const isLoggedIn = getUserToken()
   return (
     <>
-      <nav className={`flex items-center  shadow-navbar bg-transparent transition-all duration-200 py-3  md:py-[20px] fixed left-0 top-0 w-full z-[50] ${toggle ? 'bg-white' : 'bg-transparent'}`}>
+      <nav className={`flex items-center  shadow-navbar border-b border-b-zinc-50 bg-transparent transition-all duration-200 py-3  md:py-[20px] sticky top-0 left-0  bg w-full z-[50] ${toggle ? 'bg-white' : 'bg-transparent'}`}>
         <div className="container">
           <div className="flex items-center justify-between">
             <div className="">
               <Link to="/" className="">
-                <img className={`md:w-[206px] w-[115px] ${toggle ? 'invert-0' : 'invert'}`} src="/images/logo.png" alt="log" />
+                <img className={`md:w-[206px] w-[115px] ${!toggle ? 'invert-0' : 'invert'}`} src="/images/logo.png" alt="log" />
               </Link>
             </div>
             <div className="flex-grow  justify-end mr-10 items-center lg:flex hidden">
@@ -119,6 +119,19 @@ const Navbar = () => {
                                   } group flex w-full items-center rounded-md px-6 py-2 text-base`}
                               >
                                 Profile
+                              </button>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                onClick={() => navigate(`/wishlist/${user._id}`)}
+                                className={`${active
+                                  ? "bg-violet-500 text-white"
+                                  : "text-gray-900"
+                                  } group flex w-full items-center rounded-md px-6 py-2 text-base`}
+                              >
+                                Wishlist
                               </button>
                             )}
                           </Menu.Item>
