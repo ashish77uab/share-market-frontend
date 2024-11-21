@@ -122,16 +122,16 @@
     @apply btn bg-primary-green text-white;
   }
   .btn-primary {
-    @apply btn bg-primary-btnColor hover:bg-primary-btnColor/80 text-white;
+    @apply btn bg-primary-pink hover:bg-primary-pink/80 text-white;
   }
   .btn-outline-primary {
-    @apply btn text-primary-btnColor border border-primary-btnColor hover:bg-primary-btnColor hover:text-white;
+    @apply btn text-primary-pink border border-primary-pink hover:bg-primary-pink hover:text-white;
   }
   .btn-outline-white {
     @apply btn text-white border border-white hover:bg-white hover:text-primary-pink;
   }
   .btn-secondary {
-    @apply btn bg-cyan-500 text-white;
+    @apply btn bg-primary-btnColor text-white;
   }
   .btn-red {
     @apply btn bg-primary-red text-white;
@@ -174,9 +174,9 @@
   .border-c {
     @apply border border-zinc-300;
   }
-  .header-wrapper{
+  /* .header-wrapper{
     @apply pt-[96px];
-  }
+  } */
   .shaodw-price{
     box-shadow: 0 1px 20px 0 rgba(17, 30, 79, .07);
   }

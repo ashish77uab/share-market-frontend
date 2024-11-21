@@ -2,25 +2,36 @@ import React from "react";
 import { homeSection2Data, homeSection5Data, homeSection6Data, homeSection7Data, homeSection8Data } from "../utils/constants";
 import { Link } from "react-router-dom";
 import ContactUsForm from "./components/ContactUsForm";
+import { useDispatch, useSelector } from "react-redux";
+import { setModalToggle } from "../redux/features/authSlice";
+import SignUpModal from "../components/modals/SignUpModal";
 
 const Home = () => {
-
+  const dispatch=useDispatch()
+  const { isSignUpOpen} = useSelector((state) => state.auth);
+  const handleAuthToggle=(obj)=>{
+    dispatch(setModalToggle(obj))
+  }
   return (
+    <>
     <section className="">
-      <div className="bg-white relative header-wrapper ">
+      <div className="bg-white relative md:h-[calc(100dvh-162px)] header-wrapper max-h-[700px] ">
         <img className="absolute inset-0 w-full h-full" src="/images/bg-header.png" alt="bg-header" />
-        <div className=" absolute inset-0 w-full   h-full">
+        <div className=" w-full   h-full">
           <video class="w-full bg-white h-full  object-contain" id="bannerVideo" autoPlay loop playsInline muted>
             <source src="https://files.tradetron.tech/tt-ad2.mp4" type="video/mp4" />
           </video>
         </div>
-        <div className="container header-container-wrapper">
+        <div className="container ">
           {/* <div className="flex flex-col items-center gap-8">
             <h2 className="max-w-[1240px] heading-2 text-white font-bold"> India's First Algo trading platform
               with Auto Login feature</h2>
             <button className="btn-primary py-4"> Get Started Now</button>
           </div> */}
         </div>
+      </div>
+      <div className="py-6 flex items-center gap-4 justify-center">
+        <button onClick={()=> handleAuthToggle({key:'isSignUpOpen',value:true})} className="btn-primary">Create an account</button>
       </div>
       <div className="py-20">
         <div className="container">
@@ -178,8 +189,14 @@ const Home = () => {
           </div>
         </div>
       </div>
-
     </section>
+    <SignUpModal
+        isOpen={isSignUpOpen}
+        handleAuthToggle={handleAuthToggle}
+        closeModal={() => {
+          handleAuthToggle({key:'isSignUpOpen',value:false})
+        }} />
+    </>
   );
 };
 

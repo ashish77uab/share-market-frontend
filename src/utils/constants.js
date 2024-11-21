@@ -241,7 +241,7 @@ export const pricingFeaturesList = [
   },
   {
     title: 'Starter',
-    price: '300',
+    price: '3000',
     list: [
       {
         type: 'string',
@@ -282,7 +282,7 @@ export const pricingFeaturesList = [
   },
   {
     title: 'Retail',
-    price: '1200',
+    price: '12000',
     list: [
       {
         type: 'string',
@@ -323,7 +323,7 @@ export const pricingFeaturesList = [
   },
   {
     title: 'Retail+',
-    price: '2500',
+    price: '25000',
     list: [
       {
         type: 'string',
@@ -364,7 +364,7 @@ export const pricingFeaturesList = [
   },
   {
     title: 'Creator',
-    price: '5000',
+    price: '50000',
     list: [
       {
         type: 'string',
@@ -405,7 +405,7 @@ export const pricingFeaturesList = [
   },
   {
     title: 'Creator+',
-    price: '15000',
+    price: '150000',
     list: [
       {
         type: 'string',

@@ -6,15 +6,15 @@ import moment from 'moment'
 const footerLinks = [
     {
         title: 'About',
-        link: '/about'
+        link: '/'
     },
     {
         title: 'Privacy Policy',
-        link: '/privacy-policy'
+        link: '/'
     },
     {
         title: 'Terms and Conditions',
-        link: '/terms-and-conditions'
+        link: '/'
     },
 
 ]
@@ -59,7 +59,7 @@ const Footer = () => {
             </div>
             <div className="container py-4">
                 <p className='text-muted text-center'>
-                    &copy; {moment()?.format('YYYY')} algotronsgrievance@gmail.com. All rights reserved. 
+                    &copy; 2014 algotronsgrievance@gmail.com. All rights reserved. 
                 </p>
             </div>
         </footer>

@@ -84,9 +84,9 @@ const Pricing = () => {
         <div className="flex lg:flex-row flex-col lg:items-center gap-4">
           <p >Type of subscription plans</p>
           <div className="flex items-center gap-2 lg:gap-4">{
-            ['Monthly', 'Quarterly', 'Yearly']?.map((item) => (
+            ['Monthly']?.map((item) => (
               <div className="border border-primary-gray px-3 lg:px-4 py-2 rounded-md  flex items-center gap-4 cursor-pointer">
-                <input type="radio" id={item} name="subscription" className="text-primary-pink cursor-pointer" />
+                <input type="radio" checked={true} id={item} name="subscription" className="text-primary-pink cursor-pointer" />
                 <label className="cursor-pointer lg:text-base text-sm" htmlFor={item}>{item}</label>
               </div>
             ))

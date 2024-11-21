@@ -66,7 +66,7 @@ const ContactUsForm = () => {
                                 />
                             </div>
                             <div className='flex col-span-2 justify-center items-center'>
-                                <button disabled={isLoading} type='submit' className="btn-primary">{isLoading ? 'Loading...' : 'Submit'}</button>
+                                <button disabled={isLoading} type='submit' className="btn-secondary">{isLoading ? 'Loading...' : 'Submit'}</button>
                             </div>
                         </Form>
                     )
