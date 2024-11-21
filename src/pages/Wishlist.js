@@ -39,9 +39,8 @@ const Wishlist = () => {
         'Accept': 'application/json',
         'X-UserType': 'USER',
         'X-SourceID': 'WEB',
-        'X-ClientLocalIP': 'My IP Address',
-        'X-ClientPublicIP': 'My IP Address',
-        'X-MACAddress': 'My MAC Address',
+        'X-ClientLocalIP': '192.168.1.11',
+        'X-ClientPublicIP': '106.219.85.203',
         'X-PrivateKey': 'My Private Key'
       },
       data: data

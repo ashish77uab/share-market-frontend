@@ -53,12 +53,12 @@ const Navbar = () => {
   const isLoggedIn = getUserToken()
   return (
     <>
-      <nav className={`flex items-center  shadow-navbar border-b border-b-zinc-50 bg-transparent transition-all duration-200 py-3  md:py-[20px] sticky top-0 left-0  bg w-full z-[50] ${toggle ? 'bg-white' : 'bg-transparent'}`}>
+      <nav className={`flex items-center  shadow-navbar border-b border-b-zinc-50 bg-transparent transition-all duration-200 py-[10px] sticky top-0 left-0  bg w-full z-[50] ${toggle ? 'bg-white' : 'bg-transparent'}`}>
         <div className="container">
           <div className="flex items-center justify-between">
             <div className="">
               <Link to="/" className="">
-                <img className={`md:w-[206px] w-[115px] ${!toggle ? 'invert-0' : 'invert'}`} src="/images/logo.png" alt="log" />
+                <img className={`md:w-[206px] w-[115px]`} src="/images/logo.png" alt="log" />
               </Link>
             </div>
             <div className="flex-grow  justify-end mr-10 items-center lg:flex hidden">
@@ -85,8 +85,8 @@ const Navbar = () => {
                       }
                     >
                       <img
-                        className="w-10 h-10 object-cover rounded-full"
-                        src={"/images/user.png"}
+                        className="w-10 h-10 object-cover overflow-hidden rounded-full"
+                        src={user?.clientImage||"/images/user.png"}
                         alt="user"
                       />
                       <span className={`${toggle ? 'text-black' : 'text-white'}`}>{reactIcons?.arrowDown}</span>

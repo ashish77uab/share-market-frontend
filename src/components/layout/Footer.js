@@ -25,7 +25,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="flex lg:flex-row flex-col justify-between gap-4">
                         <div className='max-w-lg'>
-                            <img  className='invert-0 w-[210px]' src="/images/logo.png" alt="logo" />
+                            <img  className=' w-[210px]' src="/images/logo.png" alt="logo" />
                             <p className='max-w-[600px]  text-muted text-white mt-4'>We Provide an affordable trading platform to help everyone to switch into an effortless trading system which offers Autologin features with Best & Pre-tested Profitable Strategies with Real Time Execution and Zero Latency.</p>
                         </div>
                         <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
@@ -48,7 +48,7 @@ const Footer = () => {
                                     </li>
                                     <li className='flex items-center gap-4'>
                                         <span className='text-2xl' >{reactIcons.email}</span>
-                                        <span>info@staralgosecurities.com</span>
+                                        <span>algotronsgrievance@gmail.com</span>
                                     </li>
                                 </ul>
                             </div>
@@ -59,7 +59,7 @@ const Footer = () => {
             </div>
             <div className="container py-4">
                 <p className='text-muted text-center'>
-                    &copy; {moment()?.format('YYYY')} StarAlgoSecurities. All rights reserved. 
+                    &copy; {moment()?.format('YYYY')} algotronsgrievance@gmail.com. All rights reserved. 
                 </p>
             </div>
         </footer>

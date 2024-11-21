@@ -40,7 +40,7 @@ const MobileMenu = ({ isOpen, closeModal, handleSignUpClick, handleSignInClick, 
                             >
                                 <div className="flex justify-between items-center gap-4 px-4">
                                     <Link to={'/'} onClick={closeModal}>
-                                        <img className="w-[150px] invert" src="/images/logo.png" alt="logo" />
+                                        <img className="w-[150px]" src="/images/logo.png" alt="logo" />
                                     </Link>
                                     <div ref={dialogRef} className=""></div>
 

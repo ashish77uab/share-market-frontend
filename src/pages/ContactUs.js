@@ -33,7 +33,7 @@ const ContactUs = () => {
                   </li>
                   <li className='flex items-start gap-4'>
                     <span className='text-3xl text-primary-pink' >{reactIcons.email}</span>
-                    <span className="text-lg font-medium text-primary-pink">info@staralgosecurities.com</span>
+                    <span className="text-lg font-medium text-primary-pink">algotronsgrievance@gmail.com</span>
                   </li>
                 </ul>
               </div>
