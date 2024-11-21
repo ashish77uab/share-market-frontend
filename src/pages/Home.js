@@ -31,7 +31,7 @@ const Home = () => {
         </div>
       </div>
       <div className="py-6 flex items-center gap-4 justify-center">
-        <button onClick={()=> handleAuthToggle({key:'isSignUpOpen',value:true})} className="btn-primary">Create an account</button>
+        <button onClick={()=> handleAuthToggle({key:'isSignUpOpen',value:true})} className="btn-primary py-3">Open Demant Account</button>
       </div>
       <div className="py-20">
         <div className="container">
