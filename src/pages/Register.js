@@ -3,12 +3,10 @@ import { toast } from "react-toastify";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import ToastMsg from "../components/toast/ToastMsg";
 import { register } from "../api/api";
-import { Link, useNavigate } from "react-router-dom";
 import { reactIcons } from "../utils/icons";
 import TextInput from "../components/forms/TextInput";
 import { userValidationSchema } from "../utils/yup";
 import { serialize } from 'object-to-formdata'
-import Spinner from "../components/loaders/Spinner";
 import ReactSelect from "../components/forms/ReactSelect";
 import { useDispatch } from "react-redux";
 import { setModalToggle, setUser } from "../redux/features/authSlice";
@@ -40,7 +38,6 @@ const Register = ({closeModal}) => {
     gender: { label: 'Others', value: 'others' },
     account: { label: 'Savings', value: 'saving' },
   });
-  const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const handleAuthToggle=(obj)=>{
