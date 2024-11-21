@@ -42,26 +42,30 @@
     @apply font-poppins bg-white text-primary-grayDark;
   }
   tbody {
-    display: block;
+    /* display: block; */
     overflow: auto;
     min-height: 500px;
+  }
+  table{
+    width: 100%;
+
   }
   svg {
     color: inherit;
     font-size: inherit;
   }
-  thead,
+  /* thead,
   tbody tr {
     display: table;
     width: 100%;
     table-layout: fixed;
   
-  }
+  } */
   th {
-    @apply py-4 px-2 text-base  font-semibold first:text-left first:pl-4 text-white bg-primary-pink last:rounded-tr-[8px] first:rounded-tl-[8px];
+    @apply whitespace-nowrap  py-4 px-2  text-sm md:text-base   font-semibold first:text-left first:pl-4 text-white bg-primary-pink last:rounded-tr-[8px] first:rounded-tl-[8px];
   }
   td {
-    @apply align-middle xl:py-6 py-4 px-2 text-sm first:text-left first:pl-4;
+    @apply align-middle text-xs md:text-sm xl:py-6 py-4 px-2   first:text-left first:pl-4;
   }
   tr {
     @apply border-b hover:bg-gray-200 text-center border-b-zinc-200 last:border-b-0;
@@ -153,12 +157,13 @@
   .pagination-item-style {
     @apply flex justify-center items-center  border rounded-md border-amber-500 text-amber-600 cursor-pointer hover:bg-amber-500 hover:text-white;
   }
+ 
   .disabled-item {
     @apply opacity-50 hover:bg-white hover:text-amber-500;
   }
   .pagination-item-style a,
   .disabled-item a {
-    @apply w-full h-full flex-center px-4 py-1;
+    @apply w-full h-full flex-center md:text-base text-sm px-4 py-1;
   }
   .skeleton {
     @apply bg-zinc-300 animate-pulse;

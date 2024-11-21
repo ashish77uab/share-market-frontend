@@ -192,3 +192,4 @@ export const getUserStocks = (data) => {
 export const createStock = (data) => API.post(`stock/create-stock`,data);
 export const updateStock = (data,stockId) => API.put(`stock/update-stock/${stockId}`,data);
 export const deleteStock = (stockId) => API.delete(`stock/delete-stock/${stockId}`);
+export const contactUsRequest = (formData) => API.post(`auth/contact-us`,formData);

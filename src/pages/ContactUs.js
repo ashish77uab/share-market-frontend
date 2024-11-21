@@ -15,7 +15,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-      <section className="py-20 bg-pink-50">
+      <section className="md:py-20 py-10 bg-pink-50">
         <div className="container ">
           <div className="max-w-[1300px] mx-auto w-full grid grid-cols-1 lg:grid-cols-6  gap-10 ">
             <div className="col-span-3">
@@ -39,7 +39,7 @@ const ContactUs = () => {
               </div>
             </div>
             <div className="col-span-3">
-              <div className="bg-white shadow-card p-10 rounded-md">
+              <div className="bg-white shadow-card px-4 md:px-10 py-6  md:py-10 rounded-md">
                 <h3 className="heading-3">Get In touch</h3>
                 <p className="mt-2 text-muted">We are here for you. How we can help?</p>
                 <div className="my-4">

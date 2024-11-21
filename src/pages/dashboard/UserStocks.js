@@ -120,8 +120,12 @@ const UserStocks = () => {
                     </td>
                   </tr>
                 ))}
-                {stocks?.stocks?.length < 1 && !fetchLoading && <RenderNoData title="No stocks found." />}
-                {fetchLoading && <div className="py-8 text-center font-semibold">Loading please wait....</div>}
+                <tr>
+                  <td colSpan={8}>
+                    {stocks?.stocks?.length < 1 && !fetchLoading && <RenderNoData title="No stocks found." />}
+                    {fetchLoading && <div className="py-8 text-center font-semibold">Loading please wait....</div>}
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

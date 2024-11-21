@@ -35,13 +35,13 @@ const AllTransactions = () => {
     status: '',
     actionType: ''
   })
-  console.log(filter,'filer')
+  console.log(filter, 'filer')
 
 
   const getAllTransactions = async () => {
     setFetchLoading(true)
     try {
-      const res = await getAllTransactionsList({ limit, page, search: deferedValue,status:filter?.status?.value || '',actionType:filter?.actionType?.value || '' });
+      const res = await getAllTransactionsList({ limit, page, search: deferedValue, status: filter?.status?.value || '', actionType: filter?.actionType?.value || '' });
       const { status, data } = res;
       if (status >= 200 && status <= 300) {
         setTransactions(data);
@@ -74,7 +74,7 @@ const AllTransactions = () => {
 
   useEffect(() => {
     getAllTransactions();
-  }, [page, deferedValue,filter]);
+  }, [page, deferedValue, filter]);
   const renderStatusClassName = (status) => {
     if (status === TRANSACTION_STATUS.accepted) {
       return 'text-green-800'
@@ -112,37 +112,37 @@ const AllTransactions = () => {
               />
             </div>
             <div className=" flex items-center gap-2">
-            <label htmlFor="" className="font-medium flex-shrink-0">Action Type:</label>
-            <div className="min-w-[250px]">
-              <ReactSelect
-                name='actionType'
-                options={ActionTypeArr}
-                value={filter?.actionType}
-                isFormik={false}
-                onChange={(e) => {
-                  setFilter({ ...filter, actionType: e })
-                  setPage(1)
+              <label htmlFor="" className="font-medium flex-shrink-0">Action Type:</label>
+              <div className="min-w-[250px]">
+                <ReactSelect
+                  name='actionType'
+                  options={ActionTypeArr}
+                  value={filter?.actionType}
+                  isFormik={false}
+                  onChange={(e) => {
+                    setFilter({ ...filter, actionType: e })
+                    setPage(1)
 
-                }}
-              />
-            </div>
+                  }}
+                />
+              </div>
             </div>
             <div className="flex items-center gap-2">
-            <label htmlFor="" className="font-medium flex-shrink-0">Status:</label>
-            <div className="min-w-[250px]">
-            <ReactSelect
-                name='status'
-                options={StatusArr}
-                value={filter?.status}
-                isFormik={false}
-                onChange={(e) => {
-                  setFilter({ ...filter, status: e })
-                  setPage(1)
+              <label htmlFor="" className="font-medium flex-shrink-0">Status:</label>
+              <div className="min-w-[250px]">
+                <ReactSelect
+                  name='status'
+                  options={StatusArr}
+                  value={filter?.status}
+                  isFormik={false}
+                  onChange={(e) => {
+                    setFilter({ ...filter, status: e })
+                    setPage(1)
 
-                }}
-              />
-            </div>
-              
+                  }}
+                />
+              </div>
+
             </div>
 
           </div>
@@ -205,8 +205,12 @@ const AllTransactions = () => {
                 }
 
                 )}
-                {transactions?.transactions?.length < 1 && !fetchLoading && <RenderNoData title="No transactions found." />}
-                {fetchLoading && <div className="py-8 text-center font-semibold">Loading please wait....</div>}
+                <tr>
+                  <td colSpan={8}>
+                    {transactions?.transactions?.length < 1 && !fetchLoading && <RenderNoData title="No transactions found." />}
+                    {fetchLoading && <div className="py-8 text-center font-semibold">Loading please wait....</div>}
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

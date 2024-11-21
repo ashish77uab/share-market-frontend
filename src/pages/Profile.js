@@ -58,11 +58,11 @@ const Profile = () => {
         <>
             {isLoading && <Spinner />}
 
-            <div className="header-wrapper ">
+            <div className=" ">
                 <div className="container relative py-10">
-                    <div className="flex  border-c rounded-md ">
-                        <div className="flex-shrink-0 w-[300px] border-c border-t-0 border-l-0 border-b-0 p-6">
-                            <div className="flex flex-col gap-4">
+                    <div className="flex lg:flex-row flex-col  border-c rounded-md ">
+                        <div className="flex-shrink-0 lg:w-[300px] border-c border-t-0 border-l-0 border-b-0 p-6">
+                            <div className="flex flex-col lg:gap-4 gap-2">
                                 <button onClick={()=>{
                                     handleActiveTab(ACTIVE_TAB.profile)
                                 }} className={`${activeTab===ACTIVE_TAB?.profile ? 'btn-primary' : 'btn-outline-primary'}`}>Profile</button>
@@ -81,11 +81,11 @@ const Profile = () => {
                         <div className="flex-grow ">
                            {activeTab===ACTIVE_TAB?.profile &&  <>
                             <div>
-                                <header className="py-4 border-b border-b-zinc-300 px-10">
+                                <header className="py-4 border-b border-b-zinc-300 px-4 lg:px-10">
                                     <h4 className="heading-4 text-primary-pink">General Details</h4>
                                 </header>
-                                <div className="py-6  px-10">
-                                    <div className="grid grid-cols-2 gap-4">
+                                <div className="py-6  px-4 lg:px-10">
+                                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                                         <SingleInfo title={'Full Name'} value={user?.fullName} />
                                         <SingleInfo title={'Email'} value={user?.email} />
                                         <SingleInfo title={'Phone'} value={user?.phone} />
@@ -100,11 +100,11 @@ const Profile = () => {
                                 </div>
                             </div>
                             <div>
-                                <header className="py-4 border-y yorder-b-zinc-300 px-10">
+                                <header className="py-4 border-y border-b-zinc-300 px-4 lg:px-10">
                                     <h4 className="heading-4 text-primary-pink">Bank Details</h4>
                                 </header>
-                                <div className="py-6  px-10">
-                                    <div className="grid grid-cols-2 gap-4">
+                                <div className="py-6  px-4 lg:px-10">
+                                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                                         <SingleInfo title={'Bank Name'} value={user?.bankName} />
                                         <SingleInfo title={'Account Type'} value={user?.accountType} />
                                         <SingleInfo title={'Account Number'} value={user?.accountNumber} />
@@ -118,10 +118,10 @@ const Profile = () => {
                             </>}
                            {activeTab===ACTIVE_TAB?.password &&  <>
                             <div>
-                                <header className="py-4 border-b border-b-zinc-300 px-10">
+                                <header className="py-4 border-b border-b-zinc-300 px-4 lg:px-10">
                                     <h4 className="heading-4 text-primary-pink">Change Password</h4>
                                 </header>
-                                <div className="py-6  px-10">
+                                <div className="py-6  px-4 lg:px-10">
                                     <div className="max-w-xl">
                                       <UpdatePassword/>
                                     </div>
@@ -133,7 +133,7 @@ const Profile = () => {
                            <Funds user={user}/>
                             </>}
                            {activeTab===ACTIVE_TAB?.transaction &&  <>
-                           <Transactions  userId={user?._id}  />
+                           <Transactions  userId={user?._id} user={user}  />
                             </>}
 
                         </div>

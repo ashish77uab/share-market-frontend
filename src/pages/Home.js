@@ -22,7 +22,7 @@ const Home = () => {
           </div> */}
         </div>
       </div>
-      <div className="py-16">
+      <div className="py-20">
         <div className="container">
           <div className="lg:grid flex flex-col grid-cols-12  gap-10">
             <div className="col-span-5">
@@ -165,7 +165,7 @@ const Home = () => {
       <div className="py-10">
         <div className="container ">
           <div className="bg-primary-pink lg:px-10 px-4 py-10 rounded-xl">
-            <div className="text-center py-10">
+            <div className="text-center py-4 md:py-10">
               <h2 className="heading-3 text-white">
                 Get a Call Back
               </h2>

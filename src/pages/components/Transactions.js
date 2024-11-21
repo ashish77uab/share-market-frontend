@@ -48,8 +48,8 @@ const Transactions = ({ userId, isAdmin,user }) => {
             <header className="py-4 border-y yorder-b-zinc-300 px-10">
                 <h4 className="heading-4 text-primary-pink">Transactions</h4>
             </header>
-            <div className="py-6  px-10">
-                <div className="flex items-center justify-between gap-4">
+            <div className="py-6 px-4  md:px-10">
+                <div className="flex lg:flex-row flex-col items-center justify-between gap-4">
                     <div className="flex gap-4 items-center">
                         <button onClick={() => {
                             setActionType(ACTIVE_TYPE.deposit)
@@ -63,7 +63,7 @@ const Transactions = ({ userId, isAdmin,user }) => {
                         <b>Rs. {user?.wallet?.amount}</b>
                     </div>
                 </div>
-                <div className='my-6'>
+                <div className='my-6 w-full overflow-x-auto'>
                     <table>
                         <thead>
                             <th>Sr.No</th>
@@ -81,7 +81,7 @@ const Transactions = ({ userId, isAdmin,user }) => {
                                     </td>
                                     <td>{transaction?.transactionId}</td>
                                     <td className={`font-semibold ${renderStatusClassName(transaction?.status)}`}>{transaction?.status}</td>
-                                    <td>{moment(transaction?.createdAt).format('DD MMM , YYYY hh:mm a')}</td>
+                                    <td className='whitespace-nowrap'>{moment(transaction?.createdAt).format('DD MMM , YYYY hh:mm a')}</td>
                                 </tr>
                             ))}
                             {transactions?.totalPages < 1 && <tr>

@@ -9,10 +9,10 @@ const Funds = ({ user }) => {
     return (
         <>
             <div>
-                <header className="py-4 border-b border-b-zinc-300 px-10">
+                <header className="py-4 border-b border-b-zinc-300 px-4 lg:px-10">
                     <h4 className="heading-4 text-primary-pink">Your Wallet</h4>
                 </header>
-                <div className="py-6 px-10">
+                <div className="py-6 px-4 lg:px-10">
                     <div className="flex items-center gap-2 py-2">
                         <p className="text-base font-medium  text-gray-900">Total Balance:</p>
                         <p className="text-base font-bold">Rs. {numberWithCommas(user?.wallet?.amount)}</p>

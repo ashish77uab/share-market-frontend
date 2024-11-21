@@ -50,3 +50,17 @@ export const stockValidationSchema = yup.object().shape({
     .string()
     .required("Name is required"),
 });
+export const contactValidationSchema = yup.object().shape({
+    fullName:  yup
+    .string()
+    .required("Name is required"),
+    mobile:  yup
+    .string()
+    .required("Mobile is required"),
+    email:  yup
+    .string()
+    .required("Email is required"),
+    message:  yup
+    .string()
+    .required("Message is required"),
+});

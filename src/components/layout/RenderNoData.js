@@ -2,7 +2,7 @@ import React from "react";
 import { reactIcons } from "../../utils/icons";
 const RenderNoData = ({ title, subtitle, className,icon }) => {
   return (
-    <div className={`text-center py-20 ${className}`}>
+    <div className={`text-center py-20 w-full ${className}`}>
       <div className="flex justify-center items-center text-center flex-col ">
         {icon ? <div className="text-6xl">{icon}</div>  :<div className="w-14 h-14">
           {" "}

@@ -1,6 +1,7 @@
 import React from 'react'
 import { reactIcons } from '../../utils/icons'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 const footerLinks = [
     {
@@ -20,7 +21,7 @@ const footerLinks = [
 const Footer = () => {
     return (
         <footer >
-            <div className='py-16 bg-primary-pink text-white'>
+            <div className='md:py-16 py-10 bg-primary-pink text-white'>
                 <div className="container">
                     <div className="flex lg:flex-row flex-col justify-between gap-4">
                         <div className='max-w-lg'>
@@ -58,7 +59,7 @@ const Footer = () => {
             </div>
             <div className="container py-4">
                 <p className='text-muted text-center'>
-                    &copy; 2023 StarAlgoSecurities. All rights reserved. 
+                    &copy; {moment()?.format('YYYY')} StarAlgoSecurities. All rights reserved. 
                 </p>
             </div>
         </footer>

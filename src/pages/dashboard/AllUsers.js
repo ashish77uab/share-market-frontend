@@ -13,7 +13,7 @@ import TextInput from "../../components/forms/TextInput";
 import { useNavigate } from "react-router-dom";
 
 const AllUsers = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const limit = 10
   const [isViewVoucherOpen, setIsViewVoucherOpen] = useState(false);
   const [search, setSearch] = useState('');
@@ -29,7 +29,7 @@ const AllUsers = () => {
   const getAllUsers = async () => {
     setFetchLoading(true)
     try {
-      const res = await getAllUsersList({ limit, page,search:deferedValue });
+      const res = await getAllUsersList({ limit, page, search: deferedValue });
       const { status, data } = res;
       if (status >= 200 && status <= 300) {
         setUsers(data);
@@ -45,12 +45,12 @@ const AllUsers = () => {
 
   useEffect(() => {
     getAllUsers();
-  }, [page,deferedValue]);
+  }, [page, deferedValue]);
   return (
     <>
       <div>
         <header className="mb-4 flex items-center justify-between">
-        <h4 className="heading-4">All Users <span className="text-sm align-middle">({numberWithCommas(users?.totalUsers)})</span> </h4>
+          <h4 className="heading-4">All Users <span className="text-sm align-middle">({numberWithCommas(users?.totalUsers)})</span> </h4>
           <div className="flex items-center justify-between gap-2">
             <TextInput
               type="text"
@@ -82,7 +82,7 @@ const AllUsers = () => {
               </thead>
               <tbody>
                 {users?.users?.map((user, index) => {
-                 
+
                   return (
                     <tr>
                       <td className="w-[80px]">{index + 1}</td>
@@ -108,8 +108,13 @@ const AllUsers = () => {
                 }
 
                 )}
-                {users?.users?.length < 1 && !fetchLoading && <RenderNoData title="No users found." />}
-                {fetchLoading && <div className="py-8 text-center font-semibold">Loading please wait....</div>}
+                <tr>
+                  <td colSpan={5}>
+                    {users?.users?.length < 1 && !fetchLoading && <RenderNoData title="No users found." />}
+                    {fetchLoading && <div className="py-8 text-center font-semibold">Loading please wait....</div>}
+                  </td>
+                </tr>
+
               </tbody>
             </table>
           </div>
