@@ -122,7 +122,7 @@ const Navbar = () => {
                               </button>
                             )}
                           </Menu.Item>
-                          {/* <Menu.Item>
+                          <Menu.Item>
                             {({ active }) => (
                               <button
                                 onClick={() => navigate(`/wishlist/${user._id}`)}
@@ -134,7 +134,7 @@ const Navbar = () => {
                                 Wishlist
                               </button>
                             )}
-                          </Menu.Item> */}
+                          </Menu.Item>
                           {user?.role === 'Admin' && <Menu.Item>
                             {({ active }) => (
                               <button

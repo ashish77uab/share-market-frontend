@@ -3,21 +3,28 @@ import React, { useEffect, useState } from "react";
 import ToastMsg from "../components/toast/ToastMsg";
 import { toast } from "react-toastify";
 import axios from "axios";
-import moment from 'moment';
-// import { NseIndia } from  "stock-nse-india";
+const MARKET={
+  '0': 'NIFTY 50',
+  '1': 'NIFTY Bank',
+  '2': 'Sensex',
+  '3': 'Fin Nifty',
+ 
+}
+const POLLING_INTERVAL = 1000; // 1 second
+const INDICES=['in%3BNSX','in%3Bnbx', 'in%3BNSX', 'in%3BNSX',]
 const Wishlist = () => {
 
   const [fetchLoading, setFetchLoading] = useState(false)
+  const [marketData,setMarketData] = useState([])
 
 
-  const getMatchDetail = async (id) => {
+  const getMarketData = async (index) => {
     setFetchLoading(true)
     try {
-      const res = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=NG&interval=5min&apikey=3WPMKT6OXFBBVV4T`);
+      const res = await axios.get(`https://priceapi.moneycontrol.com/pricefeed/notapplicable/inidicesindia/${index}`);
       const { status, data } = res;
       if (status >= 200 && status <= 300) {
-        console.log(data);
-        // setIntraData(data)
+        return data
       } else {
         toast.error(<ToastMsg title={data.message} />);
       }
@@ -27,45 +34,58 @@ const Wishlist = () => {
       setFetchLoading(false)
     }
   };
+
+
+
+
   useEffect(() => {
-    // getMatchDetail()
-    var data = JSON.stringify({
-      "clientcode": "M140361",
-      "password": "9331",
-      "totp": "QZVW7W3OOBL2F2EQ3MPSMGGROQ",
-    //  "state":"state_or_environment_variable"
-    });
+    let intervalId;
+  
+    const fetchMarketData = async () => {
+      setFetchLoading(true);
+      try {
+        const dataPromises = INDICES.map((index) => getMarketData(index));
+        const results = await Promise.all(dataPromises);
+        const validData = results.filter((result) => result !== null);
+        setMarketData(validData);
+      } finally {
+        setFetchLoading(false);
+      }
+    };
+  
+    // Start polling
+    const startPolling = () => {
+      fetchMarketData(); // Initial fetch
+      intervalId = setInterval(fetchMarketData, POLLING_INTERVAL);
+    };
+  
+    startPolling();
+  
+    // Cleanup on component unmount
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
-    var config = {
-      method: 'post',
-      url: 'https://apiconnect.angelone.in/rest/auth/angelbroking/user/v1/loginByPassword',
-
-  headers : {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'X-UserType': 'USER',
-        'X-SourceID': 'WEB',
-        'X-ClientLocalIP': '192.168.1.11',
-        // 'X-ClientPublicIP': '192.168.1.11',
-        'X-PrivateKey': 'zM1oeDjN'
-  },
-    data: data
-  };
-
-  axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-}, [])
+console.log(marketData,'marketData')
 
 return (
-  <div className="bg-sky-50 py-10">
+  <div className="py-4">
     <section className=" container">
-      <h3 className="heading-3 mb-2">My Wishlist</h3>
-      <div>
+      <div className="flex items-start gap-10">
+        {
+          marketData?.map((item,index)=>{
+            return (
+              <div className="">
+                <h6 className="heading-6">{MARKET[index]}</h6>
+                <div className="flex items-center gap-1 py-2">
+                  <span className="text-black font-semibold">{item?.data?.pricecurrent}</span>
+                  <div className="text-[#1ab156] text-sm font-medium"><span>{Number(item?.data?.pricechange)?.toFixed(2)}</span> <span className="ml-1">({Number(item?.data?.pricepercentchange)?.toFixed(2)}%)</span></div>
+                </div>
+              </div>
+            )
+          })
+        }
 
 
       </div>
