@@ -11,7 +11,7 @@ const MARKET={
  
 }
 const POLLING_INTERVAL = 1000; // 1 second
-const INDICES=['in%3BNSX','in%3Bnbx', 'in%3BNSX', 'in%3BNSX',]
+const INDICES=['in%3BNSX','in%3Bnbx', 'in%3BSEN', 'in%3Bcnxf']
 const Wishlist = () => {
 
   const [fetchLoading, setFetchLoading] = useState(false)
