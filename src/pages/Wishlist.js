@@ -114,13 +114,13 @@ const Wishlist = () => {
   return (
     <div className="py-4">
       <section className=" container">
-        <div className="lg:flex items-start grid lg:grid-cols-4 grid-cols-2 gap-4 lg:gap-10">
+        <div className="lg:flex items-start grid lg:grid-cols-4 grid-cols-2 gap-4 lg:gap-10 p-4 border-c rounded-md">
           {
             marketData?.map((item, index) => {
               const isNegative = (Number(item?.data?.pricecurrent) - Number(item?.data?.priceprevclose)) < 0
               return (
                 <div className="">
-                  <h6 className="lg:text-xl text-sm  font-semibold">{MARKET[index]}</h6>
+                  <h6 className="lg:text-2xl text-sm  font-semibold text-primary-pink">{MARKET[index]}</h6>
                   <div className="flex items-center gap-1 py-2">
                     <span className="text-black font-semibold text-xs lg:text-sm">{item?.data?.pricecurrent}</span>
                     <div className={` text-xs lg:text-sm font-medium ${isNegative ? 'text-red-600' : 'text-[#1ab156]'}`}><span>{Number(item?.data?.pricechange)?.toFixed(2)}</span> <span className="ml-1">({Number(item?.data?.pricepercentchange)?.toFixed(2)}%)</span></div>
@@ -137,12 +137,14 @@ const Wishlist = () => {
             <h4 className="heading-4">My Watchlist</h4>
           </header>
         </div>
-        <div className="lg:min-w-[400px] max-w-xl space-y-2">
+        <div className="flex lg:flex-row flex-col lg:items-start gap-10">
+          <div className="max-w-md w-full space-y-2">
+
           {
             wishlistData?.map((item, index) => {
               const isNegative = (Number(item?.data?.pricecurrent) - Number(item?.data?.priceprevclose)) < 0
               return (
-                <div className="lg:p-4 p-2 rounded-md bg-white shadow-sm border-c">
+                <div className="lg:p-3 p-2 rounded-md bg-white shadow-sm border-c">
                   <div className="flex justify-between items-center" >
                     <div>
                       <h6 className="lg:text-xl font-semibold  text-sm">{item?.data?.company}</h6>
@@ -163,6 +165,10 @@ const Wishlist = () => {
               )
             })
           }
+          </div>
+          <div className="flex-grow">
+         <iframe className="w-full min-h-[300px] lg:min-h-[480px] md:min-h-[450px] rounded-sm overflow-hidden" src=" https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale=en#%7B%22width%22%3A980%2C%22height%22%3A550%2C%22symbol%22%3A%22INDEX%3ASENSEX%22%2C%22interval%22%3A%22D%22%2C%22timezone%22%3A%22exchange%22%2C%22theme%22%3A%22dark%22%2C%22style%22%3A%221%22%2C%22allow_symbol_change%22%3Atrue%2C%22calendar%22%3Afalse%2C%22studies%22%3A%5B%22STD%3BMACD%22%5D%2C%22show_popup_button%22%3Atrue%2C%22popup_width%22%3A%221000%22%2C%22popup_height%22%3A%22550%22%2C%22support_host%22%3A%22https%3A%2F%2Fwww.tradingview.com%22%2C%22utm_source%22%3A%22staralgosecurities.com%22%2C%22utm_medium%22%3A%22widget_new%22%2C%22utm_campaign%22%3A%22advanced-chart%22%2C%22page-uri%22%3A%22staralgosecurities.com%2Fuser%2Fdashboard.php%22%7D" frameborder="0"></iframe>
+          </div>
 
 
         </div>
