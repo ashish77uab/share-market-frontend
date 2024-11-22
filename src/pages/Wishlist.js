@@ -114,7 +114,7 @@ const Wishlist = () => {
   return (
     <div className="py-4">
       <section className=" container">
-        <div className="grid lg:grid-cols-4 grid-cols-2 gap-4 lg:gap-10">
+        <div className="lg:flex items-start grid lg:grid-cols-4 grid-cols-2 gap-4 lg:gap-10">
           {
             marketData?.map((item, index) => {
               const isNegative = (Number(item?.data?.pricecurrent) - Number(item?.data?.priceprevclose)) < 0
