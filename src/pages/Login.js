@@ -47,6 +47,7 @@ const Login = ({closeModal}) => {
         localStorage.setItem("loginToken", data.token);
         getUserData()
         closeModal()
+        navigate("/wishlist");
       } else {
         toast.error(<ToastMsg title={data.message} />);
       }

@@ -526,3 +526,149 @@ export const TRANSACTION_STATUS = {
   accepted: 'Accepted',
   rejected: 'Rejected',
 }
+
+// const WishlistConstant = {
+//   ABBOTINDIA,
+//   ADANIENT,
+//   ADANIENT,
+//   ADANIGREEN,
+//   ADANIPORTS,
+//   ADANITRANS,
+//   ALKEM,
+//   APLAPOLLO,
+//   APOLLOHOSP,
+//   ASHOKLEY,
+//   ASIANPAINT,
+//   AUBANK,
+//   AUROPHARMA,
+//   AXISBANK,
+//   AXISBANK,
+//   BAJAJ,
+//   BAJAJ,
+//   BAJAJFINSV,
+//   BAJFINANCE,
+//   BALKRISIND,
+//   BANDHANBNK,
+//   BANKBARODA,
+//   BHARATFORG,
+//   BHARTIARTL,
+//   BIOCON,
+//   BOSCHLTD,
+//   BPCL,
+//   BPCL,
+//   BRITANNIA,
+//   CIPLA,
+//   CIPLA,
+//   COALINDIA,
+//   COFORGE,
+//   DISHTV,
+//   DIVISLAB,
+//   DIVISLAB,
+//   DRREDDY,
+//   DRREDDY,
+//   EICHERMOT,
+//   EICHERMOT,
+//   FEDERALBNK,
+//   GAIL,
+//   GLAND,
+//   GLAXO,
+//   GLENMARK,
+//   GRANULES,
+//   GRASIM,
+//   HATHWAY,
+//   HCLTECH,
+//   HCLTECH,
+//   HDFC,
+//   HDFCBANK,
+//   HDFCBANK,
+//   HDFCLIFE,
+//   HEROMOTOCO,
+//   HEROMOTOCO,
+//   HINDALCO,
+//   HINDALCO,
+//   HINDCOPPER,
+//   HINDUNILVR,
+//   HINDZINC,
+//   ICICIBANK,
+//   ICICIBANK,
+//   IDFCFIRSTB,
+//   INDUSINDBK,
+//   INDUSINDBK,
+//   INFY,
+//   INFY,
+//   INOXLEISUR,
+//   IOC,
+//   IPCALAB,
+//   ITC,
+//   JINDALSTEL,
+//   JSL,
+//   JSWSTEEL,
+//   JSWSTEEL,
+//   KOTAKBANK,
+//   KOTAKBANK,
+//   LAURUSLABS,
+//   LT,
+//   LTIM,
+//   LTTS,
+//   LUPIN,
+//   M,
+//   M,
+//   MARUTI,
+//   MARUTI,
+//   MOIL,
+//   MOTHERSON,
+//   MPHASIS,
+//   // MRF
+//   // NATCOPHARM
+//   // NATIONALUM
+//   // NAVNETEDUL
+//   // NAZARA
+//   // NESTLEIND
+//   // NETWORK18
+//   // NTPC
+//   // NTPC
+//   // ONGC
+//   // ONGC
+//   // PERSISTENT
+//   // PFIZER
+//   // PNB
+//   // POWERGRID
+//   // POWERGRID
+//   // PVR
+//   // RATNAMANI
+//   // RELIANCE
+//   // RELIANCE
+//   // SAIL
+//   // SANOFI
+//   // SBILIFE
+//   // SBIN
+//   // SBIN
+//   // SONACOMS
+//   // SUNPHARMA
+//   // SUNPHARMA
+//   // SUNTV
+//   // TATACONSUM
+//   // TATAMOTORS
+//   // TATAMOTORS
+//   // TATAPOWER
+//   // TATASTEEL
+//   // TATASTEEL
+//   // TCS
+//   // TCS
+//   // TECHM
+//   // TECHM
+//   // TIINDIA
+//   // TITAN
+//   // TORNTPHARM
+//   // TV18BRDCST
+//   // TVSMOTOR
+//   // ULTRACEMCO
+//   // UPL
+//   // VEDL
+//   // WELCORP
+//   // WIPRO
+//   // WIPRO
+//   // ZEEL
+//   // ZYDUSLIFE
+
+// }

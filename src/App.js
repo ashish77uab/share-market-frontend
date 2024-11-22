@@ -62,7 +62,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path='/pricing' element={<Pricing />} />
             <Route path='/contact' element={<ContactUs />} />
-            <Route path="/wishlist/:userId" element={<Wishlist />} />
+            <Route path="/wishlist" element={<Wishlist />} />
             <Route path='/about' element={<AboutUs />} />
             <Route path="/profile/:userId" element={<ProtectedRoutes> <Profile /></ProtectedRoutes>} />
           </Route>
