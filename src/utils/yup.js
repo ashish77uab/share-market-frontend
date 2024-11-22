@@ -1,7 +1,8 @@
 import { object } from 'dot-object';
-
-
 import * as Yup from "yup";
+
+const FILE_SIZE = 2 * 1024 * 1024; // 5 MB
+const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
 
 export const userValidationSchema = Yup.object().shape({
   firstName: Yup.string().required("First name is required."),
@@ -15,9 +16,42 @@ export const userValidationSchema = Yup.object().shape({
   password: Yup.string()
     .required("Password is required.")
     .min(8, "Password must be at least 8 characters."),
-  panImage: Yup.string().required("PAN image is required."),
-  aadharImage: Yup.string().required("Aadhar image is required."),
-  clientImage: Yup.string().required("Client image is required."),
+    panImage: Yup.mixed()
+    .required("PAN image is required.")
+    .test(
+      "fileSize",
+      "PAN image size should not exceed 5 MB.",
+      (value) => value && value.size <= FILE_SIZE
+    )
+    .test(
+      "fileFormat",
+      "PAN image must be in JPEG or PNG format.",
+      (value) => value && SUPPORTED_FORMATS.includes(value.type)
+    ),
+  aadharImage: Yup.mixed()
+    .required("Aadhar image is required.")
+    .test(
+      "fileSize",
+      "Aadhar image size should not exceed 5 MB.",
+      (value) => value && value.size <= FILE_SIZE
+    )
+    .test(
+      "fileFormat",
+      "Aadhar image must be in JPEG or PNG format.",
+      (value) => value && SUPPORTED_FORMATS.includes(value.type)
+    ),
+  clientImage: Yup.mixed()
+    .required("Client image is required.")
+    .test(
+      "fileSize",
+      "Client image size should not exceed 5 MB.",
+      (value) => value && value.size <= FILE_SIZE
+    )
+    .test(
+      "fileFormat",
+      "Client image must be in JPEG or PNG format.",
+      (value) => value && SUPPORTED_FORMATS.includes(value.type)
+    ),
   phone: Yup.string()
     .required("Phone number is required."),
   panNumber: Yup.string()

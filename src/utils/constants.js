@@ -78,12 +78,12 @@ export const homeSection5Data = [
   {
     img: "/images/s52.png",
     title: "Select a Plan",
-    description: 'Pick the right Star Algo Securities subscription plan for yourself.'
+    description: 'Pick the right Algotrons Securities subscription plan for yourself.'
   },
   {
     img: "/images/s53.png",
     title: "Add a Broker",
-    description: 'Add a suitable broker to your Star Algo Securities account.',
+    description: 'Add a suitable broker to your Algotrons Securities account.',
     description2: 'Open a new Demat account with us.'
   },
   {

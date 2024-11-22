@@ -30,8 +30,8 @@ const Home = () => {
           </div> */}
         </div>
       </div>
-      <div className="py-6 flex items-center gap-4 justify-center">
-        <button onClick={()=> handleAuthToggle({key:'isSignUpOpen',value:true})} className="btn-primary py-3">Open Demant Account</button>
+      <div className="py-6 pt-10 flex items-center gap-4 justify-center">
+        <button onClick={()=> handleAuthToggle({key:'isSignUpOpen',value:true})} className="btn-primary py-3">Open Free* Account - Lifetime free delivery Trading</button>
       </div>
       <div className="py-20">
         <div className="container">
@@ -148,7 +148,7 @@ const Home = () => {
           <header className="text-center mb-24 lg:mb-20">
             <div className="">
               <h3 className="heading-3">
-                Why Choose <span className="text-primary-pink">Star Algo Securities</span> <br className="lg:block hidden" /> for best Algo Platform</h3>
+                Why Choose <span className="text-primary-pink">Algotrons</span> <br className="lg:block hidden" /> for best Algo Platform</h3>
             </div>
           </header>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 gap-y-20 max-w-6xl mx-auto ">
