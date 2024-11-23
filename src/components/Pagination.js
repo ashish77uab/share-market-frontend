@@ -12,7 +12,7 @@ const Pagination = ({ handlePageClick, pageCount }) => {
       renderOnZeroPageCount={null}
       containerClassName="flex justify-center gap-2 items-center"
       pageClassName="pagination-item-style"
-      activeClassName="bg-amber-500 text-white"
+      activeClassName="bg-primary-pink text-white"
       previousClassName="pagination-item-style"
       nextClassName="pagination-item-style"
       disabledClassName="disabled-item"

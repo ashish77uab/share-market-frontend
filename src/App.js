@@ -6,35 +6,34 @@ import {
   Dashboard,
   ForgotPassword,
   Home,
-  Login,
-  Wishlist,
-  Register,
   AllUsers,
   ResetPassword,
   Profile,
-  Teams,
-  Match,
-  AddMatch,
-  Player,
-  PrizePyramidList,
-  AddPrize,
   UserDetails,
   Pricing,
   ContactUs,
   AboutUs,
   AllTransactions,
-  UserStocks
+  UserStocks,
+  Strategy,
+  UserDashboard,
+  Markets,
+  NetPosition
 } from "./pages";
 import { getUser } from "./api/api";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./redux/features/authSlice";
 import ToastMsg from "./components/toast/ToastMsg";
 import { useEffect } from "react";
 import MainLayout from "./components/layout/MainLayout";
 import DashboardLayout from "./components/layout/DashboardLayout";
-import ProtectedRoutes from "./ProtectedRoutes";
 import RenderModal from "./RenderModal";
+import UserLayout from "./components/layout/UserLayout";
+import Funds from "./pages/components/Funds";
+import Transactions from "./pages/components/Transactions";
+import ProtectedRoutes from "./ProtectedRoutes";
 function App() {
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const getUserData = async () => {
     try {
@@ -64,23 +63,24 @@ function App() {
             <Route index element={<Home />} />
             <Route path='/pricing' element={<Pricing />} />
             <Route path='/contact' element={<ContactUs />} />
-            <Route path="/wishlist" element={<Wishlist />} />
             <Route path='/about' element={<AboutUs />} />
-            <Route path="/profile/:userId" element={<ProtectedRoutes> <Profile /></ProtectedRoutes>} />
+            <Route path='/strategy' element={<Strategy />} />
           </Route>
-          <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route path="/user" element={<ProtectedRoutes><UserLayout /></ProtectedRoutes>}>
+            <Route index element={<UserDashboard />} />
+            <Route path='dashboard' element={<UserDashboard />} />
+            <Route path='funds' element={<Funds user={user} />} />
+            <Route path='transactions' element={<Transactions userId={user?._id} user={user} />} />
+            <Route path='markets' element={<Markets />} />
+            <Route path="net-position" element={<NetPosition />} />
+            <Route path="profile" element={<Profile />} />
+          </Route>
+          <Route path="/dashboard" element={<ProtectedRoutes><DashboardLayout /></ProtectedRoutes>}>
             <Route index element={<Dashboard />} />
-            <Route path="prize-list" element={<PrizePyramidList />} />
             <Route path="users" element={<AllUsers />} />
             <Route path="transactions" element={<AllTransactions />} />
             <Route path="user/:userId" element={<UserDetails />} />
             <Route path="user-stocks/:userId" element={<UserStocks />} />
-            <Route path="player/:teamId" element={<Player />} />
-            <Route path="matches/:id" element={<Match />} />
-            <Route path="matches/add" element={<AddMatch />} />
-            <Route path="matches/update/:matchId" element={<AddMatch />} />
-            <Route path="prize/add" element={<AddPrize />} />
-            <Route path="prize/update/:prizeId" element={<AddPrize />} />
           </Route>
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/passwordReset" element={<ResetPassword />} />

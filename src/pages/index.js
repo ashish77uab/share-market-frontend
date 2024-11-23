@@ -1,13 +1,16 @@
 import Login from "./Login";
 import Register from "./Register";
 import Profile from "./Profile";
+import NetPosition from "./NetPosition";
+import Markets from "./Markets";
+import Strategy from "./Strategy";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 import Home from "./Home";
 import Pricing from "./Pricing";
 import AboutUs from "./AboutUs";
 import ContactUs from "./ContactUs";
-import Wishlist from "./Wishlist";
+import UserDashboard from "./UserDashboard";
 import Dashboard from "./dashboard/Dashboard";
 import UserStocks from "./dashboard/UserStocks";
 import UserLevel from "./UserLevel";
@@ -30,7 +33,6 @@ export {
   ForgotPassword,
   ResetPassword,
   Home,
-  Wishlist,
   Dashboard,
   UserLevel,
   AllUsers,
@@ -41,5 +43,9 @@ export {
   PrizePyramidList,
   AddPrize,
   UserDetails,
-  Pricing
+  Pricing,
+  NetPosition,
+  Markets,
+  Strategy,
+  UserDashboard
 };

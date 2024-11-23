@@ -8,7 +8,7 @@ import TextInput from "../../components/forms/TextInput";
 import { reactIcons } from "../../utils/icons";
 import ToastMsg from "../../components/toast/ToastMsg";
 import { updatePassword } from "../../api/api";
-import { setLogout, setUser } from "../../redux/features/authSlice";
+import { setLogout } from "../../redux/features/authSlice";
 
 const initialState = {
   oldPassword: "",
@@ -55,6 +55,7 @@ const UpdatePassword = () => {
           return (
             <Form className="w-full space-y-4">
               <TextInput
+                isUser
                 label={"Old Password"}
                 type={toggle ? "text" : "password"}
                 placeholder="Enter old password"
@@ -73,6 +74,7 @@ const UpdatePassword = () => {
                 }
               />
               <TextInput
+                isUser
                 label={"New Password"}
                 type={toggle ? "text" : "password"}
                 placeholder="Enter new password"

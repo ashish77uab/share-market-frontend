@@ -64,7 +64,7 @@ const Pricing = () => {
 
   return (
     <section className="">
-       <div className="bg-primary-pink relative header-wrapper ">
+      <div className="bg-primary-pink relative header-wrapper ">
         <img className="absolute inset-0 w-full h-full" src="/images/bg-header.png" alt="bg-header" />
         <div className="container header-container-wrapper">
           <div className="flex flex-col items-center gap-8">
@@ -76,7 +76,7 @@ const Pricing = () => {
           </div>
         </div>
       </div>
-     
+
       <div className="container py-16">
         <h4 className="heading-4 mb-4">
           Choose one of our plans:
@@ -95,59 +95,59 @@ const Pricing = () => {
 
           </div>
         </div>
-          <div
-             ref={containerRef}
-             className="flex gap-1 my-10 overflow-x-auto w-full py-4 cursor-grab"
-             onMouseDown={handleMouseDown}
-             onMouseLeave={handleMouseLeave}
-             onMouseUp={handleMouseUp}
-             onMouseMove={handleMouseMove}
-             onTouchStart={handleTouchStart}
-             onTouchMove={handleTouchMove}
-             onTouchEnd={handleTouchEnd}
-          >
-            <div className="px-6 rounded-md shaodw-price py-8 bg-white max-w-[250px] w-full flex-shrink-0">
-              <h6 className="font-semibold text-base">Features / Plans</h6>
-              <h4 className="text-3xl font-bold">Price</h4>
-              <ul className="my-4">
-                {
-                  pricingFeatures?.map((feature) => (
-                    <li className="py-4 border-b text-sm border-b-zinc-100 last:border-none">
-                      {feature}
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-            {
-              pricingFeaturesList?.map((item) => (
-                <div className="px-6 w-[250px]  rounded-md shaodw-price py-8 bg-white max-w-xs text-center relative pb-10 flex-shrink-0">
-                  <div className="flex-1">
-                    <h6 className="font-semibold text-base">{item?.title}</h6>
-                    <h4 className="text-3xl font-bold">Rs. {numberWithCommas(item?.price)}</h4>
-                    <ul className="my-4">
-                      {
-                        item?.list?.map((feature) => (
-                          <li className="py-4 border-b text-sm border-b-zinc-100 last:border-none">
-                            {feature?.type === 'string' ? <span>{feature?.value}</span> : <div className={`flex text-3xl justify-center ${feature?.isCheck ? 'text-green-600' : 'text-red-500'}`}><span>{feature.value}</span></div>}
-                          </li>
-                        ))
-                      }
-
-                    </ul>
-                  </div>
-                  <div className="ax-center w-full bottom-4">
-                    <button className="btn-primary btn-sm ">Choose Plan</button>
-                  </div>
-
-
-
-                </div>
-              ))
-            }
-
-
+        <div
+          ref={containerRef}
+          className="flex gap-1 my-10 overflow-x-auto w-full py-4 cursor-grab"
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className="px-6 rounded-md shaodw-price py-8 bg-white max-w-[250px] w-full flex-shrink-0">
+            <h6 className="font-semibold text-base">Features / Plans</h6>
+            <h4 className="text-3xl font-bold">Price</h4>
+            <ul className="my-4">
+              {
+                pricingFeatures?.map((feature) => (
+                  <li className="py-4 border-b text-sm border-b-zinc-100 last:border-none">
+                    {feature}
+                  </li>
+                ))
+              }
+            </ul>
           </div>
+          {
+            pricingFeaturesList?.map((item) => (
+              <div className="px-6 w-[250px]  rounded-md shaodw-price py-8 bg-white max-w-xs text-center relative pb-10 flex-shrink-0">
+                <div className="flex-1">
+                  <h6 className="font-semibold text-base">{item?.title}</h6>
+                  <h4 className="text-3xl font-bold">Rs. {numberWithCommas(item?.price)}</h4>
+                  <ul className="my-4">
+                    {
+                      item?.list?.map((feature) => (
+                        <li className="py-4 border-b text-sm border-b-zinc-100 last:border-none">
+                          {feature?.type === 'string' ? <span>{feature?.value}</span> : <div className={`flex text-3xl justify-center ${feature?.isCheck ? 'text-green-600' : 'text-red-500'}`}><span>{feature.value}</span></div>}
+                        </li>
+                      ))
+                    }
+
+                  </ul>
+                </div>
+                <div className="ax-center w-full bottom-4">
+                  <button className="btn-primary btn-sm ">Choose Plan</button>
+                </div>
+
+
+
+              </div>
+            ))
+          }
+
+
+        </div>
       </div>
 
 

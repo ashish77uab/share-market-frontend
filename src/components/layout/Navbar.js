@@ -1,12 +1,10 @@
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { reactIcons } from "../../utils/icons";
 import { setLogout, setModalToggle, } from "../../redux/features/authSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { getUserToken, navbarLinks, pathsRequireToggle } from "../../utils/constants";
-import SignUpModal from "../modals/SignUpModal";
-import LoginModal from "../modals/LoginModal";
+import { getUserToken, navbarLinks, userMenuLinks } from "../../utils/constants";
 
 
 import React from 'react'
@@ -19,12 +17,11 @@ import { useScrollToTop } from "../../hooks/useScrollToTop";
 const Navbar = () => {
   useScrollToTop()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [toggleNavbar, setToggleNavbar] = useState(false)
-  const isRequireToggle = pathsRequireToggle?.includes(window.location.pathname)
+  // const isRequireToggle = pathsRequireToggle?.includes(window.location.pathname)
   const toggle = true
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, isLoginOpen, isSignUpOpen } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   const handleLogout = () => {
     dispatch(setLogout());
     navigate("/");
@@ -33,24 +30,9 @@ const Navbar = () => {
   const handleAuthToggle = (obj) => {
     dispatch(setModalToggle(obj))
   }
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      if (scrollPosition > 50) {
-        if (isRequireToggle) {
-          setToggleNavbar(true)
-        }
-      } else {
-        setToggleNavbar(false)
-      }
-    };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [isRequireToggle]);
   const isLoggedIn = getUserToken()
+  const navbarMainLinks = navbarLinks
   return (
     <>
       <nav className={`flex items-center  shadow-navbar border-b border-b-zinc-50 bg-transparent transition-all duration-200 py-[10px] sticky top-0 left-0  bg w-full z-[50] ${toggle ? 'bg-white' : 'bg-transparent'}`}>
@@ -62,12 +44,12 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="flex-grow  justify-end mr-10 items-center lg:flex hidden">
-              {navbarLinks?.map((item) => {
+              {navbarMainLinks?.map((item) => {
                 return (
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`font-semibold relative flex-center flex-col  ${toggle ? 'text-gray-800 hover:text-primary-pink ' : 'text-white hover:opacity-75'}  px-4  ${item.path === window.location.pathname ? "text-primary-pink [&>div]:block" : ""
+                    className={`font-semibold relative flex-center flex-col  ${toggle ? 'text-gray-800 hover:text-primary-pink ' : 'text-white hover:opacity-75'}  px-8  ${item.path === window.location.pathname ? "text-primary-pink [&>div]:block" : ""
                       }`}
                   >
                     {item.title} <div className={`w-[5px] h-[5px] hidden rounded-full absolute bottom-[-4px]  ${!toggle ? 'bg-primary-white' : 'bg-primary-pink'}`}></div>
@@ -114,24 +96,11 @@ const Navbar = () => {
                               <button
                                 onClick={() => navigate(`/profile/${user._id}`)}
                                 className={`${active
-                                  ? "bg-violet-500 text-white"
+                                  ? "bg-primary-pink text-white"
                                   : "text-gray-900"
                                   } group flex w-full items-center rounded-md px-6 py-2 text-base`}
                               >
                                 Profile
-                              </button>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <button
-                                onClick={() => navigate(`/wishlist`)}
-                                className={`${active
-                                  ? "bg-violet-500 text-white"
-                                  : "text-gray-900"
-                                  } group flex w-full items-center rounded-md px-6 py-2 text-base`}
-                              >
-                                Wishlist
                               </button>
                             )}
                           </Menu.Item>
@@ -140,21 +109,21 @@ const Navbar = () => {
                               <button
                                 onClick={() => navigate(`/dashboard`)}
                                 className={`${active
-                                  ? "bg-violet-500 text-white"
+                                  ? "bg-primary-pink text-white"
                                   : "text-gray-900"
                                   } group flex w-full items-center rounded-md px-6 py-2 text-base`}
                               >
                                 Go to dashboard
                               </button>
                             )}
-                          </Menu.Item>
-                          }
+                          </Menu.Item>}
+
                           <Menu.Item>
                             {({ active }) => (
                               <button
                                 onClick={handleLogout}
                                 className={`${active
-                                  ? "bg-violet-500 text-white"
+                                  ? "bg-primary-pink text-white"
                                   : "text-gray-900"
                                   } group flex w-full items-center rounded-md px-6 py-2 text-base`}
                               >

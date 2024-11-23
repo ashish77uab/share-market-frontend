@@ -8,26 +8,26 @@ const Funds = ({ user }) => {
     const [isWithdrawOpen, setIsWithdrawOpen] = useState(false)
     return (
         <>
-            <div>
-                <header className="py-4 border-b border-b-zinc-300 px-4 lg:px-10">
-                    <h4 className="heading-4 text-primary-pink">Your Wallet</h4>
+            <div className=''>
+                <header className="py-4 border-b-dark">
+                    <h4 className="heading-4 ">Your Wallet</h4>
                 </header>
-                <div className="py-6 px-4 lg:px-10">
+                <div className="py-6 ">
                     <div className="flex items-center gap-2 py-2">
-                        <p className="text-base font-medium  text-gray-900">Total Balance:</p>
+                        <p className="text-base font-medium  ">Total Balance:</p>
                         <p className="text-base font-bold">Rs. {numberWithCommas(user?.wallet?.amount)}</p>
 
                     </div>
                     <div className="flex items-center gap-2 my-4">
-                        <button onClick={()=>setIsDepositOpen(true)} className="btn-green">Deposit</button>
-                        <button onClick={()=>setIsWithdrawOpen(true)} className="btn-red">Withdraw</button>
+                        <button onClick={() => setIsDepositOpen(true)} className="btn-green">Deposit</button>
+                        <button onClick={() => setIsWithdrawOpen(true)} className="btn-red">Withdraw</button>
                     </div>
                     <div>
-                        <h5 className="heading-5 text-primary-pink py-2">Deposit via UPI ID</h5>
-                        <div className='bg-zinc-100 border-c px-6 py-4 rounded-md flex items-center justify-between gap-2'>
+                        <h5 className="heading-5 text-white py-2">Deposit via UPI ID</h5>
+                        <div className='bg-primary-darkBlueSupport min-w-full lg:min-w-[600px] border-dark px-6 py-6  rounded-md inline-flex items-center justify-between gap-2'>
                             <span>9874563211@ybl</span>
                         </div>
-                       
+
                     </div>
                     <div>
                         <p className='text-muted py-2 '>

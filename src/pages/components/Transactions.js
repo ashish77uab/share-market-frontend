@@ -8,7 +8,7 @@ import { numberWithCommas } from '../../utils/helpers';
 import { ACTIVE_TYPE, TRANSACTION_STATUS } from '../../utils/constants';
 import Pagination from '../../components/Pagination';
 
-const Transactions = ({ userId, isAdmin,user }) => {
+const Transactions = ({ userId, isAdmin, user }) => {
     const [actionType, setActionType] = useState(ACTIVE_TYPE.deposit)
     const [query, setQuery] = useState({
         page: 1,
@@ -36,20 +36,20 @@ const Transactions = ({ userId, isAdmin,user }) => {
     }, [actionType, query, userId]);
     const renderStatusClassName = (status) => {
         if (status === TRANSACTION_STATUS.accepted) {
-            return 'text-green-800'
+            return 'text-green-500'
         }
         if (status === TRANSACTION_STATUS.rejected) {
-            return 'text-red-800'
+            return 'text-red-500'
         }
         return 'text-primary-gray'
     }
     return (
-        <div>
-            <header className="py-4 border-y yorder-b-zinc-300 px-10">
-                <h4 className="heading-4 text-primary-pink">Transactions</h4>
+        <div className=''>
+            <header className={`  ${isAdmin ? ' border-b border-b-zinc-300 px-10 py-4' : 'border-b-dark pb-4 '}`}>
+                <h4 className={`heading-4  ${isAdmin ? 'text-primary-pink' : 'text-white'}`}>Transactions</h4>
             </header>
-            <div className="py-6 px-4  md:px-10">
-                <div className="flex lg:flex-row flex-col items-center justify-between gap-4">
+            <div className={` ${isAdmin ? 'py-6 px-4  md:px-10' : 'py-4'}`}>
+                <div className="flex lg:flex-row flex-col lg:items-center justify-between gap-4">
                     <div className="flex gap-4 items-center">
                         <button onClick={() => {
                             setActionType(ACTIVE_TYPE.deposit)
@@ -60,7 +60,7 @@ const Transactions = ({ userId, isAdmin,user }) => {
                     </div>
                     <div className='flex items-center gap-2'>
                         <span>Balance:</span>
-                        <b>Rs. {user?.wallet?.amount}</b>
+                        <b>Rs. {numberWithCommas(user?.wallet?.amount)}</b>
                     </div>
                 </div>
                 <div className='my-6 w-full overflow-x-auto'>

@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import Register from '../../pages/Register'
-import { navbarLinks } from "../../utils/constants";
 import { Link } from "react-router-dom";
 import { reactIcons } from "../../utils/icons";
 import AuthButton from "../../pages/components/AuthButton";
+import { getUserToken, navbarLinks } from "../../utils/constants";
 
 const MobileMenu = ({ isOpen, closeModal, handleSignUpClick, handleSignInClick, toggle }) => {
+    const isLoggedIn = getUserToken()
     const dialogRef = useRef(null);
     return (
         <Transition appear show={isOpen} as={Fragment}>
@@ -61,7 +61,7 @@ const MobileMenu = ({ isOpen, closeModal, handleSignUpClick, handleSignInClick, 
                                         )
                                     })}
                                 </div>
-                                <div className="px-6 py-4 border-t border-t-zinc-100">
+                                {!isLoggedIn && <div className="px-6 py-4 border-t border-t-zinc-100">
                                     <AuthButton
                                         isMobileMenu
                                         handleSignUpClick={() => {
@@ -74,7 +74,7 @@ const MobileMenu = ({ isOpen, closeModal, handleSignUpClick, handleSignInClick, 
                                         }}
                                         toggle={toggle}
                                     />
-                                </div>
+                                </div>}
                             </Dialog.Panel>
                         </Transition.Child>
                     </div>

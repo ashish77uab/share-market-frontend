@@ -29,7 +29,9 @@ module.exports = {
           danger: '#dc3545',
           light: '#f8f9fa',
           dark: '#343a40',
-          btnColor:'#6772e5'
+          btnColor: '#6772e5',
+          darkBlue: '#0b1024',
+          darkBlueSupport: '#111a33',
         },
       },
       boxShadow: {

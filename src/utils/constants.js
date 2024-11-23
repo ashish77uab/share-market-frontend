@@ -1,9 +1,12 @@
-import { io } from "socket.io-client";
 import { reactIcons } from "./icons";
 export const navbarLinks = [
   {
     path: "/",
     title: "Home",
+  },
+  {
+    path: "/strategy",
+    title: "Strategy",
   },
   {
     path: "/about",
@@ -19,7 +22,35 @@ export const navbarLinks = [
   },
 
 ]
-export const pathsRequireToggle=navbarLinks?.filter(item=>item!=='/')?.map(item=>item?.path)
+export const userMenuLinks = [
+  {
+    path: "/user/dashboard",
+    title: "Dashboard",
+
+  },
+  {
+    path: "/user/markets",
+    title: "Markets",
+  },
+  {
+    path: "/user/net-position",
+    title: "Net Position",
+  },
+
+  {
+    path: "/user/transactions",
+    title: "Transactions",
+  },
+  {
+    path: "/user/funds",
+    title: "Funds",
+  },
+
+
+
+
+]
+export const pathsRequireToggle = navbarLinks?.filter(item => item !== '/')?.map(item => item?.path)
 export const homeSection2Data = [
   {
     img: "/images/s21.png",
@@ -163,26 +194,26 @@ export const homeSection6Data = [
 ]
 
 
-export const aboutInfo=[
+export const aboutInfo = [
   {
-  icon:reactIcons.users,
-  number:'1000k+',
-  title:'signups'
+    icon: reactIcons.users,
+    number: '1000k+',
+    title: 'signups'
   },
   {
-  icon:reactIcons.chart,
-  number:'101k+',
-  title:'algos'
+    icon: reactIcons.chart,
+    number: '101k+',
+    title: 'algos'
   },
   {
-  icon:reactIcons.giChart,
-  number:'500k+',
-  title:'live trades daily'
+    icon: reactIcons.giChart,
+    number: '500k+',
+    title: 'live trades daily'
   },
   {
-  icon:reactIcons.safety,
-  number:'100+',
-  title:'broker APIs connected'
+    icon: reactIcons.safety,
+    number: '100+',
+    title: 'broker APIs connected'
   },
 
 ]
@@ -222,7 +253,7 @@ export const pricingFeaturesList = [
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
       {
         type: 'icon',
@@ -235,7 +266,7 @@ export const pricingFeaturesList = [
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       }
     ]
   },
@@ -262,12 +293,12 @@ export const pricingFeaturesList = [
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
       {
         type: 'string',
@@ -276,7 +307,7 @@ export const pricingFeaturesList = [
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
     ]
   },
@@ -303,12 +334,12 @@ export const pricingFeaturesList = [
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
       {
         type: 'string',
@@ -317,7 +348,7 @@ export const pricingFeaturesList = [
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
     ]
   },
@@ -344,12 +375,12 @@ export const pricingFeaturesList = [
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
       {
         type: 'string',
@@ -358,7 +389,7 @@ export const pricingFeaturesList = [
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
     ]
   },
@@ -385,12 +416,12 @@ export const pricingFeaturesList = [
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
       {
         type: 'string',
@@ -399,7 +430,7 @@ export const pricingFeaturesList = [
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
     ]
   },
@@ -426,12 +457,12 @@ export const pricingFeaturesList = [
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
       {
         type: 'string',
@@ -440,7 +471,7 @@ export const pricingFeaturesList = [
       {
         type: 'icon',
         value: reactIcons.check,
-        isCheck:true
+        isCheck: true
       },
     ]
   }
@@ -461,11 +492,7 @@ export const links = [
     title: "Transactions",
     icon: reactIcons.list,
   },
-  {
-    path: "prize-list",
-    title: "Prize Distribution",
-    icon: reactIcons.prize,
-  },
+
 
 
 ];

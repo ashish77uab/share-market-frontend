@@ -1,8 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import ToastMsg from "../toast/ToastMsg";
 import { Form, Formik } from "formik";
 import TextInput from "../forms/TextInput";
@@ -21,8 +19,6 @@ const SingleInfo = ({ title, value }) => {
   </div>
 }
 const DepositMoney = ({ closeModal }) => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (values, actionForm) => {
@@ -110,7 +106,7 @@ const DepositModal = ({ isOpen, closeModal }) => {
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex h-full w-full items-center justify-center">
+          <div className="flex min-h-full items-center justify-center p-4 ">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -121,7 +117,7 @@ const DepositModal = ({ isOpen, closeModal }) => {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel
-                className="transform overflow-hidden relative flex flex-col justify-between max-h-[600px] overflow-y-auto  max-w-2xl w-full rounded-lg   bg-white   !py-0 !px-0  shadow-lg"
+                className="transform overflow-hidden relative flex flex-col justify-between   max-w-2xl w-full rounded-lg   bg-white   !py-0 !px-0  shadow-lg"
               >
                 <div role="button" onClick={closeModal} className=" w-[36px] h-[36px] absolute top-3 right-3 rounded-full flex-center text-2xl text-white bg-primary-pink ">{reactIcons.close}</div>
 

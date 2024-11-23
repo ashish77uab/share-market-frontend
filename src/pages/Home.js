@@ -2,18 +2,31 @@ import React from "react";
 import { homeSection2Data, homeSection5Data, homeSection6Data, homeSection7Data, homeSection8Data } from "../utils/constants";
 import { Link } from "react-router-dom";
 import ContactUsForm from "./components/ContactUsForm";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setModalToggle } from "../redux/features/authSlice";
-import SignUpModal from "../components/modals/SignUpModal";
+import TradingViewTickerTape from "./components/TradingViewTickerTape";
+import TopStories from "./components/TopStories";
 
 const Home = () => {
   const dispatch = useDispatch()
-  const { isSignUpOpen } = useSelector((state) => state.auth);
   const handleAuthToggle = (obj) => {
     dispatch(setModalToggle(obj))
   }
+  const fileUrl = "/file/algo.txt"; // Replace with your file's URL
+  const fileName = "algo.txt"; // Replace with the desired download file name
+
+  const handleDownload = () => {
+    // Create an anchor element and simulate a click
+    const a = document.createElement('a');
+    a.href = fileUrl;
+    a.download = fileName; // This will suggest a filename for the download
+    a.click();
+  };
   return (
     <>
+      <div>
+        <TradingViewTickerTape />
+      </div>
       <section className="">
         <div className="bg-white relative md:h-[calc(100dvh-162px)] header-wrapper max-h-[700px] ">
           <img className="absolute inset-0 w-full h-full" src="/images/bg-header.png" alt="bg-header" />
@@ -41,6 +54,7 @@ const Home = () => {
                   Simply Connect With
                   Powerful Algorithms</h3>
                 <img className="w-full max-w-[300px] lg:mx-0 mx-auto lg:mt-0 mt-8 lg:max-w-[500px]" src="/images/s_block_image.png" alt="s_block_image" />
+
               </div>
               <div className="grid lg:grid-cols-2 col-span-7 gap-4">
                 {
@@ -55,6 +69,11 @@ const Home = () => {
                     </div>
                   })
                 }
+                <div>
+                  <button className="btn-primary py-3 mt-2" onClick={handleDownload}>
+                    Download past data
+                  </button>
+                </div>
               </div>
 
             </div>
@@ -62,8 +81,13 @@ const Home = () => {
 
         </div>
         <div className="container py-16">
-          <div className="bg-primary-pink  max-w-7xl mx-auto px-4 py-10 rounded-xl">
-            <img className="w-full h-full object-contain" src="/images/section3.png" alt="" />
+          <div className="flex lg:flex-row flex-col lg:items-start gap-10">
+            <div className="bg-primary-pink flex-grow mx-auto px-4 py-10 rounded-xl">
+              <img className="w-full h-full object-contain" src="/images/section3.png" alt="" />
+            </div>
+            <div className="lg:w-[600px]">
+              <TopStories />
+            </div>
           </div>
         </div>
         <div className="py-20  bg-pink-50/40">
@@ -89,6 +113,7 @@ const Home = () => {
           </div>
 
         </div>
+
         <div className="py-20  ">
           <div className="container">
             <header>
