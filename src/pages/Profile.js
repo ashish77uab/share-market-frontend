@@ -107,7 +107,7 @@ const Profile = () => {
                             </>}
                             {activeTab === ACTIVE_TAB?.password && <>
                                 <div>
-                                    <header className="py-4 border-b border-b-zinc-300 px-4 lg:px-10">
+                                    <header className="py-4  border-b-dark px-4 lg:px-10">
                                         <h4 className="heading-4 text-primary-pink">Change Password</h4>
                                     </header>
                                     <div className="py-6  px-4 lg:px-10">
