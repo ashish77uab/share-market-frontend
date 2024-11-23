@@ -33,6 +33,7 @@ import { useEffect } from "react";
 import MainLayout from "./components/layout/MainLayout";
 import DashboardLayout from "./components/layout/DashboardLayout";
 import ProtectedRoutes from "./ProtectedRoutes";
+import RenderModal from "./RenderModal";
 function App() {
   const dispatch = useDispatch();
   const getUserData = async () => {
@@ -57,6 +58,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <RenderModal />
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />

@@ -20,24 +20,24 @@ const Navbar = () => {
   useScrollToTop()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [toggleNavbar, setToggleNavbar] = useState(false)
-  const isRequireToggle=pathsRequireToggle?.includes(window.location.pathname)
-  const toggle=true
+  const isRequireToggle = pathsRequireToggle?.includes(window.location.pathname)
+  const toggle = true
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user,isLoginOpen,isSignUpOpen} = useSelector((state) => state.auth);
+  const { user, isLoginOpen, isSignUpOpen } = useSelector((state) => state.auth);
   const handleLogout = () => {
     dispatch(setLogout());
     navigate("/");
     window.location.reload()
   };
-  const handleAuthToggle=(obj)=>{
+  const handleAuthToggle = (obj) => {
     dispatch(setModalToggle(obj))
   }
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       if (scrollPosition > 50) {
-        if(isRequireToggle){
+        if (isRequireToggle) {
           setToggleNavbar(true)
         }
       } else {
@@ -70,7 +70,7 @@ const Navbar = () => {
                     className={`font-semibold relative flex-center flex-col  ${toggle ? 'text-gray-800 hover:text-primary-pink ' : 'text-white hover:opacity-75'}  px-4  ${item.path === window.location.pathname ? "text-primary-pink [&>div]:block" : ""
                       }`}
                   >
-                    {item.title} <div className={`w-[5px] h-[5px] hidden rounded-full absolute bottom-[-4px]  ${!toggle?'bg-primary-white' :'bg-primary-pink'}`}></div>
+                    {item.title} <div className={`w-[5px] h-[5px] hidden rounded-full absolute bottom-[-4px]  ${!toggle ? 'bg-primary-white' : 'bg-primary-pink'}`}></div>
                   </Link>
                 )
               })}
@@ -86,7 +86,7 @@ const Navbar = () => {
                     >
                       <img
                         className="w-10 h-10 object-cover overflow-hidden rounded-full"
-                        src={user?.clientImage||"/images/user.png"}
+                        src={user?.clientImage || "/images/user.png"}
                         alt="user"
                       />
                       <span className={`${toggle ? 'text-black' : 'text-white'}`}>{reactIcons?.arrowDown}</span>
@@ -158,7 +158,7 @@ const Navbar = () => {
                                   : "text-gray-900"
                                   } group flex w-full items-center rounded-md px-6 py-2 text-base`}
                               >
-                                 Log out
+                                Log out
                               </button>
                             )}
                           </Menu.Item>
@@ -172,10 +172,10 @@ const Navbar = () => {
                 {!isLoggedIn && (
                   <AuthButton
                     handleSignUpClick={() => {
-                      handleAuthToggle({key:'isSignUpOpen',value:true})
+                      handleAuthToggle({ key: 'isSignUpOpen', value: true })
                     }}
                     handleSignInClick={() => {
-                      handleAuthToggle({key:'isLoginOpen',value:true})
+                      handleAuthToggle({ key: 'isLoginOpen', value: true })
                     }}
                     toggle={toggle}
                   />
@@ -188,22 +188,9 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <SignUpModal
-        isOpen={isSignUpOpen}
-        handleAuthToggle={handleAuthToggle}
-        closeModal={() => {
-          handleAuthToggle({key:'isSignUpOpen',value:false})
-        }} />
-      <LoginModal
-        isOpen={isLoginOpen}
-        handleAuthToggle={handleAuthToggle}
-        closeModal={() => {
-          handleAuthToggle({key:'isLoginOpen',value:false})
-        }}
-      />
       <MobileMenu
-        handleSignUpClick={ ()=> handleAuthToggle({key:'isSignUpOpen',value:true})}
-        handleSignInClick={ ()=> handleAuthToggle({key:'isLoginOpen',value:true})}
+        handleSignUpClick={() => handleAuthToggle({ key: 'isSignUpOpen', value: true })}
+        handleSignInClick={() => handleAuthToggle({ key: 'isLoginOpen', value: true })}
         toggle={toggle}
         isOpen={isMobileMenuOpen}
         closeModal={() => setIsMobileMenuOpen(false)} />
