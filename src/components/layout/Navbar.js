@@ -91,7 +91,7 @@ const Navbar = () => {
                             <p className="text-muted text-sm font-medium">{user?.email}</p>
 
                           </div>
-                          <Menu.Item>
+                          {/* <Menu.Item>
                             {({ active }) => (
                               <button
                                 onClick={() => navigate(`/profile/${user._id}`)}
@@ -103,7 +103,7 @@ const Navbar = () => {
                                 Profile
                               </button>
                             )}
-                          </Menu.Item>
+                          </Menu.Item> */}
                           {user?.role === 'Admin' && <Menu.Item>
                             {({ active }) => (
                               <button
