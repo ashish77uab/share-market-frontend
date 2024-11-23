@@ -4,11 +4,14 @@ import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { reactIcons } from "../../utils/icons";
 import AuthButton from "../../pages/components/AuthButton";
-import { getUserToken, navbarLinks } from "../../utils/constants";
+import { getUserToken, navbarLinks, userMenuLinks } from "../../utils/constants";
+import { useSelector } from "react-redux";
 
 const MobileMenu = ({ isOpen, closeModal, handleSignUpClick, handleSignInClick, toggle }) => {
     const isLoggedIn = getUserToken()
     const dialogRef = useRef(null);
+    const { user } = useSelector((state) => state.auth);
+    const mobileLinks = user?.role === 'User' ? userMenuLinks : navbarLinks
     return (
         <Transition appear show={isOpen} as={Fragment}>
             <Dialog as="div" className="relative z-[1000]" onClose={closeModal} initialFocus={dialogRef ? dialogRef : undefined}>
@@ -47,7 +50,7 @@ const MobileMenu = ({ isOpen, closeModal, handleSignUpClick, handleSignInClick, 
                                     <div onClick={closeModal} className=" w-[36px] h-[36px] rounded-full flex-center text-2xl text-white bg-primary-pink ">{reactIcons.close}</div>
                                 </div>
                                 <div className="flex flex-grow flex-col gap-1 pt-8">
-                                    {navbarLinks?.map((item) => {
+                                    {mobileLinks?.map((item) => {
                                         return (
                                             <Link
                                                 onClick={closeModal}
