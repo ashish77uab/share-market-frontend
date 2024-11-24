@@ -185,6 +185,7 @@ export const getAllUserNotifications = (data) => API.get(`auth/notifications?ski
 export const deleteNotification = (notificationId) => API.delete(`auth/notifications/delete/${notificationId}`);
 export const readNotification = (notificationId) => API.put(`auth/notifications/read/${notificationId}`);
 
+export const updateWallet = (userId, data) => API.post(`auth/update-wallet/${userId}`, data);
 export const getUserStocks = (data) => {
   const queryString = new URLSearchParams(data)?.toString()
   return API.get(`stock/user-stocks?${queryString}`)

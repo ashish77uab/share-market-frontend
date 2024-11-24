@@ -7,8 +7,18 @@ import RenderNoData from '../../components/layout/RenderNoData';
 import { numberWithCommas } from '../../utils/helpers';
 import { ACTIVE_TYPE, TRANSACTION_STATUS } from '../../utils/constants';
 import Pagination from '../../components/Pagination';
+import UpdateWalletModal from '../../components/modals/UpdateWalletModal';
 
-const Transactions = ({ userId, isAdmin, user }) => {
+const Transactions = ({
+    userId,
+    isAdmin,
+    user,
+    isUpdateWalletOpen,
+    setIsUpdateWalletOpen,
+    walletData,
+    setWalletData,
+    getSingleUser
+}) => {
     const [actionType, setActionType] = useState(ACTIVE_TYPE.deposit)
     const [query, setQuery] = useState({
         page: 1,
@@ -44,70 +54,81 @@ const Transactions = ({ userId, isAdmin, user }) => {
         return 'text-primary-gray'
     }
     return (
-        <div className=''>
-            <header className={`  ${isAdmin ? ' border-b border-b-zinc-300 px-10 py-4' : 'border-b-dark pb-4 '}`}>
-                <h4 className={`heading-4  ${isAdmin ? 'text-primary-pink' : 'text-white'}`}>Transactions</h4>
-            </header>
-            <div className={` ${isAdmin ? 'py-6 px-4  md:px-10' : 'py-4'}`}>
-                <div className="flex lg:flex-row flex-col lg:items-center justify-between gap-4">
-                    <div className="flex gap-4 items-center">
-                        <button onClick={() => {
-                            setActionType(ACTIVE_TYPE.deposit)
-                        }} className={`${actionType === ACTIVE_TYPE?.deposit ? 'btn-primary' : 'btn-outline-primary'}`}>Deposit</button>
-                        <button onClick={() => {
-                            setActionType(ACTIVE_TYPE.withdraw)
-                        }} className={`${actionType === ACTIVE_TYPE?.withdraw ? 'btn-primary' : 'btn-outline-primary'}`}>Withdraw</button>
+        <>
+            <div className=''>
+                <header className={`  ${isAdmin ? ' border-b border-b-zinc-300 px-10 py-4' : 'border-b-dark pb-4 '}`}>
+                    <h4 className={`heading-4  ${isAdmin ? 'text-primary-pink' : 'text-white'}`}>Transactions</h4>
+                </header>
+                <div className={` ${isAdmin ? 'py-6 px-4  md:px-10' : 'py-4'}`}>
+                    <div className="flex lg:flex-row flex-col lg:items-center justify-between gap-4">
+                        <div className="flex gap-4 items-center">
+                            <button onClick={() => {
+                                setActionType(ACTIVE_TYPE.deposit)
+                            }} className={`${actionType === ACTIVE_TYPE?.deposit ? 'btn-primary' : 'btn-outline-primary'}`}>Deposit</button>
+                            <button onClick={() => {
+                                setActionType(ACTIVE_TYPE.withdraw)
+                            }} className={`${actionType === ACTIVE_TYPE?.withdraw ? 'btn-primary' : 'btn-outline-primary'}`}>Withdraw</button>
+                        </div>
+                        <div className='flex items-center gap-2'>
+                            <span>Balance:</span>
+                            <b>Rs. {numberWithCommas(user?.wallet?.amount)}</b>
+                            {isAdmin && <button onClick={() => {
+                                setIsUpdateWalletOpen(true)
+                                console.log(user)
+                                setWalletData({
+                                    userId: user?._id,
+                                    amount: user?.wallet?.amount,
+                                })
+                            }} className='btn-outline-primary'>Update Amount</button>}
+                        </div>
                     </div>
-                    <div className='flex items-center gap-2'>
-                        <span>Balance:</span>
-                        <b>Rs. {numberWithCommas(user?.wallet?.amount)}</b>
-                    </div>
-                </div>
-                <div className='my-6 w-full overflow-x-auto'>
-                    <table>
-                        <thead>
-                            <th>Sr.No</th>
-                            <th>Amount</th>
-                            <th>Transaction ID</th>
-                            <th>Transction Type</th>
-                            <th>Date</th>
-                        </thead>
-                        <tbody>
-                            {transactions?.transactions?.map((transaction, index) => (
-                                <tr>
-                                    <td>{query?.limit * (query?.page - 1) + index + 1}</td>
-                                    <td>
-                                        <b>Rs. {numberWithCommas(transaction?.amount)}</b>
+                    <div className='my-6 w-full overflow-x-auto'>
+                        <table>
+                            <thead>
+                                <th>Sr.No</th>
+                                <th>Amount</th>
+                                <th>Transaction ID</th>
+                                <th>Transction Type</th>
+                                <th>Date</th>
+                            </thead>
+                            <tbody>
+                                {transactions?.transactions?.map((transaction, index) => (
+                                    <tr>
+                                        <td>{query?.limit * (query?.page - 1) + index + 1}</td>
+                                        <td>
+                                            <b>Rs. {numberWithCommas(transaction?.amount)}</b>
+                                        </td>
+                                        <td>{transaction?.transactionId}</td>
+                                        <td className={`font-semibold ${renderStatusClassName(transaction?.status)}`}>{transaction?.status}</td>
+                                        <td className='whitespace-nowrap'>{moment(transaction?.createdAt).format('DD MMM , YYYY hh:mm a')}</td>
+                                    </tr>
+                                ))}
+                                {transactions?.totalPages < 1 && <tr>
+                                    <td colSpan={5}>
+                                        <RenderNoData title={'No transactions found'} />
                                     </td>
-                                    <td>{transaction?.transactionId}</td>
-                                    <td className={`font-semibold ${renderStatusClassName(transaction?.status)}`}>{transaction?.status}</td>
-                                    <td className='whitespace-nowrap'>{moment(transaction?.createdAt).format('DD MMM , YYYY hh:mm a')}</td>
-                                </tr>
-                            ))}
-                            {transactions?.totalPages < 1 && <tr>
-                                <td colSpan={5}>
-                                    <RenderNoData title={'No transactions found'} />
-                                </td>
 
-                            </tr>}
-                        </tbody>
-                    </table>
+                                </tr>}
+                            </tbody>
+                        </table>
 
+                    </div>
+                    <div className="my-4">
+                        <Pagination
+                            handlePageClick={(page) => {
+                                setQuery(prev => ({ ...prev, page: page?.selected + 1 }))
+                            }}
+                            pageCount={transactions?.totalPages} />
+
+                    </div>
                 </div>
-                <div className="my-4">
-                    <Pagination
-                        handlePageClick={(page) => {
-                            setQuery(prev => ({ ...prev, page: page?.selected + 1 }))
-                        }}
-                        pageCount={transactions?.totalPages} />
+
+                <div>
 
                 </div>
             </div>
-
-            <div>
-
-            </div>
-        </div>
+            <UpdateWalletModal getSingleUser={getSingleUser} isOpen={isUpdateWalletOpen} walletData={walletData} closeModal={() => setIsUpdateWalletOpen(false)} />
+        </>
     )
 }
 

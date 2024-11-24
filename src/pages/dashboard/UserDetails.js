@@ -13,6 +13,8 @@ const UserDetails = () => {
   const { userId } = useParams()
   const [user, setUser] = useState(null);
   const [fetchLoading, setFetchLoading] = useState(false);
+  const [isUpdateWalletOpen, setIsUpdateWalletOpen] = useState(false);
+  const [walletData, setWalletData] = useState({});
   const getSingleUser = async (userId) => {
     setFetchLoading(true)
     try {
@@ -80,10 +82,20 @@ const UserDetails = () => {
             </div>
           </div>
           <div>
-              <Transactions isAdmin  userId={userId} user={user}/>
+            <Transactions
+              isUpdateWalletOpen={isUpdateWalletOpen}
+              setIsUpdateWalletOpen={setIsUpdateWalletOpen}
+              walletData={walletData}
+              setWalletData={setWalletData}
+              isAdmin
+              userId={userId}
+              user={user}
+              getSingleUser={getSingleUser}
+            />
           </div>
         </div>
       </div>
+
     </>
   );
 };

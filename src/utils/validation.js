@@ -45,6 +45,12 @@ export const withdrawFundFormSchema = yup.object().shape({
         .string()
         .required("PAN Number is required"),
 });
+export const updateWalletSchema = yup.object().shape({
+    amount: yup
+        .string()
+        .required("Amount is required"),
+
+});
 export const stockValidationSchema = yup.object().shape({
     name: yup
         .string()
