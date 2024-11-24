@@ -13,12 +13,8 @@ import ContactUs from "./ContactUs";
 import UserDashboard from "./UserDashboard";
 import Dashboard from "./dashboard/Dashboard";
 import UserStocks from "./dashboard/UserStocks";
-import UserLevel from "./UserLevel";
 import AllUsers from "./dashboard/AllUsers";
-import Match from "./dashboard/Match";
 import AddMatch from "./dashboard/AddMatch";
-import Player from "./dashboard/Player";
-import PrizePyramidList from "./dashboard/PrizePyramidList";
 import UserDetails from "./dashboard/UserDetails";
 import AddPrize from "./dashboard/AddPrize";
 import AllTransactions from "./dashboard/AllTransactions";
@@ -34,13 +30,9 @@ export {
   ResetPassword,
   Home,
   Dashboard,
-  UserLevel,
   AllUsers,
   UserStocks,
-  Match,
   AddMatch,
-  Player,
-  PrizePyramidList,
   AddPrize,
   UserDetails,
   Pricing,

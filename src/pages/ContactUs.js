@@ -28,8 +28,15 @@ const ContactUs = () => {
                     <span className="text-lg font-medium">044 2450 0009</span>
                   </li>
                   <li className='flex items-start gap-4'>
+                    <span className='text-3xl text-primary-pink'>{reactIcons.whatsapp}</span>
+                    <span className="text-lg font-medium">9193868729</span>
+                  </li>
+                  <li className='flex items-start gap-4'>
                     <span className='text-3xl text-primary-pink' >{reactIcons.location}</span>
-                    <span className="text-lg font-medium">Block A, International Tech Park, 334, Rajiv Gandhi Salai, Ezhil Nagar, Elcot Sez, Sholinganallur, Chennai, Tamil Nadu 600119</span>
+                    <span className="text-lg font-medium">
+                      Vaishnavi Tech Park,
+                      3rd & 4th Floor, Sarjpur Main Road
+                      Bellandur, Bengaluru - 560103</span>
                   </li>
                   <li className='flex items-start gap-4'>
                     <span className='text-3xl text-primary-pink' >{reactIcons.email}</span>

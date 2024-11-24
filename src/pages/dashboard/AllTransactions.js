@@ -205,12 +205,21 @@ const AllTransactions = () => {
                 }
 
                 )}
-                <tr>
-                  <td colSpan={8}>
-                    {transactions?.transactions?.length < 1 && !fetchLoading && <RenderNoData title="No transactions found." />}
-                    {fetchLoading && <div className="py-8 text-center font-semibold">Loading please wait....</div>}
-                  </td>
-                </tr>
+                {transactions?.totalTransactions < 1 && !fetchLoading && (
+                  <tr>
+                    <td colSpan={8}>
+                      <RenderNoData title="No transactions found." />
+                    </td>
+                  </tr>
+                )}
+                {fetchLoading && (
+                  <tr>
+                    <td colSpan={8}>
+                      <div className="py-8 text-center font-semibold">Loading please wait....</div>
+                    </td>
+                  </tr>
+                )}
+
               </tbody>
             </table>
           </div>

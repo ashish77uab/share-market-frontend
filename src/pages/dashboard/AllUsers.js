@@ -108,12 +108,21 @@ const AllUsers = () => {
                 }
 
                 )}
-                <tr>
-                  <td colSpan={5}>
-                    {users?.users?.length < 1 && !fetchLoading && <RenderNoData title="No users found." />}
-                    {fetchLoading && <div className="py-8 text-center font-semibold">Loading please wait....</div>}
-                  </td>
-                </tr>
+
+                {users?.totalUsers < 1 && !fetchLoading && (
+                  <tr>
+                    <td colSpan={5}>
+                      <RenderNoData title="No users found." />
+                    </td>
+                  </tr>
+                )}
+                {fetchLoading && (
+                  <tr>
+                    <td colSpan={5}>
+                      <div className="py-8 text-center font-semibold">Loading please wait....</div>
+                    </td>
+                  </tr>
+                )}
 
               </tbody>
             </table>

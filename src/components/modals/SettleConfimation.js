@@ -2,7 +2,7 @@ import React from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
-const DeleteConfirmation = ({ isOpen, closeModal, handleDelete, title, loading }) => {
+const SettleConfimation = ({ isOpen, closeModal, handleConfirm, title, loading }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -34,12 +34,12 @@ const DeleteConfirmation = ({ isOpen, closeModal, handleDelete, title, loading }
                 className="w-full max-w-md transform overflow-hidden rounded-md bg-white p-6 text-left align-middle shadow-xl transition-all"
               >
                 <Dialog.Title as="h4" className="heading-4 text-center">
-                  Are you sure you want to delete this {title}?
+                  Are you sure you want to settle this {title}?
                 </Dialog.Title>
 
                 <div className="mt-4 flex justify-center gap-6 items-center">
-                  <button onClick={handleDelete} className="btn-primary">
-                    {loading ? 'Deleting...' : 'Yes'}
+                  <button onClick={handleConfirm} className="btn-primary">
+                    {loading ? 'Loading...' : 'Yes'}
                   </button>
                   <button onClick={closeModal} className="btn-red">
                     No
@@ -54,4 +54,4 @@ const DeleteConfirmation = ({ isOpen, closeModal, handleDelete, title, loading }
   );
 };
 
-export default DeleteConfirmation;
+export default SettleConfimation;

@@ -25,7 +25,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="flex lg:flex-row flex-col justify-between gap-4">
                         <div className='max-w-lg'>
-                            <img  className=' w-[210px]' src="/images/logo.png" alt="logo" />
+                            <img className=' w-[210px]' src="/images/logo.png" alt="logo" />
                             <p className='max-w-[600px]  text-muted text-white mt-4'>We Provide an affordable trading platform to help everyone to switch into an effortless trading system which offers Autologin features with Best & Pre-tested Profitable Strategies with Real Time Execution and Zero Latency.</p>
                         </div>
                         <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
@@ -34,7 +34,7 @@ const Footer = () => {
                                 <ul>
                                     {
                                         footerLinks?.map((link) => {
-                                            return <li className='py-2' key={link.title}><Link  to={link.link} className='text-white font-medium hover:text-primary-blue hover:underline'>{link.title}</Link></li>
+                                            return <li className='py-2' key={link.title}><Link to={link.link} className='text-white font-medium hover:text-primary-blue hover:underline'>{link.title}</Link></li>
                                         })
                                     }
                                 </ul>
@@ -45,6 +45,10 @@ const Footer = () => {
                                     <li className='flex items-center gap-4 '>
                                         <span className='text-2xl'>{reactIcons.mobile}</span>
                                         <span>044 2450 0009</span>
+                                    </li>
+                                    <li className='flex items-center gap-4 '>
+                                        <span className='text-2xl'>{reactIcons.whatsapp}</span>
+                                        <span>9193868729</span>
                                     </li>
                                     <li className='flex items-center gap-4'>
                                         <span className='text-2xl' >{reactIcons.email}</span>
@@ -59,7 +63,7 @@ const Footer = () => {
             </div>
             <div className="container py-4">
                 <p className='text-muted text-center'>
-                    &copy; 2014 algotronsgrievance@gmail.com. All rights reserved. 
+                    &copy; 2014 algotronsgrievance@gmail.com. All rights reserved.
                 </p>
             </div>
         </footer>

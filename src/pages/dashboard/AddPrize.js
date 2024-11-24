@@ -85,7 +85,7 @@ const AddPrize = () => {
     return (
         <div className="py-10 px-4">
             <Formik
-            enableReinitialize
+                enableReinitialize
                 initialValues={form}
                 onSubmit={handleSubmit}
             >
@@ -161,7 +161,7 @@ const AddPrize = () => {
                                                             </div>
                                                             <div className="col flex items-center gap-2 ">
                                                                 <DeleteButton
-                                                                type='button'
+                                                                    type='button'
                                                                     className={'text-xl'}
                                                                     onClick={() => remove(index)}
                                                                 >
@@ -246,7 +246,7 @@ const AddPrize = () => {
                                                             </div>
                                                             <div className="col flex items-center gap-2 ">
                                                                 <DeleteButton
-                                                                type='button'
+                                                                    type='button'
                                                                     className={'text-xl'}
                                                                     onClick={() => remove(index)}
                                                                 >
@@ -271,7 +271,7 @@ const AddPrize = () => {
                                     </FieldArray>
                                 </div>
                             </div>
-                            <button className="btn-primary mt-4" type="submit">{prizeId?'Update' :'Create'}</button>
+                            <button className="btn-primary mt-4" type="submit">{prizeId ? 'Update' : 'Create'}</button>
                         </Form>
                     )
                 }}

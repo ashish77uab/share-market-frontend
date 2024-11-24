@@ -131,10 +131,10 @@ const DepositModal = ({ isOpen, closeModal }) => {
                       <h6 className="heading-6 py-2">Bank Details</h6>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                      <SingleInfo title={'Account Holder Name'} value={'Staralgo pvt limited'} />
-                      <SingleInfo title={'Account Number'} value={'8459649494894948'} />
-                      <SingleInfo title={'IFSC Code'} value={'UNION896415'} />
-                      <SingleInfo title={'Bank Name'} value={'Union Bank of India'} />
+                      <SingleInfo title={'Account Holder Name'} value={'STAR ENTERPRISES'} />
+                      <SingleInfo title={'Account Number'} value={'50200099063812'} />
+                      <SingleInfo title={'IFSC Code'} value={'HDFC0006335'} />
+                      <SingleInfo title={'Bank Name'} value={'HDFC BANK'} />
                     </div>
                   </div>
                   <div className="my-2 px-6">
@@ -143,7 +143,7 @@ const DepositModal = ({ isOpen, closeModal }) => {
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                       <div>
-                        <img className="w-[300px] object-contain h-[300px]" src="/images/qr-code.jpeg" alt="qr-code" />
+                        <img className="w-[300px] object-contain h-[300px]" src="/images/phonepe.jpeg" alt="qr-code" />
                       </div>
                       <div>
                         <DepositMoney closeModal={closeModal} />

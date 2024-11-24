@@ -25,42 +25,72 @@ export const updatePasswordValidationSchema = yup.object().shape({
     oldPassword: yup
         .string()
         .required("Old Password is required"),
-    newPassword:  yup
-    .string()
-    .required("New Password is required"),
+    newPassword: yup
+        .string()
+        .required("New Password is required"),
 });
 export const addDepositFormSchema = yup.object().shape({
     amount: yup
         .string()
         .required("Amount is required"),
-    transactionId:  yup
-    .string()
-    .required("Transaction unique id is required"),
+    transactionId: yup
+        .string()
+        .required("Transaction unique id is required"),
 });
 export const withdrawFundFormSchema = yup.object().shape({
     amount: yup
         .string()
         .required("Amount is required"),
-    panNumber:  yup
-    .string()
-    .required("PAN Number is required"),
+    panNumber: yup
+        .string()
+        .required("PAN Number is required"),
 });
 export const stockValidationSchema = yup.object().shape({
-    name:  yup
-    .string()
-    .required("Name is required"),
+    name: yup
+        .string()
+        .required("Name is required"),
+    quantity: yup
+        .number()
+        .required("Quantity is required"),
+    startPrice: yup
+        .number()
+        .required("Start price is required"),
+    // endPrice: yup
+    //     .number()
+    //     .required("End price is required"),
+    actionType: yup
+        .string().default('Buy')
+        .required("Action Type is required"),
+});
+export const stockSellValidationSchema = (quantity) => yup.object().shape({
+    name: yup
+        .string()
+        .required("Name is required"),
+    quantity: yup
+        .number()
+        .max(quantity, `Max Value is${quantity}`)
+        .required("Quantity is required"),
+    endPrice: yup
+        .number()
+        .required("Start price is required"),
+    // endPrice: yup
+    //     .number()
+    //     .required("End price is required"),
+    actionType: yup
+        .string().default('Sell')
+        .required("Action Type is required"),
 });
 export const contactValidationSchema = yup.object().shape({
-    fullName:  yup
-    .string()
-    .required("Name is required"),
-    mobile:  yup
-    .string()
-    .required("Mobile is required"),
-    email:  yup
-    .string()
-    .required("Email is required"),
-    message:  yup
-    .string()
-    .required("Message is required"),
+    fullName: yup
+        .string()
+        .required("Name is required"),
+    mobile: yup
+        .string()
+        .required("Mobile is required"),
+    email: yup
+        .string()
+        .required("Email is required"),
+    message: yup
+        .string()
+        .required("Message is required"),
 });

@@ -4,6 +4,7 @@ import { FaImage, FaMap, FaUsers } from "react-icons/fa";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { MdOutlineMarkChatUnread, MdOutlineMarkChatRead } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
+import { FaWhatsapp } from "react-icons/fa";
 import {
   BiDollarCircle,
   BiEditAlt,
@@ -18,7 +19,7 @@ import { HiOutlineSignal } from "react-icons/hi2";
 
 import { IoIosArrowRoundBack, IoMdClose } from "react-icons/io";
 import {
-    BsCartCheck,
+  BsCartCheck,
   BsCartX,
   BsCheckLg,
   BsChevronDown,
@@ -58,10 +59,11 @@ import { GiChart } from "react-icons/gi";
 import { AiOutlineSafety } from "react-icons/ai";
 
 export const reactIcons = {
-  location:<FaMap/>,
-  chart:<IoBarChart/>,
-  safety:<AiOutlineSafety/>,
-  giChart:<GiChart/>,
+  whatsapp: <FaWhatsapp />,
+  location: <FaMap />,
+  chart: <IoBarChart />,
+  safety: <AiOutlineSafety />,
+  giChart: <GiChart />,
   plus: <CiCirclePlus />,
   minus: <CiCircleMinus />,
   trash: <BiTrash />,
@@ -98,20 +100,20 @@ export const reactIcons = {
   profit: <BiDollarCircle />,
   vault: <BsWallet2 />,
   product: <BsFillBoxFill />,
-  cart:<BsCartCheck/>,
-  emptyCart:<BsCartX/>,
-  inventory: <MdOutlineInventory/>,
-  gallery: <FaImage/>,
-  users: <FaUsers/>,
+  cart: <BsCartCheck />,
+  emptyCart: <BsCartX />,
+  inventory: <MdOutlineInventory />,
+  gallery: <FaImage />,
+  users: <FaUsers />,
   notification: <IoNotificationsOutline />,
   read: <MdOutlineMarkChatRead />,
   unread: <MdOutlineMarkChatUnread />,
-  dotFill: <GoDotFill/>,
-  chat: <IoChatbubbleEllipsesOutline/>,
-  plane: <FaPaperPlane/>,
-  live: <HiOutlineSignal/>,
-  prize: <FaTrophy/>,
-  reset: <GrPowerReset/>,
-  mobile:<FaPhone/>,
-  email:<FaEnvelope/>,
+  dotFill: <GoDotFill />,
+  chat: <IoChatbubbleEllipsesOutline />,
+  plane: <FaPaperPlane />,
+  live: <HiOutlineSignal />,
+  prize: <FaTrophy />,
+  reset: <GrPowerReset />,
+  mobile: <FaPhone />,
+  email: <FaEnvelope />,
 };

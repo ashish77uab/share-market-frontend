@@ -1,11 +1,127 @@
-import React from 'react'
-
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import moment from 'moment'
+import { useSelector } from "react-redux";
+import { getUserStocks } from "../api/api";
+import ToastMsg from "../components/toast/ToastMsg";
+import { numberWithCommas } from "../utils/helpers";
+import RenderNoData from "../components/layout/RenderNoData";
+import Pagination from "../components/Pagination";
 const NetPosition = () => {
-    return (
-        <div >
-            <h3 className='heading-3 text-white text-center'>Coming Soon</h3>
-        </div>
-    )
-}
+    const user = useSelector((state) => state.auth.user);
+    const limit = 10
+    const [page, setPage] = useState(1)
+    const userId = user?._id
+    const [stocks, setStocks] = useState(null);
+    const [fetchLoading, setFetchLoading] = useState(false);
 
-export default NetPosition
+    const getUsersStocksData = async () => {
+        setFetchLoading(true)
+        try {
+            const res = await getUserStocks({ page, limit, userId });
+            const { status, data } = res;
+            if (status >= 200 && status <= 300) {
+                setStocks(data);
+            } else {
+                toast.error(<ToastMsg title={data.message} />);
+            }
+        } catch (error) {
+            toast.error(<ToastMsg title={error?.response?.data?.message} />);
+        } finally {
+            setFetchLoading(false)
+        }
+    };
+
+
+    useEffect(() => {
+        if (userId) {
+            getUsersStocksData();
+        }
+    }, [userId, page]);
+
+    return (
+        <>
+            <div className="px-4">
+                <header className="mb-4 flex items-center justify-between">
+                    <h3 className="heading-4">
+                        Stocks List
+                    </h3>
+
+                </header>
+                <div>
+                    <div className="overflow-x-auto w-full">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th className="w-[80px]">Sr.No</th>
+                                    <th>Name</th>
+                                    <th>Quantity</th>
+                                    <th>Quantity Left</th>
+                                    <th>Start Price</th>
+                                    <th>End Price</th>
+                                    <th>Type</th>
+                                    <th>Total Amount</th>
+                                    <th>Profit/Loss</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {stocks?.stocks.map((stock, index) => (
+                                    <tr>
+                                        <td className="w-[80px]">{index + 1}</td>
+                                        <td>{stock.name}</td>
+                                        <td>{stock.quantity}</td>
+                                        <td>{stock.quantityLeft}</td>
+                                        <td>{numberWithCommas(stock?.startPrice)}</td>
+                                        <td>{stock?.endPrice ? numberWithCommas(stock?.endPrice) : '-'}</td>
+                                        <td className="font-semibold">{stock.actionType}</td>
+                                        <td className={` font-semibold ${stock?.amount < 0 ? 'text-red-500' : 'text-green-500'}`}>{numberWithCommas(stock?.amount)}</td>
+                                        {stock?.diffAmount ? <td className={` font-semibold ${stock?.diffAmount < 0 ? 'text-red-500' : 'text-green-500'}`}>
+
+                                            {
+                                                numberWithCommas(stock?.diffAmount)
+                                            }
+
+                                        </td> : <td className="font-semibold">-</td>}
+                                        <td>{moment(stock?.createdAt)?.format('DD/MM/YYYY hh:mm a')}</td>
+
+                                    </tr>
+                                ))}
+
+                                {stocks?.totalStocks < 1 && !fetchLoading && (
+                                    <tr>
+                                        <td colSpan={10}>
+                                            <RenderNoData title="No stocks found." />
+                                        </td>
+                                    </tr>
+                                )}
+                                {fetchLoading && (
+                                    <tr>
+                                        <td colSpan={10}>
+                                            <div className="py-8 text-center font-semibold">Loading please wait....</div>
+                                        </td>
+                                    </tr>
+                                )}
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="my-4">
+                        <Pagination
+                            handlePageClick={(page) => {
+                                setPage(page?.selected + 1)
+                            }}
+                            pageCount={stocks?.totalPages} />
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </>
+    );
+};
+
+export default NetPosition;

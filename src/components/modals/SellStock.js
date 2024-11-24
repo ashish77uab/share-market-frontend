@@ -3,34 +3,28 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import TextInput from "../forms/TextInput";
 import {
-  createStock,
   updateStock,
+  sellStock,
 } from "../../api/api";
 import { toast } from "react-toastify";
 import ToastMsg from "../toast/ToastMsg";
 import { Form, Formik } from "formik";
-import { stockValidationSchema } from "../../utils/validation";
+import { stockSellValidationSchema, stockValidationSchema } from "../../utils/validation";
 import { useParams } from "react-router-dom";
 const initialState = {
   name: '',
   quantity: '',
-  startPrice: '',
-  // endPrice: 0,
-  actionType: 'Buy',
+  endPrice: '',
+  actionType: 'Sell',
 };
-const PurchaseStock = ({ isOpen, closeModal, stock, fetchData }) => {
+const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
   const { userId } = useParams();
   const [loading, setLoading] = useState(false)
   const [initialValue, setInitialValue] = useState(initialState)
   const handleSubmit = async (values, actionForm) => {
     setLoading(true)
     try {
-      const res = stock
-        ? await updateStock(
-          { ...values, userId },
-          stock?._id
-        )
-        : await createStock({ ...values, userId });
+      const res = await sellStock({ ...values, userId, stockId: stock?._id });
       const { status, data } = res;
       if (status >= 200 && status < 300) {
         toast.success(<ToastMsg title={`Purchased Successfully`} />);
@@ -51,10 +45,9 @@ const PurchaseStock = ({ isOpen, closeModal, stock, fetchData }) => {
   useEffect(() => {
     if (stock) {
       setInitialValue({
+        ...initialState,
         name: stock?.name,
-        quantity: stock?.quantity,
         startPrice: stock?.startPrice,
-        actionType: stock?.actionType,
         userId: stock?.userId,
       });
     }
@@ -94,7 +87,7 @@ const PurchaseStock = ({ isOpen, closeModal, stock, fetchData }) => {
                 <Formik
                   enableReinitialize
                   initialValues={initialValue}
-                  validationSchema={stockValidationSchema}
+                  validationSchema={stockSellValidationSchema(stock?.quantity)}
                   onSubmit={handleSubmit}
                 >
                   {({
@@ -104,15 +97,6 @@ const PurchaseStock = ({ isOpen, closeModal, stock, fetchData }) => {
                   }) => {
                     return (
                       <Form className="w-full space-y-4 mt-4">
-                        <TextInput
-                          label={"Name of Stock"}
-                          placeholder="Enter stock name"
-                          name="name"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.name}
-
-                        />
                         <TextInput
                           type='number'
                           label={"Quantity of Stock"}
@@ -125,12 +109,12 @@ const PurchaseStock = ({ isOpen, closeModal, stock, fetchData }) => {
                         />
                         <TextInput
                           type='number'
-                          label={"Start price"}
+                          label={"End price"}
                           placeholder="eg. 400"
-                          name="startPrice"
+                          name="endPrice"
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          value={values.startPrice}
+                          value={values.endPrice}
 
                         />
                         {/* <TextInput
@@ -160,4 +144,4 @@ const PurchaseStock = ({ isOpen, closeModal, stock, fetchData }) => {
   );
 };
 
-export default PurchaseStock;
+export default SellStock;

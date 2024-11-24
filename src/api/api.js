@@ -4,17 +4,17 @@ const devEnv = process.env.NODE_ENV !== "production";
 
 const { REACT_APP_DEV_API, REACT_APP_PROD_API } = process.env;
 const baseURL = `${devEnv ? REACT_APP_DEV_API : REACT_APP_PROD_API}`
-export const socketConnect = (namespace,token) => {
+export const socketConnect = (namespace, token) => {
 
-  return io(`${baseURL}${namespace}`,{
+  return io(`${baseURL}${namespace}`, {
     auth: {
-      token, 
+      token,
     },
     transports: ['websocket']
   });
 }
 const API = axios.create({
-  baseURL: baseURL ,
+  baseURL: baseURL,
   withCredentials: true,
 });
 
@@ -81,7 +81,7 @@ export const getPrizePyramid = (id) =>
 // User Team
 export const addUserTeam = (formData) =>
   API.post("match-team/add", formData);
-export const getUserMatchTeam = ({matchId,userId}) =>
+export const getUserMatchTeam = ({ matchId, userId }) =>
   API.get(`match-team/${matchId}/${userId}`);
 export const getEvents = (matchId) =>
   API.get(`match-team/event/${matchId}`);
@@ -103,12 +103,12 @@ export const getPlayer = (id) =>
   API.get(`player/${id}`);
 export const updatePlayerPlayingStatus = (data) =>
   API.put(`player/playing`, data);
-export const updatePlayerScore = (scoreId,data) =>
+export const updatePlayerScore = (scoreId, data) =>
   API.put(`player/score/${scoreId}`, data);
 export const getPlayerScore = (playerId) =>
   API.get(`player/score/${playerId}`);
 export const resetPlayerData = (data) =>
-  API.put(`player/score-reset`,data);
+  API.put(`player/score-reset`, data);
 
 // wishlist
 export const addToWishList = (formData) => API.post("wishlist/add", formData);
@@ -132,7 +132,7 @@ export const updateProduct = (id, formData) =>
   API.put(`products/${id}`, formData);
 export const deleteProductImage = (id, formData) =>
   API.put(`products/delete-product-image/${id}`, formData);
-export const addProductReview = ( formData) =>
+export const addProductReview = (formData) =>
   API.post(`products/add-product-review`, formData);
 export const editProductReview = (id, formData) =>
   API.put(`products/edit-product-review/${id}`, formData);
@@ -156,15 +156,15 @@ export const updatePassword = (formData) => API.post(`auth/update-password`, for
 export const addDeposit = (formData) => API.post(`auth/add-deposit`, formData);
 export const withdrawFund = (formData) => API.post(`auth/withdraw-fund`, formData);
 export const getUserTransactions = (data) => {
-  const queryString=new URLSearchParams(data)?.toString()
+  const queryString = new URLSearchParams(data)?.toString()
   return API.get(`auth/transactions?${queryString}`)
 };
 
 export const getAllTransactionsList = (data) => {
-  const queryString=new URLSearchParams(data)?.toString()
+  const queryString = new URLSearchParams(data)?.toString()
   return API.get(`transactions/all-transactions?${queryString}`)
 };
-export const updatTransactionStatus = (data) => API.put(`transactions/update-status`,data);
+export const updatTransactionStatus = (data) => API.put(`transactions/update-status`, data);
 export const forgotRequest = (formData) =>
   API.post(`auth/requestResetPassword`, formData);
 export const resetPassword = (formData) =>
@@ -186,10 +186,12 @@ export const deleteNotification = (notificationId) => API.delete(`auth/notificat
 export const readNotification = (notificationId) => API.put(`auth/notifications/read/${notificationId}`);
 
 export const getUserStocks = (data) => {
-  const queryString=new URLSearchParams(data)?.toString()
+  const queryString = new URLSearchParams(data)?.toString()
   return API.get(`stock/user-stocks?${queryString}`)
 }
-export const createStock = (data) => API.post(`stock/create-stock`,data);
-export const updateStock = (data,stockId) => API.put(`stock/update-stock/${stockId}`,data);
+export const createStock = (data) => API.post(`stock/create-stock`, data);
+export const sellStock = (data) => API.post(`stock/sell-stock`, data);
+export const updateStock = (data, stockId) => API.put(`stock/update-stock/${stockId}`, data);
 export const deleteStock = (stockId) => API.delete(`stock/delete-stock/${stockId}`);
-export const contactUsRequest = (formData) => API.post(`auth/contact-us`,formData);
+export const settleStock = (stockId, stock) => API.post(`stock/settle-stock/${stockId}`, stock);
+export const contactUsRequest = (formData) => API.post(`auth/contact-us`, formData);

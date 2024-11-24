@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getUserStocks } from "../../api/api";
+import { deleteStock, getUserStocks, settleStock } from "../../api/api";
 import { toast } from "react-toastify";
 import ToastMsg from "../../components/toast/ToastMsg";
 import ActionButton from "../../components/button/ActionButton";
@@ -9,18 +9,23 @@ import DeleteConfirmation from "../../components/modals/DeleteConfirmation";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import RenderNoData from "../../components/layout/RenderNoData";
 import PurchaseStock from "../../components/modals/PurchaseStock";
-
+import { numberWithCommas } from "../../utils/helpers";
+import Pagination from "../../components/Pagination";
+import SellStock from "../../components/modals/SellStock";
+import moment from 'moment'
+import SettleConfimation from "../../components/modals/SettleConfimation";
 const UserStocks = () => {
   const limit = 10
   const [page, setPage] = useState(1)
-  const navigate = useNavigate()
-  const [loading, setLoading] = useState(false)
+  const [updateLoading, setUpdateLoading] = useState(false)
   const location = useLocation();
   const { userId } = useParams();
   const [isPurchaseOpen, setIsPurchaseOpen] = useState(false);
-  const [stock, setStocks] = useState(null);
+  const [isSettleOpen, setIsSettleOpen] = useState(false);
+  const [isSellOpen, setIsSellOpen] = useState(false);
+  const [stock, setStock] = useState(null);
   const [isConfirmedOpen, setIsConfirmedOpen] = useState(false);
-  const [stocks, setStockss] = useState(null);
+  const [stocks, setStocks] = useState(null);
   const [fetchLoading, setFetchLoading] = useState(false);
 
   const getUsersStocksData = async () => {
@@ -29,7 +34,7 @@ const UserStocks = () => {
       const res = await getUserStocks({ page, limit, userId });
       const { status, data } = res;
       if (status >= 200 && status <= 300) {
-        setStockss(data);
+        setStocks(data);
       } else {
         toast.error(<ToastMsg title={data.message} />);
       }
@@ -39,13 +44,52 @@ const UserStocks = () => {
       setFetchLoading(false)
     }
   };
+  const handleDelete = async () => {
+    setUpdateLoading(true)
+    try {
+      const res = await deleteStock(stock?._id);
+      const { status, data } = res;
+      if (status >= 200 && status <= 300) {
+        getUsersStocksData();
+        toast.success(<ToastMsg title={'Deleted Successfully'} />);
+        setIsConfirmedOpen(false)
+        setStock(null)
+
+      } else {
+        toast.error(<ToastMsg title={data.message} />);
+      }
+    } catch (error) {
+      toast.error(<ToastMsg title={error?.response?.data?.message} />);
+    } finally {
+      setUpdateLoading(false)
+    }
+  };
+  const handleConfirm = async () => {
+    setUpdateLoading(true)
+    try {
+      const res = await settleStock(stock?._id, stock);
+      const { status, data } = res;
+      if (status >= 200 && status <= 300) {
+        getUsersStocksData();
+        toast.success(<ToastMsg title={'Settled Successfully'} />);
+        setIsSettleOpen(false)
+        setStock(null)
+
+      } else {
+        toast.error(<ToastMsg title={data.message} />);
+      }
+    } catch (error) {
+      toast.error(<ToastMsg title={error?.response?.data?.message} />);
+    } finally {
+      setUpdateLoading(false)
+    }
+  };
 
   useEffect(() => {
     if (userId) {
       getUsersStocksData();
     }
   }, [userId, page]);
-
 
   return (
     <>
@@ -69,10 +113,13 @@ const UserStocks = () => {
                   <th className="w-[80px]">Sr.No</th>
                   <th>Name</th>
                   <th>Quantity</th>
-                  <th>Type</th>
+                  <th>Quantity Left</th>
                   <th>Start Price</th>
                   <th>End Price</th>
+                  <th>Type</th>
                   <th>Total Amount</th>
+                  <th>Profit/Loss</th>
+                  <th>Date</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -82,27 +129,24 @@ const UserStocks = () => {
                     <td className="w-[80px]">{index + 1}</td>
                     <td>{stock.name}</td>
                     <td>{stock.quantity}</td>
-                    <td>{stock.actionType}</td>
-                    <td>{stock.startPrice}</td>
-                    <td>{stock.endPrice}</td>
-                    <td>{stock?.amount}</td>
-                    <td>
-                      <div className="flex justify-center gap-2">
-                        <ActionButton
-                          className={'text-xl'}
-                          onClick={() => {
+                    <td>{stock.quantityLeft}</td>
+                    <td>{numberWithCommas(stock?.startPrice)}</td>
+                    <td>{stock?.endPrice ? numberWithCommas(stock?.endPrice) : '-'}</td>
+                    <td className="font-semibold">{stock.actionType}</td>
+                    <td className={` font-semibold ${stock?.amount < 0 ? 'text-red-500' : 'text-green-500'}`}>{numberWithCommas(stock?.amount)}</td>
+                    {stock?.diffAmount ? <td className={` font-semibold ${stock?.diffAmount < 0 ? 'text-red-500' : 'text-green-500'}`}>
 
-                          }}
-                        >
-                          {reactIcons.eye}
-                        </ActionButton>
-                      </div>
-                    </td>
+                      {
+                        numberWithCommas(stock?.diffAmount)
+                      }
+
+                    </td> : <td className="font-semibold">-</td>}
+                    <td>{moment(stock?.createdAt)?.format('DD/MM/YYYY hh:mm a')}</td>
                     <td>
                       <div className="flex justify-center gap-2">
                         <ActionButton
                           onClick={() => {
-                            setStocks(stock);
+                            setStock(stock);
                             setIsPurchaseOpen(true);
                           }}
                         >
@@ -110,43 +154,95 @@ const UserStocks = () => {
                         </ActionButton>
                         <DeleteButton
                           onClick={() => {
-                            setStocks(stock);
+                            setStock(stock);
                             setIsConfirmedOpen(true);
                           }}
                         >
                           {reactIcons.delete}
                         </DeleteButton>
+                        <button
+                          onClick={() => {
+                            setStock(stock);
+                            setIsSellOpen(true);
+                          }}
+                          className="btn-primary">Sell</button>
+                        {!stock?.isSettled && <button
+                          onClick={() => {
+                            setStock(stock);
+                            setIsSettleOpen(true);
+                          }}
+                          className="btn-green">Settle</button>}
                       </div>
                     </td>
                   </tr>
                 ))}
-                <tr>
-                  <td colSpan={8}>
-                    {stocks?.stocks?.length < 1 && !fetchLoading && <RenderNoData title="No stocks found." />}
-                    {fetchLoading && <div className="py-8 text-center font-semibold">Loading please wait....</div>}
-                  </td>
-                </tr>
+
+                {stocks?.totalStocks < 1 && !fetchLoading && (
+                  <tr>
+                    <td colSpan={10}>
+                      <RenderNoData title="No stocks found." />
+                    </td>
+                  </tr>
+                )}
+                {fetchLoading && (
+                  <tr>
+                    <td colSpan={10}>
+                      <div className="py-8 text-center font-semibold">Loading please wait....</div>
+                    </td>
+                  </tr>
+                )}
+
               </tbody>
             </table>
+            <div className="my-4">
+              <Pagination
+                handlePageClick={(page) => {
+                  setPage(page?.selected + 1)
+                }}
+                pageCount={stocks?.totalPages} />
+
+            </div>
           </div>
         </div>
       </div>
-      <PurchaseStock
+      {isPurchaseOpen && <PurchaseStock
         isOpen={isPurchaseOpen}
         stock={stock || null}
         closeModal={() => {
           setIsPurchaseOpen(false);
-          getUsersStocksData()
-          setStocks(null);
+          setStock(null);
         }}
-      />
-      {/* <DeleteConfirmation
+        fetchData={getUsersStocksData}
+      />}
+      {isSellOpen && <SellStock
+        isOpen={isSellOpen}
+        stock={stock || null}
+        closeModal={() => {
+          setIsSellOpen(false);
+          setStock(null);
+        }}
+        fetchData={getUsersStocksData}
+      />}
+      <DeleteConfirmation
         isOpen={isConfirmedOpen}
-        closeModal={() => setIsConfirmedOpen(false)}
+        closeModal={() => {
+          setIsConfirmedOpen(false)
+          setStock(null)
+        }}
         handleDelete={handleDelete}
-        title={"sub category"}
-        loading={loading}
-      /> */}
+        title={"Stock"}
+        loading={updateLoading}
+      />
+      <SettleConfimation
+        isOpen={isSettleOpen}
+        closeModal={() => {
+          setIsSettleOpen(false)
+          setStock(null)
+        }}
+        handleConfirm={handleConfirm}
+        title={"Stock"}
+        loading={updateLoading}
+      />
     </>
   );
 };
