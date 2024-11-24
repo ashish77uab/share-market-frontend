@@ -144,14 +144,14 @@ const UserStocks = () => {
                     <td>{moment(stock?.createdAt)?.format('DD/MM/YYYY hh:mm a')}</td>
                     <td>
                       <div className="flex justify-center gap-2">
-                        <ActionButton
+                        {/* <ActionButton
                           onClick={() => {
                             setStock(stock);
                             setIsPurchaseOpen(true);
                           }}
                         >
                           {reactIcons.edit}
-                        </ActionButton>
+                        </ActionButton> */}
                         <DeleteButton
                           onClick={() => {
                             setStock(stock);
@@ -165,13 +165,13 @@ const UserStocks = () => {
                             setStock(stock);
                             setIsSellOpen(true);
                           }}
-                          className="btn-primary">Sell</button>
+                          className="btn-primary min-w-fit px-8">Sell</button>
                         {!stock?.isSettled && <button
                           onClick={() => {
                             setStock(stock);
                             setIsSettleOpen(true);
                           }}
-                          className="btn-green">Settle</button>}
+                          className="btn-green min-w-fit px-8">Settle</button>}
                       </div>
                     </td>
                   </tr>
@@ -179,14 +179,14 @@ const UserStocks = () => {
 
                 {stocks?.totalStocks < 1 && !fetchLoading && (
                   <tr>
-                    <td colSpan={10}>
+                    <td colSpan={11}>
                       <RenderNoData title="No stocks found." />
                     </td>
                   </tr>
                 )}
                 {fetchLoading && (
                   <tr>
-                    <td colSpan={10}>
+                    <td colSpan={11}>
                       <div className="py-8 text-center font-semibold">Loading please wait....</div>
                     </td>
                   </tr>

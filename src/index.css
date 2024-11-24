@@ -61,11 +61,11 @@
   
   } */
   th {
-    @apply whitespace-nowrap  py-6 px-2  text-sm md:text-sm   font-semibold first:text-left first:pl-4 text-white bg-primary-pink last:rounded-tr-[8px] first:rounded-tl-[8px];
+    @apply whitespace-nowrap  py-6 px-2  text-sm md:text-base   font-semibold first:text-left first:pl-4 text-white bg-primary-pink last:rounded-tr-[8px] first:rounded-tl-[8px];
   }
 
   td {
-    @apply align-middle text-xs md:text-[13px]  py-6 px-2   first:text-left first:pl-4 md:whitespace-normal whitespace-nowrap;
+    @apply align-middle text-xs md:text-sm py-6 px-2   first:text-left first:pl-4 md:whitespace-normal whitespace-nowrap;
   }
  
   tr {
@@ -73,6 +73,9 @@
   }
   .user-layout tr {
     @apply border-b-dark hover:bg-primary-darkBlueSupport;
+  }
+  .user-layout .icon-color svg{
+    @apply text-white fill-white;
   }
 }
 @layer components {
