@@ -127,7 +127,7 @@ const Transactions = ({
 
                 </div>
             </div>
-            <UpdateWalletModal getSingleUser={getSingleUser} isOpen={isUpdateWalletOpen} walletData={walletData} closeModal={() => setIsUpdateWalletOpen(false)} />
+            {isAdmin && <UpdateWalletModal getSingleUser={getSingleUser} isOpen={isUpdateWalletOpen} walletData={walletData} closeModal={() => setIsUpdateWalletOpen(false)} />}
         </>
     )
 }
