@@ -125,7 +125,7 @@ const Home = () => {
               <div>
                 <div className="flex md:flex-row flex-col items-center gap-4 lg:gap-10">
                   <img className="max-w-[200px] object-contain" src="/images/user-mobile.jpeg" alt="charges" />
-                  <div className="space-y-5">
+                  <div className="space-y-5 lg:text-start text-center">
                     <div>
                       <h6 className="lg:text-4xl text-2xl text-primary-pink font-bold">
                         0.02%
@@ -157,29 +157,29 @@ const Home = () => {
                     Other Charges
                   </h4>
                   <div className="flex md:flex-row flex-col items-center md:items-start gap-8">
-                    <div className="flex flex-col items-center text-center gap-1">
+                    <div className="flex flex-col items-center text-center ">
                       <div>
                         <img className="w-[70px] object-contain" src="/images/add-user.png" alt="add" />
                       </div>
-                      <div className="heading-5 text-primary-pink font-bold">
+                      <div className="heading-5 mt-1 text-primary-pink font-bold">
                         FREE*
                       </div>
                       <p>Account Opening</p>
                     </div>
-                    <div className="flex flex-col items-center text-center gap-1">
+                    <div className="flex flex-col items-center text-center ">
                       <div>
                         <img className="w-[70px] object-contain" src="/images/free.png" alt="add" />
                       </div>
-                      <div className="heading-5 text-primary-pink font-bold">
+                      <div className="heading-5 mt-1 text-primary-pink font-bold">
                         FREE for 1st year
                       </div>
                       <p>AMC and Admin Charges</p>
                     </div>
-                    <div className="flex flex-col items-center text-center gap-1">
+                    <div className="flex flex-col items-center text-center ">
                       <div>
                         <img className="w-[70px] object-contain" src="/images/operator.png" alt="add" />
                       </div>
-                      <div className="heading-5 text-primary-pink font-bold">
+                      <div className="heading-5 mt-1 text-primary-pink font-bold">
                         FREE*
                       </div>
                       <p>Personal Advisor and Research</p>
@@ -194,7 +194,7 @@ const Home = () => {
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
                   <div className="relative">
-                    <img className="w-[270px] m-auto md:brightness-50" src="/images/sun.png" alt="" />
+                    <img className="w-[270px] m-auto brightness-50" src="/images/sun.png" alt="" />
                     <div className="absolute text-white inset-0 w-full h-full flex justify-center flex-col items-center">
                       <b className="text-2xl md:text-4xl"> ₹ 0* AMC </b>
                       <span className="text-lg font-medium">for Liftime</span>
