@@ -28,7 +28,7 @@ const DepositMoney = ({ closeModal }) => {
       const res = await addDeposit(formData);
       const { status, data } = res;
       if (status >= 200 && status < 300) {
-        toast.success(<ToastMsg title={`Added Successfully`} />);
+        toast.success(<ToastMsg title={`Request Created Successfully`} />);
         closeModal()
         actionForm.resetForm()
       } else {

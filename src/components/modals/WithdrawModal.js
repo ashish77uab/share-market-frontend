@@ -25,7 +25,7 @@ const WithdrawMoney = ({ closeModal }) => {
       const res = await withdrawFund(formData);
       const { status, data } = res;
       if (status >= 200 && status < 300) {
-        toast.success(<ToastMsg title={`Sent Successfully`} />);
+        toast.success(<ToastMsg title={`Request Created Successfully`} />);
         dispatch(updateUserWallet(Number(values.amount)))
         closeModal()
         actionForm.resetForm()
