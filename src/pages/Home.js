@@ -113,7 +113,7 @@ const Home = () => {
           </div>
 
         </div>
-        {/* <div className="py-20  ">
+        <div className="py-20  ">
           <div className="container">
             <header>
               <div className="container flex justify-center mb-10 lg:mb-16  items-center">
@@ -121,15 +121,115 @@ const Home = () => {
                   Charges and <span className="text-primary-pink">Benefits</span></h2>
               </div>
             </header>
-            <div className=" grid grid-cols-1 lg:grid-cols-2 gap-10  place-items-center ">
-              <img className="max-w-full" src="/images/charges.jpg" alt="charges" />
-              <img className="max-w-full" src="/images/free-demat.jpeg" alt="free-demat" />
+            <div className=" grid grid-cols-1 lg:grid-cols-2 gap-10 place-items-center   ">
+              <div>
+                <div className="flex md:flex-row flex-col items-center gap-4 lg:gap-10">
+                  <img className="max-w-[200px] object-contain" src="/images/user-mobile.jpeg" alt="charges" />
+                  <div className="space-y-5">
+                    <div>
+                      <h6 className="lg:text-4xl text-2xl text-primary-pink font-bold">
+                        0.02%
+                      </h6>
+                      <p className="text-lg font-medium text-primary-gray">Intraday and Futures <br /> (Equity and Commodity)</p>
+                    </div>
+                    <div>
+                      <h6 className="lg:text-4xl text-2xl text-primary-pink font-bold">
+                        ₹10 Per Order
+                      </h6>
+                      <p className="text-lg font-medium text-primary-gray">Options <br /> (Equity and Currency)</p>
+                    </div>
+                    <div>
+                      <h6 className="lg:text-4xl text-2xl text-primary-pink font-bold">
+                        0.10%
+                      </h6>
+                      <p className="text-lg font-medium text-primary-gray">Delivery</p>
+                    </div>
+                    <div>
+                      <h6 className="lg:text-4xl text-2xl text-primary-pink font-bold">
+                        0 Brokerage *
+                      </h6>
+                      <p className="text-lg font-medium text-primary-gray">for 1st month on FnO Trading <br />(up to Rs 1,000 )</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="lg:mt-16 mt-10">
+                  <h4 className="heading-4 mb-8 text-center">
+                    Other Charges
+                  </h4>
+                  <div className="flex md:flex-row flex-col items-center md:items-start gap-8">
+                    <div className="flex flex-col items-center text-center gap-1">
+                      <div>
+                        <img className="w-[70px] object-contain" src="/images/add-user.png" alt="add" />
+                      </div>
+                      <div className="heading-5 text-primary-pink font-bold">
+                        FREE*
+                      </div>
+                      <p>Account Opening</p>
+                    </div>
+                    <div className="flex flex-col items-center text-center gap-1">
+                      <div>
+                        <img className="w-[70px] object-contain" src="/images/free.png" alt="add" />
+                      </div>
+                      <div className="heading-5 text-primary-pink font-bold">
+                        FREE for 1st year
+                      </div>
+                      <p>AMC and Admin Charges</p>
+                    </div>
+                    <div className="flex flex-col items-center text-center gap-1">
+                      <div>
+                        <img className="w-[70px] object-contain" src="/images/operator.png" alt="add" />
+                      </div>
+                      <div className="heading-5 text-primary-pink font-bold">
+                        FREE*
+                      </div>
+                      <p>Personal Advisor and Research</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div>
+                <h4 className="heading-3 mb-10 text-center">
+                  Free Account
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+                  <div className="relative">
+                    <img className="w-[270px] m-auto md:brightness-50" src="/images/sun.png" alt="" />
+                    <div className="absolute text-white inset-0 w-full h-full flex justify-center flex-col items-center">
+                      <b className="text-2xl md:text-4xl"> ₹ 0* AMC </b>
+                      <span className="text-lg font-medium">for Liftime</span>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <img className="w-[270px] m-auto" src="/images/sun.png" alt="" />
+                    <div className="absolute text-white inset-0 w-full h-full flex justify-center flex-col items-center">
+                      <span className="text-lg font-medium">Trade in F&O</span>
+                      <b className="text-2xl md:text-4xl"> ₹ 10 /Order </b>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <img className="w-[270px] m-auto" src="/images/sun.png" alt="" />
+                    <div className="absolute text-white inset-0 w-full h-full flex justify-center flex-col items-center">
+                      <b className="text-2xl md:text-4xl"> 1 Month </b>
+                      <span className="text-lg font-medium">free Brokerage</span>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <img className="w-[270px] m-auto brightness-50" src="/images/sun.png" alt="" />
+                    <div className="absolute text-white inset-0 w-full h-full flex justify-center flex-col items-center">
+                      <span className="text-lg font-medium">Discount coupon of</span>
+                      <b className="text-2xl md:text-4xl"> ₹ 3000 </b>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
 
 
             </div>
           </div>
 
-        </div> */}
+        </div>
 
         <div className="py-20  ">
           <div className="container">

@@ -57,8 +57,9 @@ import { FaEnvelope } from "react-icons/fa";
 import { IoBarChart } from "react-icons/io5";
 import { GiChart } from "react-icons/gi";
 import { AiOutlineSafety } from "react-icons/ai";
-
+import { FaUserPlus } from "react-icons/fa6";
 export const reactIcons = {
+  userPlus: <FaUserPlus />,
   whatsapp: <FaWhatsapp />,
   location: <FaMap />,
   chart: <IoBarChart />,
