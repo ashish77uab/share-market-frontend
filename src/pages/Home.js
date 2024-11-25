@@ -113,6 +113,23 @@ const Home = () => {
           </div>
 
         </div>
+        <div className="py-20  ">
+          <div className="container">
+            <header>
+              <div className="container flex justify-center mb-10 lg:mb-16  items-center">
+                <h2 className="heading-3 font-semibold lg:text-left text-center">
+                  Charges and <span className="text-primary-pink">Benefits</span></h2>
+              </div>
+            </header>
+            <div className=" grid grid-cols-1 lg:grid-cols-2 gap-10  place-items-center ">
+              <img className="max-w-full" src="/images/charges.jpg" alt="charges" />
+              <img className="max-w-full" src="/images/free-demat.jpeg" alt="free-demat" />
+
+
+            </div>
+          </div>
+
+        </div>
 
         <div className="py-20  ">
           <div className="container">

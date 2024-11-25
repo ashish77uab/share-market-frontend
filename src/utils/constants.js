@@ -554,148 +554,125 @@ export const TRANSACTION_STATUS = {
   rejected: 'Rejected',
 }
 
-// const WishlistConstant = {
-//   ABBOTINDIA,
-//   ADANIENT,
-//   ADANIENT,
-//   ADANIGREEN,
-//   ADANIPORTS,
-//   ADANITRANS,
-//   ALKEM,
-//   APLAPOLLO,
-//   APOLLOHOSP,
-//   ASHOKLEY,
-//   ASIANPAINT,
-//   AUBANK,
-//   AUROPHARMA,
-//   AXISBANK,
-//   AXISBANK,
-//   BAJAJ,
-//   BAJAJ,
-//   BAJAJFINSV,
-//   BAJFINANCE,
-//   BALKRISIND,
-//   BANDHANBNK,
-//   BANKBARODA,
-//   BHARATFORG,
-//   BHARTIARTL,
-//   BIOCON,
-//   BOSCHLTD,
-//   BPCL,
-//   BPCL,
-//   BRITANNIA,
-//   CIPLA,
-//   CIPLA,
-//   COALINDIA,
-//   COFORGE,
-//   DISHTV,
-//   DIVISLAB,
-//   DIVISLAB,
-//   DRREDDY,
-//   DRREDDY,
-//   EICHERMOT,
-//   EICHERMOT,
-//   FEDERALBNK,
-//   GAIL,
-//   GLAND,
-//   GLAXO,
-//   GLENMARK,
-//   GRANULES,
-//   GRASIM,
-//   HATHWAY,
-//   HCLTECH,
-//   HCLTECH,
-//   HDFC,
-//   HDFCBANK,
-//   HDFCBANK,
-//   HDFCLIFE,
-//   HEROMOTOCO,
-//   HEROMOTOCO,
-//   HINDALCO,
-//   HINDALCO,
-//   HINDCOPPER,
-//   HINDUNILVR,
-//   HINDZINC,
-//   ICICIBANK,
-//   ICICIBANK,
-//   IDFCFIRSTB,
-//   INDUSINDBK,
-//   INDUSINDBK,
-//   INFY,
-//   INFY,
-//   INOXLEISUR,
-//   IOC,
-//   IPCALAB,
-//   ITC,
-//   JINDALSTEL,
-//   JSL,
-//   JSWSTEEL,
-//   JSWSTEEL,
-//   KOTAKBANK,
-//   KOTAKBANK,
-//   LAURUSLABS,
-//   LT,
-//   LTIM,
-//   LTTS,
-//   LUPIN,
-//   M,
-//   M,
-//   MARUTI,
-//   MARUTI,
-//   MOIL,
-//   MOTHERSON,
-//   MPHASIS,
-//   // MRF
-//   // NATCOPHARM
-//   // NATIONALUM
-//   // NAVNETEDUL
-//   // NAZARA
-//   // NESTLEIND
-//   // NETWORK18
-//   // NTPC
-//   // NTPC
-//   // ONGC
-//   // ONGC
-//   // PERSISTENT
-//   // PFIZER
-//   // PNB
-//   // POWERGRID
-//   // POWERGRID
-//   // PVR
-//   // RATNAMANI
-//   // RELIANCE
-//   // RELIANCE
-//   // SAIL
-//   // SANOFI
-//   // SBILIFE
-//   // SBIN
-//   // SBIN
-//   // SONACOMS
-//   // SUNPHARMA
-//   // SUNPHARMA
-//   // SUNTV
-//   // TATACONSUM
-//   // TATAMOTORS
-//   // TATAMOTORS
-//   // TATAPOWER
-//   // TATASTEEL
-//   // TATASTEEL
-//   // TCS
-//   // TCS
-//   // TECHM
-//   // TECHM
-//   // TIINDIA
-//   // TITAN
-//   // TORNTPHARM
-//   // TV18BRDCST
-//   // TVSMOTOR
-//   // ULTRACEMCO
-//   // UPL
-//   // VEDL
-//   // WELCORP
-//   // WIPRO
-//   // WIPRO
-//   // ZEEL
-//   // ZYDUSLIFE
+export const STRATEGIES = [
+  {
+    time: '2 months ago',
+    count: '94',
+    title: 'Hybrid Index Strategy',
+    description: 'Hybrid Index StrategyThe Hybrid Index Strategy combines multiple BankNifty and Nifty strategies to address a range of market conditions with a focus',
+    createdBy: 'Market Star',
+    category: ['NFO', 'Volatility', 'BFO', 'EarnTheta'],
+    tradeCost: '458 (₹ 9.2 K)',
+    drawDown: '₹ 10.4 K (2%)',
+    minCapital: '₹ 530 K',
+    monthlyFee: 'Free',
+  },
+  {
+    time: '2 years ago',
+    count: '144',
+    title: 'Dynamic Money miner Nifty',
+    description: 'DMM (NF): This is a Nifty options writing strategy. The strategy adjusts its position dynamically based on market conditions. It involves taking two ',
+    createdBy: 'Get Set Algo',
+    category: ['NFO', 'Volatility', 'SupportResistance', 'SpendTheta'],
+    tradeCost: '136 (₹ 2.7 K)',
+    drawDown: '₹ 13.8 K (8%)',
+    minCapital: '₹ 165 K',
+    monthlyFee: 'Free',
+  },
+  {
+    time: '2 years ago',
+    count: '144',
+    title: 'Class A Crude Oil Options Selling 1530 PM',
+    description: 'Live Shared Code: df9a9185-eb84-4a0f-9520-ca8582d4ebd2Important NoteF&O trading involves substantial risk. If you expect returns exceeding 10-14% ',
+    createdBy: 'Sachin Jain',
+    category: [
+      'MCX',
+      'EarnTheta',
+      'NonDirectional',
+      'SupportResistance',
+      'LowFrequency',
+      'TechnicalAnalysis',
+      'Bullish',
+      'Bearish',
+      'Range'],
+    tradeCost: '218 (₹ 4.4 K)',
+    drawDown: '₹ 8.3 K (2%)',
+    minCapital: '₹ 550 K',
+    monthlyFee: 'Free',
+  },
+  {
+    time: '2 years ago',
+    count: '144',
+    title: 'Index Premium Eater',
+    description: 'INDEX PREMIUM EATERThe Index Premium Eater combines SENSEX and Nifty indices to create a unique semi-directional intraday strategy. It begins at 9:16',
+    createdBy: 'Market Star',
+    category: [
+      'NFO',
+      'BFO',
+      'EarnTheta',
+      'TrendFollowing',
+      'Volatility',
+      'EventBased',
+      'MarketNeutral',
+      'Directional',
+      'Pairs',
+      'Bullish',
+      'Bearish',
+      'Momentum',
+      'Intraday',
+    ],
+    tradeCost: '300 (₹ 6 K)',
+    drawDown: '₹ 18.6 K (8%)',
+    minCapital: '₹ 220 K',
+    monthlyFee: 'Free',
+  },
+  {
+    time: '2 years ago',
+    count: '144',
+    title: 'GSA Smart Straddle V2',
+    description: 'BNF Smart Straddle v2: This is an options selling strategy focused on a single lot of BNF options with additional OTM hedges. The adjustments in this',
+    createdBy: 'Get Set Algo',
+    category: [
+      'NFO',
+    ],
+    tradeCost: '232 (₹ 4.6 K)',
+    drawDown: '₹ 12.1 K (8%)',
+    minCapital: '₹ 150 K',
+    monthlyFee: 'Free',
+  },
+  {
+    time: '2 years ago',
+    count: '144',
+    title: 'Expiry Strategy',
+    description: 'Expiry Strategy OverviewThe Expiry Strategy is designed to operate on multiple indices, with trades assigned by weekday:Monday: BankexTuesday: FinNift ',
+    createdBy: 'Get Set Algo',
+    category: [
+      'NFO',
+      'BFO',
+      'Expiry Trading',
+    ],
+    tradeCost: '84 (₹ 1.7 K)',
+    drawDown: '₹ 3.9 K (16%)',
+    minCapital: '₹ 25 K',
+    monthlyFee: 'Free',
+  },
+  {
+    time: '2 years ago',
+    count: '100',
+    title: 'Omega NIFTY INTRADAY',
+    description: 'This stratagy for persons who want earn small profit with small capital.join our TG channel for more info.',
+    createdBy: 'Omega Win Algos',
+    category: [
+      'NFO',
+      'Volatility',
+      'Momentum',
+      'Intraday',
+      'Scalping',
+    ],
+    tradeCost: '405 (₹ 8.1 K)',
+    drawDown: '₹ 2.4 K (33%)',
+    minCapital: '₹ 7.5 K',
+    monthlyFee: 'Free',
+  }
+]
 
-// }
