@@ -12,13 +12,13 @@ const UserLayout = () => {
           <Outlet />
         </div>
       </div>
-      <div className="flex md:hidden items-center fixed w-full h-[60px] bottom-0 bg-primary-darkBlueSupport border-t border-t-primary-darkBlue">
+      <div className="flex md:hidden items-center fixed w-full py-3 bottom-0 bg-primary-darkBlueSupport border-t border-t-primary-darkBlue">
         {userMenuLinks?.map((item) => {
           return (
             <NavLink
               key={item.path}
               to={item.path}
-              className={({ isActive }) => `font-semibold flex-1 relative flex-center flex-col   px-1  ${isActive ? "text-primary-pink " : " text-white "
+              className={({ isActive }) => `font-semibold cursor-pointer flex-1 relative flex-center flex-col   px-1  ${isActive ? "text-primary-pink " : " text-white "
                 }`}
             >
 
