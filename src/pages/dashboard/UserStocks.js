@@ -14,6 +14,7 @@ import Pagination from "../../components/Pagination";
 import SellStock from "../../components/modals/SellStock";
 import moment from 'moment'
 import SettleConfimation from "../../components/modals/SettleConfimation";
+import EditStockModal from "../../components/modals/EditStockModal";
 const UserStocks = () => {
   const limit = 10
   const [page, setPage] = useState(1)
@@ -21,6 +22,7 @@ const UserStocks = () => {
   const location = useLocation();
   const { userId } = useParams();
   const [isPurchaseOpen, setIsPurchaseOpen] = useState(false);
+  const [isEditStockOpen, setIsEditStockOpen] = useState(false);
   const [isSettleOpen, setIsSettleOpen] = useState(false);
   const [isSellOpen, setIsSellOpen] = useState(false);
   const [stock, setStock] = useState(null);
@@ -143,15 +145,15 @@ const UserStocks = () => {
                     </td> : <td className="font-semibold">-</td>}
                     <td>{moment(stock?.createdAt)?.format('DD/MM/YYYY hh:mm a')}</td>
                     <td>
-                      <div className="flex justify-center gap-2">
-                        {/* <ActionButton
+                      <div className="flex justify-end gap-2">
+                        <ActionButton
                           onClick={() => {
                             setStock(stock);
-                            setIsPurchaseOpen(true);
+                            setIsEditStockOpen(true);
                           }}
                         >
                           {reactIcons.edit}
-                        </ActionButton> */}
+                        </ActionButton>
                         <DeleteButton
                           onClick={() => {
                             setStock(stock);
@@ -219,6 +221,15 @@ const UserStocks = () => {
         stock={stock || null}
         closeModal={() => {
           setIsSellOpen(false);
+          setStock(null);
+        }}
+        fetchData={getUsersStocksData}
+      />}
+      {isEditStockOpen && <EditStockModal
+        isOpen={isEditStockOpen}
+        stock={stock || null}
+        closeModal={() => {
+          setIsEditStockOpen(false);
           setStock(null);
         }}
         fetchData={getUsersStocksData}
