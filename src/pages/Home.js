@@ -113,7 +113,7 @@ const Home = () => {
           </div>
 
         </div>
-        <div className="py-20  ">
+        {/* <div className="py-20  ">
           <div className="container">
             <header>
               <div className="container flex justify-center mb-10 lg:mb-16  items-center">
@@ -229,7 +229,7 @@ const Home = () => {
             </div>
           </div>
 
-        </div>
+        </div> */}
 
         <div className="py-20  ">
           <div className="container">
