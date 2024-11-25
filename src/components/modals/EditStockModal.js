@@ -143,38 +143,38 @@ const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
                           onBlur={handleBlur}
                           value={values.amount}
                         />
-                        {
-                          (isSell || isSettled) && <>
-                            <TextInput
-                              type='number'
-                              label={"End price"}
-                              placeholder="eg. 200"
-                              name="endPrice"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              value={values.endPrice}
-                            />
-                            <TextInput
-                              type='number'
-                              label={"Change profit and loss"}
-                              placeholder="eg. 200"
-                              name="diffAmount"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              value={values.diffAmount}
-                              helperText={'Note: make negative for loss'}
-                            />
-                            <TextInput
-                              type='number'
-                              label={"Quantity Left"}
-                              placeholder="eg. 200"
-                              name="quantityLeft"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              value={values.quantityLeft}
-                            />
-                          </>
-                        }
+
+                        <>
+                          <TextInput
+                            type='number'
+                            label={"End price"}
+                            placeholder="eg. 200"
+                            name="endPrice"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.endPrice}
+                          />
+                          <TextInput
+                            type='number'
+                            label={"Change profit and loss"}
+                            placeholder="eg. 200"
+                            name="diffAmount"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.diffAmount}
+                            helperText={'Note: make negative for loss'}
+                          />
+                          <TextInput
+                            type='number'
+                            label={"Quantity Left"}
+                            placeholder="eg. 200"
+                            name="quantityLeft"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.quantityLeft}
+                          />
+                        </>
+
 
                         <footer className="py-4  font-medium">
                           <button type="submit" className="btn-outline-primary">
