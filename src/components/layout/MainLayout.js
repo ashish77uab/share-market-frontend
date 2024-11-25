@@ -4,8 +4,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import { useSelector } from "react-redux";
 import { getUserToken } from "../../utils/constants";
-import { toast } from "react-toastify";
-import ToastMsg from "../toast/ToastMsg";
+// import { toast } from "react-toastify";
+// import ToastMsg from "../toast/ToastMsg";
 
 const MainLayout = () => {
   const navigate = useNavigate()
@@ -13,7 +13,7 @@ const MainLayout = () => {
   const isLoggedIn = getUserToken()
   useEffect(() => {
     if (isLoggedIn && user?.role === 'User') {
-      toast.error(<ToastMsg title={'Please logout to view website.'} />);
+      // toast.error(<ToastMsg title={'Please logout to view website.'} />);
       navigate('/user/dashboard')
 
     }
