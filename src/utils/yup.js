@@ -2,7 +2,7 @@ import { object } from 'dot-object';
 import * as Yup from "yup";
 
 const FILE_SIZE = 2 * 1024 * 1024; // 5 MB
-const SUPPORTED_FORMATS = ["image/jpeg", "image/png"];
+const SUPPORTED_FORMATS = ["image/jpeg", "image/jpg", "image/png"];
 
 export const userValidationSchema = Yup.object().shape({
   firstName: Yup.string().required("First name is required."),
@@ -12,11 +12,11 @@ export const userValidationSchema = Yup.object().shape({
     .required("Email is required."),
   gender: Yup.string()
     .oneOf(["male", "female", "others"], "Invalid gender value.")
-    ,
+  ,
   password: Yup.string()
     .required("Password is required.")
     .min(8, "Password must be at least 8 characters."),
-    panImage: Yup.mixed()
+  panImage: Yup.mixed()
     .required("PAN image is required.")
     .test(
       "fileSize",
@@ -58,22 +58,22 @@ export const userValidationSchema = Yup.object().shape({
     .required("PAN number is required."),
   aadharNumber: Yup.string()
     .required("Aadhar number is required.")
-   ,
+  ,
   address: Yup.string().required("Address is required."),
   bankName: Yup.string().required("Bank name is required."),
   accountNumber: Yup.string()
     .required("Account number is required.")
-    ,
+  ,
   ifscCode: Yup.string()
     .required("IFSC code is required.")
-   ,
+  ,
   accountType: Yup.string()
     .oneOf(["saving", "current"], "Invalid account type."),
-    confirmPassword:
+  confirmPassword:
     Yup.string()
       .oneOf([Yup.ref('password'), null], 'Password not matched')
       .required('Confirm password is required'),
- 
+
 });
 export const loginValidationSchema = Yup.object().shape({
   email: Yup.string()

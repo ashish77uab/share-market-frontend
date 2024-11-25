@@ -12,7 +12,7 @@ const UserLayout = () => {
           <Outlet />
         </div>
       </div>
-      <div className="flex items-center fixed w-full h-[60px] bottom-0 bg-primary-darkBlueSupport border-t border-t-primary-darkBlue">
+      <div className="flex md:hidden items-center fixed w-full h-[60px] bottom-0 bg-primary-darkBlueSupport border-t border-t-primary-darkBlue">
         {userMenuLinks?.map((item) => {
           return (
             <NavLink
