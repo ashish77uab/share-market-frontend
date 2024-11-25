@@ -26,24 +26,29 @@ export const userMenuLinks = [
   {
     path: "/user/dashboard",
     title: "Dashboard",
+    icon: reactIcons.home
 
   },
   {
     path: "/user/markets",
     title: "Markets",
+    icon: reactIcons.chart
   },
   {
     path: "/user/net-position",
     title: "Net Position",
+    icon: reactIcons.giChart
   },
 
   {
     path: "/user/transactions",
     title: "Transactions",
+    icon: reactIcons.list
   },
   {
     path: "/user/funds",
     title: "Funds",
+    icon: reactIcons.money
   },
 
 

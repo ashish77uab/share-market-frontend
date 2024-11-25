@@ -148,7 +148,7 @@ const Home = () => {
                       <h6 className="lg:text-4xl text-2xl text-primary-pink font-bold">
                         0 Brokerage *
                       </h6>
-                      <p className="text-lg font-medium text-primary-gray">for 1st month on FnO Trading <br />(up to Rs 1,000 )</p>
+                      <p className="text-lg font-medium text-primary-gray">for 1st month on F&O Trading <br />(up to Rs 1,000 )</p>
                     </div>
                   </div>
                 </div>

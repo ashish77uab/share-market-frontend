@@ -1,6 +1,6 @@
 import React from "react";
 import { FiTrash2 } from "react-icons/fi";
-import { FaImage, FaMap, FaUsers } from "react-icons/fa";
+import { FaImage, FaMap, FaMoneyBill, FaUsers } from "react-icons/fa";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { MdOutlineMarkChatUnread, MdOutlineMarkChatRead } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
@@ -60,6 +60,7 @@ import { AiOutlineSafety } from "react-icons/ai";
 import { FaUserPlus } from "react-icons/fa6";
 export const reactIcons = {
   userPlus: <FaUserPlus />,
+  money: <FaMoneyBill />,
   whatsapp: <FaWhatsapp />,
   location: <FaMap />,
   chart: <IoBarChart />,

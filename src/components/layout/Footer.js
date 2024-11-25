@@ -52,7 +52,7 @@ const Footer = () => {
                                     </li>
                                     <li className='flex items-center gap-4'>
                                         <span className='text-2xl' >{reactIcons.email}</span>
-                                        <span>algotronsgrievance@gmail.com</span>
+                                        <span>algotronssupport@algotorns.com</span>
                                     </li>
                                 </ul>
                             </div>
@@ -63,7 +63,7 @@ const Footer = () => {
             </div>
             <div className="container py-4">
                 <p className='text-muted text-center'>
-                    &copy; 2014 algotronsgrievance@gmail.com. All rights reserved.
+                    &copy; 2014 algotronssupport@algotorns.com. All rights reserved.
                 </p>
             </div>
         </footer>
