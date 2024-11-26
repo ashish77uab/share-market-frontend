@@ -137,6 +137,16 @@ const Navbar = () => {
                   </Menu>
                 </div>
               )}
+              {!isLoggedIn && <div className="lg:hidden block">
+                <button
+                  onClick={() => {
+                    handleAuthToggle({ key: 'isLoginOpen', value: true })
+                  }}
+                  className='btn-primary px-6 min-w-fit'
+                >
+                  Sign In
+                </button>
+              </div>}
               <div className="lg:block hidden">
                 {!isLoggedIn && (
                   <AuthButton
