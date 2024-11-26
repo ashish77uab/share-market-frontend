@@ -74,7 +74,6 @@ const Transactions = ({
                             <b>Rs. {numberWithCommas(user?.wallet?.amount)}</b>
                             {isAdmin && <button onClick={() => {
                                 setIsUpdateWalletOpen(true)
-                                console.log(user)
                                 setWalletData({
                                     userId: user?._id,
                                     amount: user?.wallet?.amount,
@@ -87,7 +86,7 @@ const Transactions = ({
                             <thead>
                                 <th>Sr.No</th>
                                 <th>Amount</th>
-                                <th>Transaction ID</th>
+                                <th>Image</th>
                                 <th>Transction Type</th>
                                 <th>Date</th>
                             </thead>
@@ -98,7 +97,13 @@ const Transactions = ({
                                         <td>
                                             <b>Rs. {numberWithCommas(transaction?.amount)}</b>
                                         </td>
-                                        <td>{transaction?.transactionId}</td>
+                                        <td>
+                                            <div className="flex items-center justify-center">
+                                                {transaction?.screenShot ? <a rel="noreferrer" title="View image by clicking" href={transaction?.screenShot} target="_blank">
+                                                    <img className="max-w-[60px] my-2 object-contain max-h-[60px]" alt={'screenshot'} src={transaction?.screenShot} />
+                                                </a> : '-'}
+                                            </div>
+                                        </td>
                                         <td className={`font-semibold ${renderStatusClassName(transaction?.status)}`}>{transaction?.status}</td>
                                         <td className='whitespace-nowrap'>{moment(transaction?.createdAt).format('DD MMM , YYYY hh:mm a')}</td>
                                     </tr>

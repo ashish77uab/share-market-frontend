@@ -35,7 +35,6 @@ const AllTransactions = () => {
     status: '',
     actionType: ''
   })
-  console.log(filter, 'filer')
 
 
   const getAllTransactions = async () => {
@@ -94,7 +93,7 @@ const AllTransactions = () => {
         </header>
         <div>
           <div className="flex items-center flex-wrap  gap-4 mb-4">
-            <div className="flex items-center gap-2">
+            {/* <div className="flex items-center gap-2">
               <label htmlFor="" className="font-medium">Search:</label>
               <TextInput
                 type="text"
@@ -110,7 +109,7 @@ const AllTransactions = () => {
                 isFormik={false}
                 value={search}
               />
-            </div>
+            </div> */}
             <div className=" flex items-center gap-2">
               <label htmlFor="" className="font-medium flex-shrink-0">Action Type:</label>
               <div className="min-w-[250px]">
@@ -158,7 +157,7 @@ const AllTransactions = () => {
                   <th>Amount</th>
                   <th>Image</th>
                   <th>Transaction Type</th>
-                  <th>Transaction Id</th>
+                  {/* <th>Transaction Id</th> */}
                   <th>Date</th>
                   <th>Status</th>
                 </tr>
@@ -182,7 +181,7 @@ const AllTransactions = () => {
                         </div>
                       </td>
                       <td>{transaction?.actionType}</td>
-                      <td>{transaction?.transactionId}</td>
+                      {/* <td>{transaction?.transactionId}</td> */}
                       <td>{moment(transaction?.createdAt).format('DD MMM,YYYY')}</td>
                       {
                         transaction?.status === 'Pending' ? <td>

@@ -45,7 +45,6 @@ const DepositMoney = ({ closeModal }) => {
     <Formik
       initialValues={{
         amount: "",
-        transactionId: "",
         screenShot: "",
 
       }}
@@ -70,15 +69,7 @@ const DepositMoney = ({ closeModal }) => {
               value={values.amount}
 
             />
-            <TextInput
-              label={"Transaction Id"}
-              placeholder="Enter transaction Id"
-              name="transactionId"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.transactionId}
 
-            />
             <div>
               <TextInput
                 label={"Attach Transaction ScreenShot"}

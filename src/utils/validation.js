@@ -36,9 +36,9 @@ export const addDepositFormSchema = yup.object().shape({
     amount: yup
         .string()
         .required("Amount is required"),
-    transactionId: yup
-        .string()
-        .required("Transaction unique id is required"),
+    // transactionId: yup
+    //     .string()
+    //     .required("Transaction unique id is required"),
     screenShot: yup.mixed()
         .required("ScreenShot of Transaction is required.")
         .test(
