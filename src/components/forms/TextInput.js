@@ -9,12 +9,17 @@ const TextInput = ({
   name,
   error,
   helperText,
+  labelAddon,
   isFormik = true,
   ...rest
 }) => {
   return (
     <div className="flex flex-col gap-1">
-      {label && <label htmlFor="">{label}</label>}
+      {label && <div className="flex items-center w-full justify-between gap-4">
+        {<label htmlFor="">{label}</label>}
+        {labelAddon && labelAddon}
+      </div>
+      }
       <div className="relative">
         <input
           {...rest}

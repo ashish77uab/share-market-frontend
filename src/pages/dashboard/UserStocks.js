@@ -168,12 +168,12 @@ const UserStocks = () => {
                             setIsSellOpen(true);
                           }}
                           className="btn-primary min-w-fit px-8">Sell</button>
-                        {!stock?.isSettled && <button
+                        {/* {!stock?.isSettled && <button
                           onClick={() => {
                             setStock(stock);
                             setIsSettleOpen(true);
                           }}
-                          className="btn-green min-w-fit px-8">Settle</button>}
+                          className="btn-green min-w-fit px-8">Settle</button>} */}
                       </div>
                     </td>
                   </tr>

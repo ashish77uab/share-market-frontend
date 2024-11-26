@@ -17,6 +17,7 @@ const initialState = {
   actionType: 'Buy',
 };
 const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
+  const [isChecked, setIsChecked] = useState(false)
   const isBuy = stock?.actionType === 'Buy'
   const isSell = stock?.actionType === 'Sell'
   const isSettled = stock?.actionType === 'Settled'
@@ -32,7 +33,8 @@ const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
       }
       const res = await updateStock(
         { ...tempData, userId },
-        stock?._id
+        stock?._id,
+        isChecked
       );
       const { status, data } = res;
       if (status >= 200 && status < 300) {
@@ -163,6 +165,16 @@ const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
                             onBlur={handleBlur}
                             value={values.diffAmount}
                             helperText={'Note: make negative for loss'}
+                            labelAddon={
+                              <input
+                                className="w-5 h-5"
+                                type="checkbox"
+                                checked={isChecked}
+                                name=""
+                                id=""
+                                onChange={(e) => setIsChecked(e.target.checked)}
+                              />
+                            }
                           />
                           <TextInput
                             type='number'

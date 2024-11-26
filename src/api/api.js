@@ -192,7 +192,7 @@ export const getUserStocks = (data) => {
 }
 export const createStock = (data) => API.post(`stock/create-stock`, data);
 export const sellStock = (data) => API.post(`stock/sell-stock`, data);
-export const updateStock = (data, stockId) => API.put(`stock/update-stock/${stockId}`, data);
+export const updateStock = (data, stockId, isChecked) => API.put(`stock/update-stock/${stockId}?isChecked=${isChecked}`, data);
 export const deleteStock = (stockId) => API.delete(`stock/delete-stock/${stockId}`);
 export const settleStock = (stockId, stock) => API.post(`stock/settle-stock/${stockId}`, stock);
 export const contactUsRequest = (formData) => API.post(`auth/contact-us`, formData);
