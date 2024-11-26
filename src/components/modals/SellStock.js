@@ -3,19 +3,17 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import TextInput from "../forms/TextInput";
 import {
-  updateStock,
   sellStock,
 } from "../../api/api";
 import { toast } from "react-toastify";
 import ToastMsg from "../toast/ToastMsg";
 import { Form, Formik } from "formik";
-import { stockSellValidationSchema, stockValidationSchema } from "../../utils/validation";
+import { stockSellValidationSchema } from "../../utils/validation";
 import { useParams } from "react-router-dom";
 const initialState = {
   name: '',
   quantity: '',
   endPrice: '',
-  actionType: 'Sell',
 };
 const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
   const { userId } = useParams();
@@ -46,9 +44,9 @@ const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
     if (stock) {
       setInitialValue({
         ...initialState,
-        name: stock?.name,
-        startPrice: stock?.startPrice,
-        userId: stock?.userId,
+        ...stock,
+        actionType: 'Sell',
+        quantity: stock.quantityLeft
       });
     }
   }, [stock]);
@@ -87,7 +85,7 @@ const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
                 <Formik
                   enableReinitialize
                   initialValues={initialValue}
-                  validationSchema={stockSellValidationSchema(stock?.quantity)}
+                  validationSchema={stockSellValidationSchema(stock?.quantityLeft)}
                   onSubmit={handleSubmit}
                 >
                   {({
@@ -117,15 +115,6 @@ const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
                           value={values.endPrice}
 
                         />
-                        {/* <TextInput
-                          type='number'
-                          label={"End price"}
-                          placeholder="eg. 200"
-                          name="endPrice"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.endPrice}
-                        /> */}
                         <footer className="py-4  font-medium">
                           <button type="submit" className="btn-outline-primary">
                             {loading ? 'Loading...' : stock ? 'Update' : 'Create'}

@@ -20,7 +20,7 @@ const TextInput = ({
           {...rest}
           name={name}
           className={`input-field  ${className} ${error ? "border-red-500" : "border-zinc-200"
-            } ${isUser && 'bg-primary-darkBlueSupport focus-visible:outline-none !border-blue-950'} `}
+            } ${isUser && 'bg-primary-darkBlueSupport text-white focus-visible:outline-none !border-blue-950'} `}
         />
         {addonRight ? addonRight : null}
       </div>

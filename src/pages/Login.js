@@ -107,6 +107,7 @@ const Login = ({ closeModal }) => {
                   <div className="text-muted">
                     <Link
                       to="/forgot-password"
+                      onClick={closeModal}
                       className="ml-2 text-blue-500 underline"
                     >
                       Forgot Password

@@ -139,7 +139,7 @@ const UserDashboard = () => {
           </header>
         </div> */}
         <div className="flex lg:flex-row flex-col lg:items-start gap-1 mt-1">
-          <div className="max-w-md w-full space-y-2 min-h-[700px]">
+          <div className="lg:max-w-md w-full space-y-2 min-h-[700px]">
             <WishlistData />
           </div>
           <div className="flex-grow">
