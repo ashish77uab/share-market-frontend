@@ -1,4 +1,7 @@
 import * as yup from "yup";
+const FILE_SIZE = 2 * 1024 * 1024; // 5 MB
+const SUPPORTED_FORMATS = ["image/jpeg", "image/jpg", "image/png"];
+
 export const loginValidation = yup.object().shape({
     email: yup
         .string()
@@ -36,6 +39,18 @@ export const addDepositFormSchema = yup.object().shape({
     transactionId: yup
         .string()
         .required("Transaction unique id is required"),
+    screenShot: yup.mixed()
+        .required("ScreenShot of Transaction is required.")
+        .test(
+            "fileSize",
+            "ScreenShot of Transaction size should not exceed 5 MB.",
+            (value) => value && value.size <= FILE_SIZE
+        )
+        .test(
+            "fileFormat",
+            "ScreenShot of Transaction must be in JPEG/JPG/PNG format.",
+            (value) => value && SUPPORTED_FORMATS.includes(value.type)
+        ),
 });
 export const withdrawFundFormSchema = yup.object().shape({
     amount: yup

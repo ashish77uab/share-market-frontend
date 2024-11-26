@@ -156,6 +156,7 @@ const AllTransactions = () => {
                   <th>Name of User</th>
                   <th>Email</th>
                   <th>Amount</th>
+                  <th>Image</th>
                   <th>Transaction Type</th>
                   <th>Transaction Id</th>
                   <th>Date</th>
@@ -172,6 +173,13 @@ const AllTransactions = () => {
                       <td>{transaction?.user?.email}</td>
                       <td>
                         <b>Rs. {numberWithCommas(transaction?.amount)}</b>
+                      </td>
+                      <td>
+                        <div className="flex items-center justify-center">
+                          {transaction?.screenShot ? <a rel="noreferrer" title="View image by clicking" href={transaction?.screenShot} target="_blank">
+                            <img className="max-w-[60px] my-2 object-contain max-h-[60px]" alt={'screenshot'} src={transaction?.screenShot} />
+                          </a> : '-'}
+                        </div>
                       </td>
                       <td>{transaction?.actionType}</td>
                       <td>{transaction?.transactionId}</td>

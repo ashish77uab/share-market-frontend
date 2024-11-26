@@ -25,7 +25,7 @@ export const userValidationSchema = Yup.object().shape({
     )
     .test(
       "fileFormat",
-      "PAN image must be in JPEG or PNG format.",
+      "PAN image must be in JPEG/JPG/PNG format.",
       (value) => value && SUPPORTED_FORMATS.includes(value.type)
     ),
   aadharImage: Yup.mixed()
@@ -37,7 +37,7 @@ export const userValidationSchema = Yup.object().shape({
     )
     .test(
       "fileFormat",
-      "Aadhar image must be in JPEG or PNG format.",
+      "Aadhar image must be in JPEG/JPG/PNG format.",
       (value) => value && SUPPORTED_FORMATS.includes(value.type)
     ),
   clientImage: Yup.mixed()
@@ -49,7 +49,7 @@ export const userValidationSchema = Yup.object().shape({
     )
     .test(
       "fileFormat",
-      "Client image must be in JPEG or PNG format.",
+      "Client image must be in JPEG/JPG/PNG format.",
       (value) => value && SUPPORTED_FORMATS.includes(value.type)
     ),
   phone: Yup.string()

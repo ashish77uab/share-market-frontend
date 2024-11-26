@@ -8,6 +8,7 @@ import { addDeposit } from "../../api/api";
 import { toast } from "react-toastify";
 import { addDepositFormSchema } from "../../utils/validation";
 import { reactIcons } from "../../utils/icons";
+import { serialize } from "object-to-formdata";
 
 const SingleInfo = ({ title, value }) => {
   return <div className="flex flex-col gap-1">
@@ -25,7 +26,7 @@ const DepositMoney = ({ closeModal }) => {
     setIsLoading(true)
     try {
       let formData = { ...values, amount: Number(values.amount) };
-      const res = await addDeposit(formData);
+      const res = await addDeposit(serialize(formData));
       const { status, data } = res;
       if (status >= 200 && status < 300) {
         toast.success(<ToastMsg title={`Request Created Successfully`} />);
@@ -45,6 +46,7 @@ const DepositMoney = ({ closeModal }) => {
       initialValues={{
         amount: "",
         transactionId: "",
+        screenShot: "",
 
       }}
       validationSchema={addDepositFormSchema}
@@ -54,6 +56,7 @@ const DepositMoney = ({ closeModal }) => {
         values,
         handleChange,
         handleBlur,
+        setFieldValue
       }) => {
         return (
           <Form className="w-full space-y-4">
@@ -76,6 +79,18 @@ const DepositMoney = ({ closeModal }) => {
               value={values.transactionId}
 
             />
+            <div>
+              <TextInput
+                label={"Attach Transaction ScreenShot"}
+                type="file"
+                name="screenShot"
+                onChange={(e) => {
+                  setFieldValue('screenShot', e.target.files[0])
+                }}
+                onBlur={handleBlur}
+
+              />
+            </div>
 
             <footer className="py-4 font-medium">
               <button type="submit" className="btn-outline-primary">
