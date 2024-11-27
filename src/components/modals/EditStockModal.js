@@ -61,7 +61,6 @@ const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
       });
     }
   }, [stock]);
-  console.log(initialValue, 'initialValue')
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-[1000]" onClose={closeModal}>
@@ -128,7 +127,7 @@ const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
                         />
                         <TextInput
                           type='number'
-                          label={"Start price"}
+                          label={"Limit price"}
                           placeholder="eg. 400"
                           name="startPrice"
                           onChange={handleChange}
@@ -136,20 +135,10 @@ const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
                           value={values.startPrice}
 
                         />
-                        <TextInput
-                          type='number'
-                          label={"Total Amount"}
-                          placeholder="eg. 200"
-                          name="amount"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.amount}
-                        />
-
                         <>
                           <TextInput
                             type='number'
-                            label={"End price"}
+                            label={"Price"}
                             placeholder="eg. 200"
                             name="endPrice"
                             onChange={handleChange}

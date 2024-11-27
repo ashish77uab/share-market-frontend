@@ -125,7 +125,7 @@ const PurchaseStock = ({ isOpen, closeModal, stock, fetchData }) => {
                         />
                         <TextInput
                           type='number'
-                          label={"Start price"}
+                          label={"Limit price"}
                           placeholder="eg. 400"
                           name="startPrice"
                           onChange={handleChange}
@@ -133,15 +133,6 @@ const PurchaseStock = ({ isOpen, closeModal, stock, fetchData }) => {
                           value={values.startPrice}
 
                         />
-                        {/* <TextInput
-                          type='number'
-                          label={"End price"}
-                          placeholder="eg. 200"
-                          name="endPrice"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.endPrice}
-                        /> */}
                         <footer className="py-4  font-medium">
                           <button type="submit" className="btn-outline-primary">
                             {loading ? 'Loading...' : stock ? 'Update' : 'Create'}

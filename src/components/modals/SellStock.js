@@ -107,7 +107,7 @@ const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
                         />
                         <TextInput
                           type='number'
-                          label={"End price"}
+                          label={"Price"}
                           placeholder="eg. 400"
                           name="endPrice"
                           onChange={handleChange}

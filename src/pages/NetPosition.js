@@ -57,10 +57,9 @@ const NetPosition = () => {
                                     <th>Name</th>
                                     <th>Quantity</th>
                                     <th>Quantity Left</th>
-                                    <th>Start Price</th>
-                                    <th>End Price</th>
+                                    <th>Limit Price</th>
+                                    <th>Price</th>
                                     <th>Type</th>
-                                    <th>Total Amount</th>
                                     <th>Profit/Loss</th>
                                     <th>Date</th>
                                 </tr>
@@ -75,7 +74,6 @@ const NetPosition = () => {
                                         <td>{numberWithCommas(stock?.startPrice)}</td>
                                         <td>{stock?.endPrice ? numberWithCommas(stock?.endPrice) : '-'}</td>
                                         <td className="font-semibold">{stock.actionType}</td>
-                                        <td className={` font-semibold ${stock?.amount < 0 ? 'text-red-500' : 'text-green-500'}`}>{numberWithCommas(stock?.amount)}</td>
                                         {stock?.diffAmount ? <td className={` font-semibold ${stock?.diffAmount < 0 ? 'text-red-500' : 'text-green-500'}`}>
 
                                             {
