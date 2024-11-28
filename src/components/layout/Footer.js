@@ -40,7 +40,7 @@ const Footer = () => {
                                 </ul>
                             </div>
                             <div>
-                                <h4 className='heading-4 mb-4'>React us</h4>
+                                <h4 className='heading-4 mb-4'>Reach us</h4>
                                 <ul className='space-y-6'>
                                     <li className='flex items-center gap-4 '>
                                         <span className='text-2xl'>{reactIcons.mobile}</span>
