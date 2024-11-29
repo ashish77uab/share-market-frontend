@@ -10,11 +10,13 @@ import ToastMsg from "../toast/ToastMsg";
 import { Form, Formik } from "formik";
 import { stockValidationSchema } from "../../utils/validation";
 import { useParams } from "react-router-dom";
+import moment from "moment";
 const initialState = {
   name: '',
   quantity: '',
   startPrice: '',
   actionType: 'Buy',
+  quantityLeft: '',
 };
 const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
   const [isChecked, setIsChecked] = useState(false)
@@ -58,6 +60,7 @@ const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
       setInitialValue({
         ...stock,
         userId: stock?.userId,
+        date: moment(stock.date).format('YYYY-MM-DDTHH:mm')
       });
     }
   }, [stock]);
@@ -107,8 +110,8 @@ const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
                     return (
                       <Form className="w-full space-y-4 mt-4">
                         <TextInput
-                          label={"Name of Stock"}
-                          placeholder="Enter stock name"
+                          label={"Symbol"}
+                          placeholder="Enter symbol"
                           name="name"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -127,7 +130,7 @@ const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
                         />
                         <TextInput
                           type='number'
-                          label={"Limit price"}
+                          label={"Avg price"}
                           placeholder="eg. 400"
                           name="startPrice"
                           onChange={handleChange}
@@ -138,7 +141,7 @@ const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
                         <>
                           <TextInput
                             type='number'
-                            label={"Price"}
+                            label={"Close price"}
                             placeholder="eg. 200"
                             name="endPrice"
                             onChange={handleChange}
@@ -172,8 +175,19 @@ const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
                             name="quantityLeft"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value={values.quantityLeft}
+                            value={values?.quantityLeft}
                           />
+                          <div>
+                            <TextInput
+                              label={"Date of Stock"}
+                              type="datetime-local"
+                              placeholder="choose date"
+                              name="date"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              value={values.date}
+                            />
+                          </div>
                         </>
 
 

@@ -44,7 +44,7 @@ const NetPosition = () => {
             <div className="px-4">
                 <header className="mb-4 flex items-center justify-between">
                     <h3 className="heading-4">
-                        Stocks List
+                        Scrip ({stocks?.totalStocks})
                     </h3>
 
                 </header>
@@ -53,21 +53,22 @@ const NetPosition = () => {
                         <table>
                             <thead>
                                 <tr>
-                                    <th className="w-[80px]">Sr.No</th>
-                                    <th>Name</th>
-                                    <th>Quantity</th>
-                                    <th>Quantity Left</th>
-                                    <th>Limit Price</th>
-                                    <th>Price</th>
-                                    <th>Type</th>
-                                    <th>Profit/Loss</th>
+                                    {/* <th className="w-[80px]">Sr.No</th> */}
                                     <th>Date</th>
+                                    <th>Symbol</th>
+                                    <th>Net Qty.</th>
+                                    <th>Qty. Left</th>
+                                    <th>Avg Price</th>
+                                    <th>Close Price</th>
+                                    <th>Type</th>
+                                    <th>P/L</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {stocks?.stocks.map((stock, index) => (
                                     <tr>
-                                        <td className="w-[80px]">{index + 1}</td>
+                                        {/* <td className="w-[80px]">{index + 1}</td> */}
+                                        <td>{moment(stock?.date || stock?.createdAt)?.format('YYYY-MM-DD')}</td>
                                         <td>{stock.name}</td>
                                         <td>{stock.quantity}</td>
                                         <td>{stock.quantityLeft}</td>
@@ -81,7 +82,7 @@ const NetPosition = () => {
                                             }
 
                                         </td> : <td className="font-semibold">-</td>}
-                                        <td>{moment(stock?.createdAt)?.format('DD/MM/YYYY hh:mm a')}</td>
+
 
                                     </tr>
                                 ))}

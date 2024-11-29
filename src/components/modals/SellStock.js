@@ -107,7 +107,7 @@ const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
                         />
                         <TextInput
                           type='number'
-                          label={"Price"}
+                          label={"Close Price"}
                           placeholder="eg. 400"
                           name="endPrice"
                           onChange={handleChange}
@@ -115,6 +115,17 @@ const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
                           value={values.endPrice}
 
                         />
+                        <div>
+                          <TextInput
+                            label={"Date of Selling Stock"}
+                            type="datetime-local"
+                            placeholder="choose date"
+                            name="date"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.date}
+                          />
+                        </div>
                         <footer className="py-4  font-medium">
                           <button type="submit" className="btn-outline-primary">
                             {loading ? 'Loading...' : stock ? 'Update' : 'Create'}

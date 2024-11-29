@@ -27,10 +27,10 @@ const PurchaseStock = ({ isOpen, closeModal, stock, fetchData }) => {
     try {
       const res = stock
         ? await updateStock(
-          { ...values, userId },
+          { ...values, userId, date: new Date(values?.date).toISOString() },
           stock?._id
         )
-        : await createStock({ ...values, userId });
+        : await createStock({ ...values, userId, date: new Date(values?.date).toISOString() });
       const { status, data } = res;
       if (status >= 200 && status < 300) {
         toast.success(<ToastMsg title={`Purchased Successfully`} />);
@@ -105,8 +105,8 @@ const PurchaseStock = ({ isOpen, closeModal, stock, fetchData }) => {
                     return (
                       <Form className="w-full space-y-4 mt-4">
                         <TextInput
-                          label={"Name of Stock"}
-                          placeholder="Enter stock name"
+                          label={"Symbol"}
+                          placeholder="Enter symbol"
                           name="name"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -125,7 +125,7 @@ const PurchaseStock = ({ isOpen, closeModal, stock, fetchData }) => {
                         />
                         <TextInput
                           type='number'
-                          label={"Limit price"}
+                          label={"Avg price"}
                           placeholder="eg. 400"
                           name="startPrice"
                           onChange={handleChange}
@@ -133,6 +133,17 @@ const PurchaseStock = ({ isOpen, closeModal, stock, fetchData }) => {
                           value={values.startPrice}
 
                         />
+                        <div>
+                          <TextInput
+                            label={"Date of Stock"}
+                            type="datetime-local"
+                            placeholder="choose date"
+                            name="date"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.date}
+                          />
+                        </div>
                         <footer className="py-4  font-medium">
                           <button type="submit" className="btn-outline-primary">
                             {loading ? 'Loading...' : stock ? 'Update' : 'Create'}
