@@ -8,7 +8,7 @@ const AuthButton = ({ handleSignUpClick, handleSignInClick, toggle, isMobileMenu
         onClick={() => handleSignInClick()}
         className='btn-outline-primary'
       >
-        Sign In
+        Log In
       </button>
       <button
         onClick={() => handleSignUpClick()}

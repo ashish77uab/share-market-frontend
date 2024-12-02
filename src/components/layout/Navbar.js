@@ -144,7 +144,7 @@ const Navbar = () => {
                   }}
                   className='btn-primary px-6 min-w-fit'
                 >
-                  Sign In
+                  Log In
                 </button>
               </div>}
               <div className="lg:block hidden">
