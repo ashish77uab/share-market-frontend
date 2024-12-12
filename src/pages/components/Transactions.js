@@ -87,7 +87,8 @@ const Transactions = ({
                                 <th>Sr.No</th>
                                 <th>Amount</th>
                                 <th>Image</th>
-                                <th>Transction Type</th>
+                                <th>Status</th>
+                                <th>Transaction Type</th>
                                 <th>Date</th>
                             </thead>
                             <tbody>
@@ -105,6 +106,7 @@ const Transactions = ({
                                             </div>
                                         </td>
                                         <td className={`font-semibold ${renderStatusClassName(transaction?.status)}`}>{transaction?.status}</td>
+                                        <td className={`font-semibold `}>{transaction?.actionType}</td>
                                         <td className='whitespace-nowrap'>{moment(transaction?.createdAt).format('DD MMM , YYYY hh:mm a')}</td>
                                     </tr>
                                 ))}
