@@ -138,9 +138,13 @@ const DepositModal = ({ isOpen, closeModal }) => {
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                       <SingleInfo title={'Account Holder Name'} value={'STAR ENTERPRISES'} />
+                      <SingleInfo title={'Account Number'} value={'Algo'} />
+                      <SingleInfo title={'IFSC Code'} value={'Algo'} />
+                      <SingleInfo title={'Bank Name'} value={'Algo'} />
+                      {/* <SingleInfo title={'Account Holder Name'} value={'STAR ENTERPRISES'} />
                       <SingleInfo title={'Account Number'} value={'50200099063812'} />
                       <SingleInfo title={'IFSC Code'} value={'HDFC0006335'} />
-                      <SingleInfo title={'Bank Name'} value={'HDFC BANK'} />
+                      <SingleInfo title={'Bank Name'} value={'HDFC BANK'} /> */}
                     </div>
                   </div>
                   <div className="my-2 px-6">
@@ -148,9 +152,9 @@ const DepositModal = ({ isOpen, closeModal }) => {
                       <h6 className="heading-6 py-2">Or Deposit With QR Code</h6>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                      <div>
+                      {/* <div>
                         <img className="w-[300px] object-contain h-[300px]" src="/images/phonepe.jpeg" alt="qr-code" />
-                      </div>
+                      </div> */}
                       <div>
                         <DepositMoney closeModal={closeModal} />
                       </div>
