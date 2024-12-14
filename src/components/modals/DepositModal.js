@@ -140,7 +140,7 @@ const DepositModal = ({ isOpen, closeModal }) => {
                       <SingleInfo title={'Account Holder Name'} value={'JAGAT ENTERPRISE'} />
                       <SingleInfo title={'Account Number'} value={'251111101003363'} />
                       <SingleInfo title={'IFSC Code'} value={'HDFC0CGMCBL'} />
-                      <SingleInfo title={'Bank Name'} value={'Co op bank Ltd '} />
+                      <SingleInfo title={'Bank Name'} value={'HDFC'} />
                       {/* <SingleInfo title={'Account Holder Name'} value={'STAR ENTERPRISES'} />
                       <SingleInfo title={'Account Number'} value={'50200099063812'} />
                       <SingleInfo title={'IFSC Code'} value={'HDFC0006335'} />

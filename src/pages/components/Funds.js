@@ -22,13 +22,13 @@ const Funds = ({ user }) => {
                         <button onClick={() => setIsDepositOpen(true)} className="btn-green">Deposit</button>
                         <button onClick={() => setIsWithdrawOpen(true)} className="btn-red">Withdraw</button>
                     </div>
-                    <div>
+                    {/* <div>
                         <h5 className="heading-5 text-white py-2">Deposit via UPI ID</h5>
                         <div className='bg-primary-darkBlueSupport min-w-full lg:min-w-[600px] border-dark px-6 py-6  rounded-md inline-flex items-center justify-between gap-2'>
                             <span>9874563211@ybl</span>
                         </div>
 
-                    </div>
+                    </div> */}
                     <div>
                         <p className='text-muted py-2 '>
                             <b>Note:</b>
