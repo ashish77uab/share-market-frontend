@@ -31,8 +31,8 @@ const Funds = ({ user }) => {
                     </div> */}
                     <div>
                         <p className='text-muted py-2 '>
-                            <b>Note:</b>
-                            <span className='text-muted ml-2 text-sm'>Please verify information sending request for Deposit / Withdraw</span>
+
+                            <p className='text-muted ml-2 text-sm'> <b>Note:</b> Please verify information before sending request for Deposit / Withdraw. Use <b className='text-white opacity-75 mx-1'>NEFT OR RTGS</b> for payment</p>
                         </p>
                     </div>
                 </div>
