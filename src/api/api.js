@@ -186,6 +186,8 @@ export const deleteNotification = (notificationId) => API.delete(`auth/notificat
 export const readNotification = (notificationId) => API.put(`auth/notifications/read/${notificationId}`);
 
 export const updateWallet = (userId, data) => API.post(`auth/update-wallet/${userId}`, data);
+
+// stock
 export const getUserStocks = (data) => {
   const queryString = new URLSearchParams(data)?.toString()
   return API.get(`stock/user-stocks?${queryString}`)
@@ -195,4 +197,15 @@ export const sellStock = (data) => API.post(`stock/sell-stock`, data);
 export const updateStock = (data, stockId, isChecked) => API.put(`stock/update-stock/${stockId}?isChecked=${isChecked}`, data);
 export const deleteStock = (stockId) => API.delete(`stock/delete-stock/${stockId}`);
 export const settleStock = (stockId, stock) => API.post(`stock/settle-stock/${stockId}`, stock);
+
+// holdings
+export const getUserHoldings = (data) => {
+  const queryString = new URLSearchParams(data)?.toString()
+  return API.get(`holding/user-holdings?${queryString}`)
+}
+export const createHolding = (data) => API.post(`holding/create-holding`, data);
+export const sellHolding = (data) => API.post(`holding/sell-holding`, data);
+export const updateHolding = (data, holdingId, isChecked) => API.put(`holding/update-holding/${holdingId}?isChecked=${isChecked}`, data);
+export const deleteHolding = (holdingId) => API.delete(`holding/delete-holding/${holdingId}`);
+
 export const contactUsRequest = (formData) => API.post(`auth/contact-us`, formData);

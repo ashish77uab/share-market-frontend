@@ -3,26 +3,26 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import TextInput from "../forms/TextInput";
 import {
-  sellStock,
+  sellHolding,
 } from "../../api/api";
 import { toast } from "react-toastify";
 import ToastMsg from "../toast/ToastMsg";
 import { Form, Formik } from "formik";
-import { stockSellValidationSchema } from "../../utils/validation";
+import { holdingSellValidationSchema } from "../../utils/validation";
 import { useParams } from "react-router-dom";
 const initialState = {
   name: '',
   quantity: '',
   endPrice: '',
 };
-const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
+const SellHolding = ({ isOpen, closeModal, holding, fetchData }) => {
   const { userId } = useParams();
   const [loading, setLoading] = useState(false)
   const [initialValue, setInitialValue] = useState(initialState)
   const handleSubmit = async (values, actionForm) => {
     setLoading(true)
     try {
-      const res = await sellStock({ ...values, userId, stockId: stock?._id });
+      const res = await sellHolding({ ...values, userId, holdingId: holding?._id });
       const { status, data } = res;
       if (status >= 200 && status < 300) {
         toast.success(<ToastMsg title={`Selled Successfully`} />);
@@ -41,15 +41,15 @@ const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
     }
   };
   useEffect(() => {
-    if (stock) {
+    if (holding) {
       setInitialValue({
         ...initialState,
-        ...stock,
+        ...holding,
         actionType: 'Sell',
-        quantity: stock.quantityLeft
+        quantity: holding.quantityLeft
       });
     }
-  }, [stock]);
+  }, [holding]);
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-[1000]" onClose={closeModal}>
@@ -80,12 +80,12 @@ const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
                 className="w-full max-w-xl transform overflow-hidden rounded-xl bg-white p-6 text-left align-middle shadow-xl transition-all"
               >
                 <Dialog.Title as="h4" className="heading-4 text-center">
-                  Sell Stock
+                  Sell Holding
                 </Dialog.Title>
                 <Formik
                   enableReinitialize
                   initialValues={initialValue}
-                  validationSchema={stockSellValidationSchema(stock?.quantityLeft)}
+                  validationSchema={holdingSellValidationSchema(holding?.quantityLeft)}
                   onSubmit={handleSubmit}
                 >
                   {({
@@ -97,7 +97,7 @@ const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
                       <Form className="w-full space-y-4 mt-4">
                         <TextInput
                           type='number'
-                          label={"Quantity of Stock"}
+                          label={"Quantity of Holding"}
                           placeholder="eg. 4"
                           name="quantity"
                           onChange={handleChange}
@@ -117,7 +117,7 @@ const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
                         />
                         <div>
                           <TextInput
-                            label={"Date of Selling Stock"}
+                            label={"Date of Selling Holding"}
                             type="datetime-local"
                             placeholder="choose date"
                             name="date"
@@ -128,7 +128,7 @@ const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
                         </div>
                         <footer className="py-4  font-medium">
                           <button type="submit" className="btn-outline-primary">
-                            {loading ? 'Loading...' : stock ? 'Update' : 'Create'}
+                            {loading ? 'Loading...' : holding ? 'Update' : 'Create'}
                           </button>
                         </footer>
                       </Form>
@@ -144,4 +144,4 @@ const SellStock = ({ isOpen, closeModal, stock, fetchData }) => {
   );
 };
 
-export default SellStock;
+export default SellHolding;

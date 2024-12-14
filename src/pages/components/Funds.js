@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { numberWithCommas } from '../../utils/helpers'
 import DepositModal from '../../components/modals/DepositModal'
 import WithdrawModal from '../../components/modals/WithdrawModal'
+import Transactions from './Transactions'
 
 const Funds = ({ user }) => {
     const [isDepositOpen, setIsDepositOpen] = useState(false)
     const [isWithdrawOpen, setIsWithdrawOpen] = useState(false)
+    const [reRender, setIsReRender] = useState(false)
     return (
         <>
             <div className=''>
@@ -35,14 +37,17 @@ const Funds = ({ user }) => {
                         </p>
                     </div>
                 </div>
+                <Transactions key={reRender} userId={user?._id} user={user} />
             </div>
             <DepositModal
                 isOpen={isDepositOpen}
+                setIsReRender={setIsReRender}
                 closeModal={() => {
                     setIsDepositOpen(false)
                 }} />
             <WithdrawModal
                 isOpen={isWithdrawOpen}
+                setIsReRender={setIsReRender}
                 closeModal={() => {
                     setIsWithdrawOpen(false)
                 }} />
