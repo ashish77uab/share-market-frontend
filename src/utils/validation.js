@@ -33,12 +33,11 @@ export const updatePasswordValidationSchema = yup.object().shape({
         .required("New Password is required"),
 });
 export const addDepositFormSchema = yup.object().shape({
-    amount: yup
-        .string()
-        .required("Amount is required"),
-    // transactionId: yup
-    //     .string()
-    //     .required("Transaction unique id is required"),
+    amount: yup.number()
+        .required("Amount is required")
+        .typeError("Amount must be a number")
+        .min(2000, "Amount must be at least ₹2000"),
+
     screenShot: yup.mixed()
         .required("ScreenShot of Transaction is required.")
         .test(

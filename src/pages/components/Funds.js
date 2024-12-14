@@ -30,9 +30,9 @@ const Funds = ({ user }) => {
 
                     </div> */}
                     <div>
-                        <p className='text-muted py-2 '>
-
-                            <p className='text-muted ml-2 text-sm'> <b>Note:</b> Please verify information before sending request for Deposit / Withdraw. Use <b className='text-white opacity-75 mx-1'>NEFT OR RTGS</b> for payment</p>
+                        <p className='text-muted py-2 flex items-start'>
+                            <b className='mt-[-2px]'>Note:</b>
+                            <p className='text-muted ml-2 leading-[1.6] text-sm max-w-3xl'>  Please verify all information carefully before initiating any deposit or withdrawal requests. Ensure the deposit amount is a minimum of ₹2,000 and use <b className='text-white opacity-75 mx-1'>NEFT OR RTGS</b> as the payment method. </p>
                         </p>
                     </div>
                 </div>
