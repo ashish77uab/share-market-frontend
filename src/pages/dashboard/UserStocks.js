@@ -132,7 +132,7 @@ const UserStocks = () => {
                     <td>{moment(stock?.date || stock?.createdAt)?.format('YYYY-MM-DD')}</td>
                     <td>{stock.name}</td>
                     <td>{stock.quantity}</td>
-                    <td>{stock.quantityLeft ? stock.quantityLeft : '-'}</td>
+                    <td>{stock.quantityLeft !== null ? stock.quantityLeft : '-'}</td>
                     <td>{numberWithCommas(stock?.startPrice)}</td>
                     <td>{stock?.endPrice ? numberWithCommas(stock?.endPrice) : '-'}</td>
                     <td className="font-semibold">{stock.actionType}</td>

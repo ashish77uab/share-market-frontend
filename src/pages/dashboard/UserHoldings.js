@@ -114,7 +114,7 @@ const UserHoldings = () => {
                     <td>{moment(holding?.date || holding?.createdAt)?.format('YYYY-MM-DD')}</td>
                     <td>{holding.name}</td>
                     <td>{holding.quantity}</td>
-                    <td>{holding.quantityLeft ? holding.quantityLeft : '-'}</td>
+                    <td>{holding.quantityLeft !== null ? holding.quantityLeft : '-'}</td>
                     <td>{numberWithCommas(holding?.startPrice)}</td>
                     <td>{holding?.endPrice ? numberWithCommas(holding?.endPrice) : '-'}</td>
                     <td className="font-semibold">{holding.actionType}</td>
