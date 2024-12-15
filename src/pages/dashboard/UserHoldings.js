@@ -122,7 +122,7 @@ const UserHoldings = () => {
                     {holding?.diffAmount ? <td className={` font-semibold ${holding?.diffAmount < 0 ? 'text-red-500' : 'text-green-500'}`}>
 
                       {
-                        numberWithCommas(holding?.diffAmount)
+                        numberWithCommas(holding?.diffAmount?.toFixed(2))
                       }
 
                     </td> : <td className="font-semibold">-</td>}
