@@ -46,10 +46,10 @@ const Footer = () => {
                                         <span className='text-2xl'>{reactIcons.mobile}</span>
                                         <span>044 2450 0009</span>
                                     </li>
-                                    <li className='flex items-center gap-4 '>
+                                    {/* <li className='flex items-center gap-4 '>
                                         <span className='text-2xl'>{reactIcons.whatsapp}</span>
                                         <span>9193868729</span>
-                                    </li>
+                                    </li> */}
                                     <li className='flex items-center gap-4'>
                                         <span className='text-2xl' >{reactIcons.email}</span>
                                         <span>algotronssupport@algotorns.com</span>

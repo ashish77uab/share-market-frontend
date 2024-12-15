@@ -27,10 +27,10 @@ const ContactUs = () => {
                     <span className='text-3xl text-primary-pink'>{reactIcons.mobile}</span>
                     <span className="text-lg font-medium">044 2450 0009</span>
                   </li>
-                  <li className='flex items-start gap-4'>
+                  {/* <li className='flex items-start gap-4'>
                     <span className='text-3xl text-primary-pink'>{reactIcons.whatsapp}</span>
                     <span className="text-lg font-medium">9193868729</span>
-                  </li>
+                  </li> */}
                   <li className='flex items-start gap-4'>
                     <span className='text-3xl text-primary-pink' >{reactIcons.location}</span>
                     <span className="text-lg font-medium">

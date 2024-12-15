@@ -78,7 +78,7 @@ const NetPosition = () => {
                                         {stock?.diffAmount ? <td className={` font-semibold ${stock?.diffAmount < 0 ? 'text-red-500' : 'text-green-500'}`}>
 
                                             {
-                                                numberWithCommas(stock?.diffAmount)
+                                                numberWithCommas(stock?.diffAmount?.toFixed(2))
                                             }
 
                                         </td> : <td className="font-semibold">-</td>}
