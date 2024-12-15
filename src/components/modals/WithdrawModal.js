@@ -13,7 +13,7 @@ import { reactIcons } from "../../utils/icons";
 import { updateUserWallet } from "../../redux/features/authSlice";
 
 
-const WithdrawMoney = ({ closeModal }) => {
+const WithdrawMoney = ({ closeModal, setIsReRender }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -29,6 +29,7 @@ const WithdrawMoney = ({ closeModal }) => {
         dispatch(updateUserWallet(Number(values.amount)))
         closeModal()
         actionForm.resetForm()
+        setIsReRender(prev => !prev)
       } else {
         toast.error(<ToastMsg title={data.message} />);
       }
@@ -86,7 +87,7 @@ const WithdrawMoney = ({ closeModal }) => {
     </Formik>
   )
 }
-const WithdrawModal = ({ isOpen, closeModal }) => {
+const WithdrawModal = ({ isOpen, closeModal, setIsReRender }) => {
   const dialogRef = useRef(null);
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -130,7 +131,7 @@ const WithdrawModal = ({ isOpen, closeModal }) => {
                     <div className="grid grid-cols-1 gap-4">
 
                       <div>
-                        <WithdrawMoney closeModal={closeModal} />
+                        <WithdrawMoney setIsReRender={setIsReRender} closeModal={closeModal} />
                       </div>
                     </div>
                   </div>

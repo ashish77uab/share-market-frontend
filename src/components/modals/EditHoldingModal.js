@@ -1,38 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import TextInput from "../forms/TextInput";
 import {
-  createStock,
+  updateHolding,
 } from "../../api/api";
 import { toast } from "react-toastify";
 import ToastMsg from "../toast/ToastMsg";
 import { Form, Formik } from "formik";
-import { stockValidationSchema } from "../../utils/validation";
+import { holdingValidationSchema } from "../../utils/validation";
 import { useParams } from "react-router-dom";
+import moment from "moment";
 const initialState = {
   name: '',
   quantity: '',
   startPrice: '',
-  endPrice: '',
-  diffAmount: '',
-  quantityLeft: '',
-  date: '',
   actionType: 'Buy',
+  quantityLeft: '',
 };
-const PurchaseStock = ({ isOpen, closeModal, fetchData }) => {
+const EditHoldingModal = ({ isOpen, closeModal, holding, fetchData }) => {
   const [isChecked, setIsChecked] = useState(false)
-  const [isBuy, setIsBuy] = useState(true)
+  const isBuyHolding = holding?.actionType === 'Buy'
+  const [isBuy, setIsBuy] = useState(isBuyHolding)
   const { userId } = useParams();
   const [loading, setLoading] = useState(false)
   const [initialValue, setInitialValue] = useState(initialState)
   const handleSubmit = async (values, actionForm) => {
     setLoading(true)
     try {
-      const res = await createStock({ ...values, actionType: isBuy ? 'Buy' : 'Sell', userId, date: new Date(values?.date).toISOString(), isChecked });
+      let tempData = { ...values, actionType: isBuy ? 'Buy' : 'Sell' }
+      if (isBuyHolding) {
+        tempData.amount = Number(values.startPrice) * Number(values.quantity)
+      }
+      const res = await updateHolding(
+        { ...tempData, userId },
+        holding?._id,
+        isChecked
+      );
       const { status, data } = res;
       if (status >= 200 && status < 300) {
-        toast.success(<ToastMsg title={`Purchased Successfully`} />);
+        toast.success(<ToastMsg title={`Updated Successfully`} />);
         actionForm.resetForm();
         closeModal()
         fetchData()
@@ -47,7 +54,16 @@ const PurchaseStock = ({ isOpen, closeModal, fetchData }) => {
       setLoading(false)
     }
   };
-
+  useEffect(() => {
+    if (holding) {
+      setInitialValue({
+        ...holding,
+        userId: holding?.userId,
+        actionType: holding?.actionType === 'Buy' ? 'Buy' : 'Sell',
+        date: moment(holding.date).format('YYYY-MM-DDTHH:mm')
+      });
+    }
+  }, [holding]);
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-[1000]" onClose={closeModal}>
@@ -78,12 +94,12 @@ const PurchaseStock = ({ isOpen, closeModal, fetchData }) => {
                 className="w-full max-w-xl transform overflow-hidden rounded-xl bg-white p-6 text-left align-middle shadow-xl transition-all"
               >
                 <Dialog.Title as="h4" className="heading-4 text-center">
-                  Purchase Stock
+                  Update Holding
                 </Dialog.Title>
                 <Formik
                   enableReinitialize
                   initialValues={initialValue}
-                  validationSchema={stockValidationSchema}
+                  validationSchema={holdingValidationSchema}
                   onSubmit={handleSubmit}
                 >
                   {({
@@ -204,9 +220,11 @@ const PurchaseStock = ({ isOpen, closeModal, fetchData }) => {
                             </label>
                           </div>
                         </div>
+
+
                         <footer className="py-4  font-medium">
                           <button type="submit" className="btn-outline-primary">
-                            {loading ? 'Loading...' : 'Create'}
+                            {loading ? 'Loading...' : holding ? 'Update' : 'Create'}
                           </button>
                         </footer>
                       </Form>
@@ -222,4 +240,4 @@ const PurchaseStock = ({ isOpen, closeModal, fetchData }) => {
   );
 };
 
-export default PurchaseStock;
+export default EditHoldingModal;

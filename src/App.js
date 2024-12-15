@@ -18,7 +18,9 @@ import {
   Strategy,
   UserDashboard,
   Markets,
-  NetPosition
+  NetPosition,
+  Portfolio,
+  UserHoldings
 } from "./pages";
 import { getUser } from "./api/api";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,7 +32,6 @@ import DashboardLayout from "./components/layout/DashboardLayout";
 import RenderModal from "./RenderModal";
 import UserLayout from "./components/layout/UserLayout";
 import Funds from "./pages/components/Funds";
-import Transactions from "./pages/components/Transactions";
 import ProtectedRoutes from "./ProtectedRoutes";
 function App() {
   const user = useSelector((state) => state.auth.user);
@@ -70,7 +71,7 @@ function App() {
             <Route index element={<UserDashboard />} />
             <Route path='dashboard' element={<UserDashboard />} />
             <Route path='funds' element={<Funds user={user} />} />
-            <Route path='transactions' element={<Transactions userId={user?._id} user={user} />} />
+            <Route path='portfolio' element={<Portfolio />} />
             <Route path='markets' element={<Markets />} />
             <Route path="net-position" element={<NetPosition />} />
             <Route path="profile" element={<Profile />} />
@@ -81,6 +82,7 @@ function App() {
             <Route path="transactions" element={<AllTransactions />} />
             <Route path="user/:userId" element={<UserDetails />} />
             <Route path="user-stocks/:userId" element={<UserStocks />} />
+            <Route path="user-holdings/:userId" element={<UserHoldings />} />
           </Route>
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/passwordReset" element={<ResetPassword />} />

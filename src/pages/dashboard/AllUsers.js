@@ -101,6 +101,11 @@ const AllUsers = () => {
                           }}>
                             View Stocks
                           </button>
+                          <button className={'btn-outline-primary btn-sm'} onClick={() => {
+                            navigate(`/dashboard/user-holdings/${user?._id}`)
+                          }}>
+                            View Holdings
+                          </button>
                         </div>
                       </td>
                     </tr>

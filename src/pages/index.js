@@ -11,8 +11,10 @@ import Pricing from "./Pricing";
 import AboutUs from "./AboutUs";
 import ContactUs from "./ContactUs";
 import UserDashboard from "./UserDashboard";
+import Portfolio from "./Portfolio";
 import Dashboard from "./dashboard/Dashboard";
 import UserStocks from "./dashboard/UserStocks";
+import UserHoldings from "./dashboard/UserHoldings";
 import AllUsers from "./dashboard/AllUsers";
 import AddMatch from "./dashboard/AddMatch";
 import UserDetails from "./dashboard/UserDetails";
@@ -20,6 +22,7 @@ import AddPrize from "./dashboard/AddPrize";
 import AllTransactions from "./dashboard/AllTransactions";
 
 export {
+  UserHoldings,
   AllTransactions,
   AboutUs,
   ContactUs,
@@ -39,5 +42,6 @@ export {
   NetPosition,
   Markets,
   Strategy,
-  UserDashboard
+  UserDashboard,
+  Portfolio
 };

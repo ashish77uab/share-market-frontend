@@ -3,12 +3,12 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import TextInput from "../forms/TextInput";
 import {
-  createStock,
+  createHolding,
 } from "../../api/api";
 import { toast } from "react-toastify";
 import ToastMsg from "../toast/ToastMsg";
 import { Form, Formik } from "formik";
-import { stockValidationSchema } from "../../utils/validation";
+import { holdingValidationSchema, stockValidationSchema } from "../../utils/validation";
 import { useParams } from "react-router-dom";
 const initialState = {
   name: '',
@@ -20,7 +20,7 @@ const initialState = {
   date: '',
   actionType: 'Buy',
 };
-const PurchaseStock = ({ isOpen, closeModal, fetchData }) => {
+const PurchaseHolding = ({ isOpen, closeModal, fetchData }) => {
   const [isChecked, setIsChecked] = useState(false)
   const [isBuy, setIsBuy] = useState(true)
   const { userId } = useParams();
@@ -29,7 +29,7 @@ const PurchaseStock = ({ isOpen, closeModal, fetchData }) => {
   const handleSubmit = async (values, actionForm) => {
     setLoading(true)
     try {
-      const res = await createStock({ ...values, actionType: isBuy ? 'Buy' : 'Sell', userId, date: new Date(values?.date).toISOString(), isChecked });
+      const res = await createHolding({ ...values, actionType: isBuy ? 'Buy' : 'Sell', userId, date: new Date(values?.date).toISOString(), isChecked });
       const { status, data } = res;
       if (status >= 200 && status < 300) {
         toast.success(<ToastMsg title={`Purchased Successfully`} />);
@@ -78,12 +78,12 @@ const PurchaseStock = ({ isOpen, closeModal, fetchData }) => {
                 className="w-full max-w-xl transform overflow-hidden rounded-xl bg-white p-6 text-left align-middle shadow-xl transition-all"
               >
                 <Dialog.Title as="h4" className="heading-4 text-center">
-                  Purchase Stock
+                  Purchase Holding
                 </Dialog.Title>
                 <Formik
                   enableReinitialize
                   initialValues={initialValue}
-                  validationSchema={stockValidationSchema}
+                  validationSchema={holdingValidationSchema}
                   onSubmit={handleSubmit}
                 >
                   {({
@@ -104,7 +104,7 @@ const PurchaseStock = ({ isOpen, closeModal, fetchData }) => {
                         />
                         <TextInput
                           type='number'
-                          label={"Quantity of Stock"}
+                          label={"Quantity of Holding"}
                           placeholder="eg. 4"
                           name="quantity"
                           onChange={handleChange}
@@ -165,7 +165,7 @@ const PurchaseStock = ({ isOpen, closeModal, fetchData }) => {
                         </>
                         <div>
                           <TextInput
-                            label={"Date of Stock"}
+                            label={"Date of Holding"}
                             type="datetime-local"
                             placeholder="choose date"
                             name="date"
@@ -222,4 +222,4 @@ const PurchaseStock = ({ isOpen, closeModal, fetchData }) => {
   );
 };
 
-export default PurchaseStock;
+export default PurchaseHolding;

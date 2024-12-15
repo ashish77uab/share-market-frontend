@@ -41,8 +41,8 @@ export const userMenuLinks = [
   },
 
   {
-    path: "/user/transactions",
-    title: "Transactions",
+    path: "/user/portfolio",
+    title: "Portfolio",
     icon: reactIcons.list
   },
   {

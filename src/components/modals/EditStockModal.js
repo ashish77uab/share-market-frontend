@@ -20,17 +20,16 @@ const initialState = {
 };
 const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
   const [isChecked, setIsChecked] = useState(false)
-  const isBuy = stock?.actionType === 'Buy'
-  const isSell = stock?.actionType === 'Sell'
-  const isSettled = stock?.actionType === 'Settled'
+  const isBuyStock = stock?.actionType === 'Buy'
+  const [isBuy, setIsBuy] = useState(isBuyStock)
   const { userId } = useParams();
   const [loading, setLoading] = useState(false)
   const [initialValue, setInitialValue] = useState(initialState)
   const handleSubmit = async (values, actionForm) => {
     setLoading(true)
     try {
-      let tempData = { ...values }
-      if (isBuy) {
+      let tempData = { ...values, actionType: isBuy ? 'Buy' : 'Sell' }
+      if (isBuyStock) {
         tempData.amount = Number(values.startPrice) * Number(values.quantity)
       }
       const res = await updateStock(
@@ -177,18 +176,49 @@ const EditStockModal = ({ isOpen, closeModal, stock, fetchData }) => {
                             onBlur={handleBlur}
                             value={values?.quantityLeft}
                           />
-                          <div>
-                            <TextInput
-                              label={"Date of Stock"}
-                              type="datetime-local"
-                              placeholder="choose date"
-                              name="date"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              value={values.date}
-                            />
-                          </div>
+
                         </>
+                        <div>
+                          <TextInput
+                            label={"Date of Stock"}
+                            type="datetime-local"
+                            placeholder="choose date"
+                            name="date"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.date}
+                          />
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-2">
+                            <input
+                              type="radio"
+                              id="buy"
+                              name="actionType"
+                              value="Buy"
+                              checked={isBuy}
+                              className="w-6 h-6 cursor-pointer"
+                              onChange={(e) => setIsBuy(true)}
+                            />
+                            <label className=" cursor-pointer text-lg" htmlFor="buy">
+                              Buy
+                            </label>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <input
+                              type="radio"
+                              id="sell"
+                              name="actionType"
+                              value="Sell"
+                              checked={!isBuy}
+                              className="w-6 h-6 cursor-pointer"
+                              onChange={(e) => setIsBuy(false)}
+                            />
+                            <label className=" cursor-pointer text-lg" htmlFor="sell">
+                              Sell
+                            </label>
+                          </div>
+                        </div>
 
 
                         <footer className="py-4  font-medium">

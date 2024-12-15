@@ -19,7 +19,7 @@ const SingleInfo = ({ title, value }) => {
 
   </div>
 }
-const DepositMoney = ({ closeModal }) => {
+const DepositMoney = ({ closeModal, setIsReRender }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (values, actionForm) => {
@@ -32,6 +32,7 @@ const DepositMoney = ({ closeModal }) => {
         toast.success(<ToastMsg title={`Request Created Successfully`} />);
         closeModal()
         actionForm.resetForm()
+        setIsReRender(prev => !prev)
       } else {
         toast.error(<ToastMsg title={data.message} />);
       }
@@ -94,7 +95,7 @@ const DepositMoney = ({ closeModal }) => {
     </Formik>
   )
 }
-const DepositModal = ({ isOpen, closeModal }) => {
+const DepositModal = ({ isOpen, closeModal, setIsReRender }) => {
   const dialogRef = useRef(null);
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -156,7 +157,7 @@ const DepositModal = ({ isOpen, closeModal }) => {
                         <img className="w-[300px] object-contain h-[300px]" src="/images/phonepe.jpeg" alt="qr-code" />
                       </div> */}
                       <div>
-                        <DepositMoney closeModal={closeModal} />
+                        <DepositMoney setIsReRender={setIsReRender} closeModal={closeModal} />
                       </div>
                     </div>
                   </div>

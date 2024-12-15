@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { deleteStock, getUserStocks, settleStock } from "../../api/api";
+import { deleteHolding, getUserHoldings } from "../../api/api";
 import { toast } from "react-toastify";
 import ToastMsg from "../../components/toast/ToastMsg";
 import ActionButton from "../../components/button/ActionButton";
@@ -13,29 +13,30 @@ import { numberWithCommas } from "../../utils/helpers";
 import Pagination from "../../components/Pagination";
 import SellStock from "../../components/modals/SellStock";
 import moment from 'moment'
-import SettleConfimation from "../../components/modals/SettleConfimation";
 import EditStockModal from "../../components/modals/EditStockModal";
-const UserStocks = () => {
+import PurchaseHolding from "../../components/modals/PurchaseHolding";
+import SellHolding from "../../components/modals/SellHolding";
+import EditHoldingModal from "../../components/modals/EditHoldingModal";
+const UserHoldings = () => {
   const limit = 10
   const [page, setPage] = useState(1)
   const [updateLoading, setUpdateLoading] = useState(false)
   const { userId } = useParams();
   const [isPurchaseOpen, setIsPurchaseOpen] = useState(false);
-  const [isEditStockOpen, setIsEditStockOpen] = useState(false);
-  const [isSettleOpen, setIsSettleOpen] = useState(false);
+  const [isEditHoldingOpen, setIsEditHoldingOpen] = useState(false);
   const [isSellOpen, setIsSellOpen] = useState(false);
-  const [stock, setStock] = useState(null);
+  const [holding, setHolding] = useState(null);
   const [isConfirmedOpen, setIsConfirmedOpen] = useState(false);
-  const [stocks, setStocks] = useState(null);
+  const [holdings, setHoldings] = useState(null);
   const [fetchLoading, setFetchLoading] = useState(false);
 
-  const getUsersStocksData = async () => {
+  const getUsersHoldingsData = async () => {
     setFetchLoading(true)
     try {
-      const res = await getUserStocks({ page, limit, userId });
+      const res = await getUserHoldings({ page, limit, userId });
       const { status, data } = res;
       if (status >= 200 && status <= 300) {
-        setStocks(data);
+        setHoldings(data);
       } else {
         toast.error(<ToastMsg title={data.message} />);
       }
@@ -48,13 +49,13 @@ const UserStocks = () => {
   const handleDelete = async () => {
     setUpdateLoading(true)
     try {
-      const res = await deleteStock(stock?._id);
+      const res = await deleteHolding(holding?._id);
       const { status, data } = res;
       if (status >= 200 && status <= 300) {
-        getUsersStocksData();
+        getUsersHoldingsData();
         toast.success(<ToastMsg title={'Deleted Successfully'} />);
         setIsConfirmedOpen(false)
-        setStock(null)
+        setHolding(null)
 
       } else {
         toast.error(<ToastMsg title={data.message} />);
@@ -65,30 +66,11 @@ const UserStocks = () => {
       setUpdateLoading(false)
     }
   };
-  const handleConfirm = async () => {
-    setUpdateLoading(true)
-    try {
-      const res = await settleStock(stock?._id, stock);
-      const { status, data } = res;
-      if (status >= 200 && status <= 300) {
-        getUsersStocksData();
-        toast.success(<ToastMsg title={'Settled Successfully'} />);
-        setIsSettleOpen(false)
-        setStock(null)
 
-      } else {
-        toast.error(<ToastMsg title={data.message} />);
-      }
-    } catch (error) {
-      toast.error(<ToastMsg title={error?.response?.data?.message} />);
-    } finally {
-      setUpdateLoading(false)
-    }
-  };
 
   useEffect(() => {
     if (userId) {
-      getUsersStocksData();
+      getUsersHoldingsData();
     }
   }, [userId, page]);
 
@@ -97,7 +79,7 @@ const UserStocks = () => {
       <div className="px-4">
         <header className="mb-4 flex items-center justify-between">
           <h3 className="heading-4">
-            Scrip ({stocks?.totalStocks})
+            Holdings ({holdings?.totalHoldings})
           </h3>
           <button
             onClick={() => setIsPurchaseOpen(true)}
@@ -126,21 +108,21 @@ const UserStocks = () => {
                 </tr>
               </thead>
               <tbody>
-                {stocks?.stocks.map((stock, index) => (
+                {holdings?.holdings.map((holding, index) => (
                   <tr>
                     {/* <td className="w-[80px]">{index + 1}</td> */}
-                    <td>{moment(stock?.date || stock?.createdAt)?.format('YYYY-MM-DD')}</td>
-                    <td>{stock.name}</td>
-                    <td>{stock.quantity}</td>
-                    <td>{stock.quantityLeft ? stock.quantityLeft : '-'}</td>
-                    <td>{numberWithCommas(stock?.startPrice)}</td>
-                    <td>{stock?.endPrice ? numberWithCommas(stock?.endPrice) : '-'}</td>
-                    <td className="font-semibold">{stock.actionType}</td>
-                    {/* <td className={` font-semibold ${stock?.amount < 0 ? 'text-red-500' : 'text-green-500'}`}>{numberWithCommas(stock?.amount)}</td> */}
-                    {stock?.diffAmount ? <td className={` font-semibold ${stock?.diffAmount < 0 ? 'text-red-500' : 'text-green-500'}`}>
+                    <td>{moment(holding?.date || holding?.createdAt)?.format('YYYY-MM-DD')}</td>
+                    <td>{holding.name}</td>
+                    <td>{holding.quantity}</td>
+                    <td>{holding.quantityLeft ? holding.quantityLeft : '-'}</td>
+                    <td>{numberWithCommas(holding?.startPrice)}</td>
+                    <td>{holding?.endPrice ? numberWithCommas(holding?.endPrice) : '-'}</td>
+                    <td className="font-semibold">{holding.actionType}</td>
+                    {/* <td className={` font-semibold ${holding?.amount < 0 ? 'text-red-500' : 'text-green-500'}`}>{numberWithCommas(holding?.amount)}</td> */}
+                    {holding?.diffAmount ? <td className={` font-semibold ${holding?.diffAmount < 0 ? 'text-red-500' : 'text-green-500'}`}>
 
                       {
-                        numberWithCommas(stock?.diffAmount)
+                        numberWithCommas(holding?.diffAmount)
                       }
 
                     </td> : <td className="font-semibold">-</td>}
@@ -149,15 +131,15 @@ const UserStocks = () => {
                       <div className="flex justify-end gap-2">
                         <ActionButton
                           onClick={() => {
-                            setStock(stock);
-                            setIsEditStockOpen(true);
+                            setHolding(holding);
+                            setIsEditHoldingOpen(true);
                           }}
                         >
                           {reactIcons.edit}
                         </ActionButton>
                         <DeleteButton
                           onClick={() => {
-                            setStock(stock);
+                            setHolding(holding);
                             setIsConfirmedOpen(true);
                           }}
                         >
@@ -165,13 +147,13 @@ const UserStocks = () => {
                         </DeleteButton>
                         {/* <button
                           onClick={() => {
-                            setStock(stock);
+                            setHolding(holding);
                             setIsSellOpen(true);
                           }}
                           className="btn-primary min-w-fit px-8">Sell</button> */}
-                        {/* {!stock?.isSettled && <button
+                        {/* {!holding?.isSettled && <button
                           onClick={() => {
-                            setStock(stock);
+                            setHolding(holding);
                             setIsSettleOpen(true);
                           }}
                           className="btn-green min-w-fit px-8">Settle</button>} */}
@@ -180,10 +162,10 @@ const UserStocks = () => {
                   </tr>
                 ))}
 
-                {stocks?.totalStocks < 1 && !fetchLoading && (
+                {holdings?.totalHoldings < 1 && !fetchLoading && (
                   <tr>
                     <td colSpan={11}>
-                      <RenderNoData title="No stocks found." />
+                      <RenderNoData title="No holdings found." />
                     </td>
                   </tr>
                 )}
@@ -202,61 +184,52 @@ const UserStocks = () => {
                 handlePageClick={(page) => {
                   setPage(page?.selected + 1)
                 }}
-                pageCount={stocks?.totalPages} />
+                pageCount={holdings?.totalPages} />
 
             </div>
           </div>
         </div>
       </div>
-      {isPurchaseOpen && <PurchaseStock
+      {isPurchaseOpen && <PurchaseHolding
         isOpen={isPurchaseOpen}
-        stock={stock || null}
+        holding={holding || null}
         closeModal={() => {
           setIsPurchaseOpen(false);
-          setStock(null);
+          setHolding(null);
         }}
-        fetchData={getUsersStocksData}
+        fetchData={getUsersHoldingsData}
       />}
-      {isSellOpen && <SellStock
+      {isSellOpen && <SellHolding
         isOpen={isSellOpen}
-        stock={stock || null}
+        holding={holding || null}
         closeModal={() => {
           setIsSellOpen(false);
-          setStock(null);
+          setHolding(null);
         }}
-        fetchData={getUsersStocksData}
+        fetchData={getUsersHoldingsData}
       />}
-      {isEditStockOpen && <EditStockModal
-        isOpen={isEditStockOpen}
-        stock={stock || null}
+      {isEditHoldingOpen && <EditHoldingModal
+        isOpen={isEditHoldingOpen}
+        holding={holding || null}
         closeModal={() => {
-          setIsEditStockOpen(false);
-          setStock(null);
+          setIsEditHoldingOpen(false);
+          setHolding(null);
         }}
-        fetchData={getUsersStocksData}
+        fetchData={getUsersHoldingsData}
       />}
       <DeleteConfirmation
         isOpen={isConfirmedOpen}
         closeModal={() => {
           setIsConfirmedOpen(false)
-          setStock(null)
+          setHolding(null)
         }}
         handleDelete={handleDelete}
-        title={"Stock"}
+        title={"Holding"}
         loading={updateLoading}
       />
-      <SettleConfimation
-        isOpen={isSettleOpen}
-        closeModal={() => {
-          setIsSettleOpen(false)
-          setStock(null)
-        }}
-        handleConfirm={handleConfirm}
-        title={"Stock"}
-        loading={updateLoading}
-      />
+
     </>
   );
 };
 
-export default UserStocks;
+export default UserHoldings;

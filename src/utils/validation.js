@@ -82,7 +82,42 @@ export const stockValidationSchema = yup.object().shape({
         .string().default('Buy')
         .required("Action Type is required"),
 });
+export const holdingValidationSchema = yup.object().shape({
+    name: yup
+        .string()
+        .required("Name is required"),
+    quantity: yup
+        .number()
+        .required("Quantity is required"),
+    startPrice: yup
+        .number()
+        .required("Start price is required"),
+    // endPrice: yup
+    //     .number()
+    //     .required("End price is required"),
+    actionType: yup
+        .string().default('Buy')
+        .required("Action Type is required"),
+});
 export const stockSellValidationSchema = (quantity) => yup.object().shape({
+    name: yup
+        .string()
+        .required("Name is required"),
+    quantity: yup
+        .number()
+        .max(quantity, `Max Value is${quantity}`)
+        .required("Quantity is required"),
+    endPrice: yup
+        .number()
+        .required("Start price is required"),
+    // endPrice: yup
+    //     .number()
+    //     .required("End price is required"),
+    actionType: yup
+        .string().default('Sell')
+        .required("Action Type is required"),
+});
+export const holdingSellValidationSchema = (quantity) => yup.object().shape({
     name: yup
         .string()
         .required("Name is required"),
