@@ -118,14 +118,14 @@ const AllUsers = () => {
 
                 {users?.totalUsers < 1 && !fetchLoading && (
                   <tr>
-                    <td colSpan={5}>
+                    <td colSpan={6}>
                       <RenderNoData title="No users found." />
                     </td>
                   </tr>
                 )}
                 {fetchLoading && (
                   <tr>
-                    <td colSpan={5}>
+                    <td colSpan={6}>
                       <div className="py-8 text-center font-semibold">Loading please wait....</div>
                     </td>
                   </tr>
