@@ -5,12 +5,14 @@ import ToastMsg from "../../components/toast/ToastMsg";
 import { numberWithCommas } from "../../utils/helpers";
 import Pagination from "../../components/Pagination";
 import RenderNoData from "../../components/layout/RenderNoData";
-import TextInput from "../../components/forms/TextInput";
 import { useNavigate } from "react-router-dom";
 import { TRANSACTION_STATUS } from "../../utils/constants";
 import moment from 'moment'
 import Spinner from "../../components/loaders/Spinner";
 import ReactSelect from "../../components/forms/ReactSelect";
+import { reactIcons } from "../../utils/icons";
+import ActionButton from "../../components/button/ActionButton";
+import EditTransactionModal from "../../components/modals/EditTransactionModal";
 const ActionTypeArr = [
   { label: 'Filter by action type', value: '' },
   { label: 'Deposit', value: 'Deposit' },
@@ -26,6 +28,8 @@ const AllTransactions = () => {
   const navigate = useNavigate();
   const limit = 10
   const [search, setSearch] = useState('');
+  const [transaction, setTransaction] = useState(null);
+  const [isEditOpen, setIsEditOpen] = useState(false);
   const [deferedValue, setDeferedValue] = useState('');
   const [transactions, setTransactions] = useState(null);
   const [page, setPage] = useState(1);
@@ -185,7 +189,7 @@ const AllTransactions = () => {
                       <td>{moment(transaction?.createdAt).format('DD MMM,YYYY')}</td>
                       {
                         transaction?.status === 'Pending' ? <td>
-                          <div className="flex items-center gap-4">
+                          <div className="flex items-center justify-center gap-4">
                             <button
                               onClick={() => handleUpdateStatus('Accepted', transaction?._id, transaction?.user?._id, transaction?.amount)}
                               className="btn-sm btn-green min-w-max"
@@ -200,10 +204,21 @@ const AllTransactions = () => {
                             >
                               Reject
                             </button>
+                            <ActionButton
+                              onClick={() => {
+                                setTransaction(transaction);
+                                setIsEditOpen(true);
+                              }}
+                            >
+                              {reactIcons.edit}
+                            </ActionButton>
                           </div>
                         </td> :
                           <td className={`font-semibold ${renderStatusClassName(transaction?.status)}`}>{transaction?.status}</td>
                       }
+                      <td>
+
+                      </td>
 
 
 
@@ -240,6 +255,15 @@ const AllTransactions = () => {
           </div>
         </div>
       </div>
+      {isEditOpen && <EditTransactionModal
+        isOpen={isEditOpen}
+        transaction={transaction || null}
+        closeModal={() => {
+          setIsEditOpen(false);
+          setTransaction(null);
+        }}
+        fetchData={getAllTransactions}
+      />}
     </>
   );
 };

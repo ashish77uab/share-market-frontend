@@ -165,6 +165,7 @@ export const getAllTransactionsList = (data) => {
   return API.get(`transactions/all-transactions?${queryString}`)
 };
 export const updatTransactionStatus = (data) => API.put(`transactions/update-status`, data);
+export const updateTransaction = (data, transactionId, userId) => API.put(`transactions/update-transaction/${transactionId}/${userId}`, data);
 export const forgotRequest = (formData) =>
   API.post(`auth/requestResetPassword`, formData);
 export const resetPassword = (formData) =>

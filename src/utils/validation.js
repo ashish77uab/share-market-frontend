@@ -82,6 +82,15 @@ export const stockValidationSchema = yup.object().shape({
         .string().default('Buy')
         .required("Action Type is required"),
 });
+export const transactionEditValidationSchema = yup.object().shape({
+    oldAmount: yup
+        .number()
+        .required("Old Amount is required"),
+    newAmount: yup
+        .number()
+        .required("New Amount is required"),
+
+});
 export const holdingValidationSchema = yup.object().shape({
     name: yup
         .string()
