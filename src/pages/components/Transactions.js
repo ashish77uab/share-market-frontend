@@ -71,7 +71,7 @@ const Transactions = ({
                         </div>
                         <div className='flex items-center gap-2'>
                             <span>Balance:</span>
-                            <b>Rs. {numberWithCommas(user?.wallet?.amount)}</b>
+                            <b>Rs. {numberWithCommas(user?.wallet?.amount?.toFixed(2))}</b>
                             {isAdmin && <button onClick={() => {
                                 setIsUpdateWalletOpen(true)
                                 setWalletData({

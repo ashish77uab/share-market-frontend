@@ -90,7 +90,7 @@ const AllUsers = () => {
                       <td>{user?.fullName}</td>
                       <td><div>{user?.email}</div></td>
                       <td><div>{user?.phone}</div></td>
-                      <td><b>Rs. {numberWithCommas(user?.wallet?.amount)}</b></td>
+                      <td><b>Rs. {numberWithCommas(user?.wallet?.amount?.toFixed(2))}</b></td>
                       <td>
                         <div className="flex justify-center gap-2">
                           <button className={'btn-primary btn-sm'} onClick={() => {
