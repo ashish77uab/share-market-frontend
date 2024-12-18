@@ -98,8 +98,8 @@ const EditTransactionModal = ({ isOpen, closeModal, transaction, fetchData }) =>
 
                         <TextInput
                           type='number'
-                          label={"Enter oldAmount"}
-                          placeholder="eg. 4"
+                          label={"Old Amount"}
+                          placeholder="eg. 400"
                           name="oldAmount"
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -109,8 +109,8 @@ const EditTransactionModal = ({ isOpen, closeModal, transaction, fetchData }) =>
                         />
                         <TextInput
                           type='number'
-                          label={"Enter new amount"}
-                          placeholder="eg. 4"
+                          label={"New Amount"}
+                          placeholder="eg. 400"
                           name="newAmount"
                           onChange={handleChange}
                           onBlur={handleBlur}
