@@ -17,7 +17,7 @@ const Funds = ({ user }) => {
                 <div className="py-6 ">
                     <div className="flex items-center gap-2 py-2">
                         <p className="text-base font-medium  ">Total Balance:</p>
-                        <p className="text-base font-bold">Rs. {numberWithCommas(user?.wallet?.amount)}</p>
+                        <p className={`text-base font-bold ${user?.wallet?.amount < 0 ? 'text-red-500' : ''}`}>Rs. {numberWithCommas(user?.wallet?.amount)}</p>
 
                     </div>
                     <div className="flex items-center gap-2 my-4">
