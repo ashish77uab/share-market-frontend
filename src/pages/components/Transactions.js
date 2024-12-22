@@ -111,7 +111,7 @@ const Transactions = ({
                                     </tr>
                                 ))}
                                 {transactions?.totalPages < 1 && <tr>
-                                    <td colSpan={5}>
+                                    <td colSpan={6}>
                                         <RenderNoData title={'No transactions found'} />
                                     </td>
 

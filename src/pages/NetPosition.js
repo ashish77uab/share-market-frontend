@@ -89,14 +89,14 @@ const NetPosition = () => {
 
                                 {stocks?.totalStocks < 1 && !fetchLoading && (
                                     <tr>
-                                        <td colSpan={10}>
+                                        <td colSpan={8}>
                                             <RenderNoData title="No stocks found." />
                                         </td>
                                     </tr>
                                 )}
                                 {fetchLoading && (
                                     <tr>
-                                        <td colSpan={10}>
+                                        <td colSpan={8}>
                                             <div className="py-8 text-center font-semibold">Loading please wait....</div>
                                         </td>
                                     </tr>

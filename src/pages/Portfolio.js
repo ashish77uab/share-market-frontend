@@ -89,14 +89,14 @@ const Portfolio = () => {
 
                                 {holdings?.totalHoldings < 1 && !fetchLoading && (
                                     <tr>
-                                        <td colSpan={10}>
+                                        <td colSpan={8}>
                                             <RenderNoData title="No holdings found." />
                                         </td>
                                     </tr>
                                 )}
                                 {fetchLoading && (
                                     <tr>
-                                        <td colSpan={10}>
+                                        <td colSpan={8}>
                                             <div className="py-8 text-center font-semibold">Loading please wait....</div>
                                         </td>
                                     </tr>
