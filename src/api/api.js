@@ -187,6 +187,8 @@ export const deleteNotification = (notificationId) => API.delete(`auth/notificat
 export const readNotification = (notificationId) => API.put(`auth/notifications/read/${notificationId}`);
 
 export const updateWallet = (userId, data) => API.post(`auth/update-wallet/${userId}`, data);
+// dashboard
+export const getDashboardData = () => API.get(`dashboard/all-data`);
 
 // stock
 export const getUserStocks = (data) => {
