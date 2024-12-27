@@ -138,10 +138,10 @@ const DepositModal = ({ isOpen, closeModal, setIsReRender }) => {
                       <h6 className="heading-6 py-2">Bank Details</h6>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                      <SingleInfo title={'Account Holder Name'} value={'JAGAT ENTERPRISE'} />
-                      <SingleInfo title={'Account Number'} value={'251111101003363'} />
-                      <SingleInfo title={'IFSC Code'} value={'HDFC0CGMCBL'} />
-                      <SingleInfo title={'Bank Name'} value={'HDFC'} />
+                      <SingleInfo title={'Account Holder Name'} value={'Algotron Ltd'} />
+                      <SingleInfo title={'Account Number'} value={'924010012630709'} />
+                      <SingleInfo title={'IFSC Code'} value={'UTIB0001353'} />
+                      <SingleInfo title={'Bank Name'} value={'Axis bank'} />
                       {/* <SingleInfo title={'Account Holder Name'} value={'STAR ENTERPRISES'} />
                       <SingleInfo title={'Account Number'} value={'50200099063812'} />
                       <SingleInfo title={'IFSC Code'} value={'HDFC0006335'} />
